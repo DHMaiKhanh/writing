@@ -198,4 +198,33 @@ Mai Khanh
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();
 </script>
+
+<!-- ===== NUT AN/HIEN TIENG ANH ===== -->
+<style>
+.en-toggle-btn{position:fixed;right:16px;bottom:16px;z-index:999;display:inline-flex;align-items:center;gap:6px;
+  background:#0f172a;color:#fff;border:none;padding:11px 18px;border-radius:99px;font:inherit;font-size:14px;
+  font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,.25);cursor:pointer;}
+.en-toggle-btn:hover{background:#1e293b;}
+body.hide-en .en,
+body.hide-en .letter p,
+body.hide-en .fulltext p,
+body.hide-en .subj{
+  filter:blur(6px);border-radius:4px;transition:filter .15s;cursor:pointer;}
+body.hide-en .en:hover,
+body.hide-en .letter p:hover,
+body.hide-en .fulltext p:hover,
+body.hide-en .subj:hover{filter:none;}
+@media(max-width:560px){.en-toggle-btn{right:10px;bottom:10px;padding:9px 14px;font-size:13px;}}
+</style>
+<script>
+(function(){
+  var btn=document.createElement('button');
+  btn.type='button'; btn.className='en-toggle-btn'; btn.textContent='🙈 Ẩn tiếng Anh';
+  document.body.appendChild(btn);
+  btn.addEventListener('click',function(){
+    var hidden=document.body.classList.toggle('hide-en');
+    btn.textContent = hidden ? '👁️ Hiện tiếng Anh' : '🙈 Ẩn tiếng Anh';
+  });
+})();
+</script>
 </body></html>
