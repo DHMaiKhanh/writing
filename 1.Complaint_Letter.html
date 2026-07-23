@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complaint Letter · VSTEP Writing</title>
+<style>
+:root{
+  --bg:#eef2f8; --paper:#ffffff; --ink:#1f2a3a; --mut:#64748b;
+  --blue:#2563eb; --blue-d:#1e40af; --sky:#eaf1ff; --amber:#f59e0b;
+  --amber-bg:#fff8ec; --green:#16a34a; --green-bg:#effbf2; --red:#dc2626;
+  --line:#e3e9f2; --shadow:0 6px 22px rgba(30,50,90,.08);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:74px;}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Segoe UI',system-ui,-apple-system,'Calibri',sans-serif;
+  font-size:16px;line-height:1.6;}
+
+/* ===== HERO ===== */
+.hero{background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 60%,#3b82f6 100%);
+  color:#fff;padding:34px 20px 28px;text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:"✉";position:absolute;right:-10px;bottom:-30px;font-size:170px;
+  opacity:.08;transform:rotate(-12deg);}
+.hero .tagvi{font-size:13px;letter-spacing:3px;text-transform:uppercase;opacity:.85;}
+.hero h1{margin:6px 0 8px;font-size:30px;font-weight:800;}
+.hero .meta{display:inline-flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:6px;}
+.hero .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  padding:5px 13px;border-radius:99px;font-size:13px;backdrop-filter:blur(4px);}
+
+/* ===== NAV dính ===== */
+nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.9);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+  display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:9px 12px;
+  box-shadow:0 2px 12px rgba(30,50,90,.05);}
+nav a{text-decoration:none;color:var(--mut);font-weight:600;font-size:14px;
+  padding:7px 14px;border-radius:99px;transition:.15s;}
+nav a:hover{background:var(--sky);color:var(--blue-d);}
+
+.wrap{max-width:880px;margin:0 auto;padding:26px 18px 70px;}
+section{margin-bottom:30px;}
+.h2{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:800;
+  color:var(--blue-d);margin:0 0 14px;}
+.h2 .num{flex:0 0 34px;height:34px;background:var(--blue);color:#fff;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:16px;}
+
+/* ===== Khung thư: các bước ===== */
+.steps{display:flex;flex-direction:column;gap:12px;}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  padding:14px 16px 14px 18px;box-shadow:var(--shadow);position:relative;
+  border-left:4px solid var(--amber);}
+.step .st-h{font-weight:800;color:var(--ink);margin-bottom:4px;}
+.step .st-h .vi{color:var(--mut);font-weight:600;font-size:14px;}
+.en{color:var(--blue-d);font-style:italic;background:var(--sky);
+  padding:7px 11px;border-radius:9px;display:block;margin:6px 0;font-size:15px;}
+.vi-line{color:#475569;font-size:14.5px;}
+.hint{color:var(--mut);font-size:13px;background:#f6f8fc;border:1px dashed #cdd7e6;
+  border-radius:9px;padding:8px 11px;margin-top:7px;}
+.hint b{color:var(--ink);}
+.callout{background:var(--green-bg);border:1px solid #c7ead2;border-left:4px solid var(--green);
+  border-radius:11px;padding:10px 14px;color:#14532d;font-size:14px;margin-top:6px;}
+
+/* ===== Bài mẫu trông như lá thư ===== */
+.sit{background:var(--amber-bg);border:1px solid #f3e0b8;border-radius:12px;
+  padding:11px 15px;font-size:14.5px;color:#7c5b12;margin-bottom:14px;}
+.letter{background:var(--paper);border:1px solid var(--line);border-radius:16px;
+  box-shadow:var(--shadow);padding:26px 28px;position:relative;
+  background-image:linear-gradient(transparent 31px,#f1f5fb 31px,#f1f5fb 32px,transparent 32px);
+  background-size:100% 32px;line-height:32px;}
+.letter .subj{font-weight:800;color:var(--blue-d);}
+.letter p{margin:0 0 16px;}
+.letter .sign{font-style:italic;}
+.toggle{display:inline-flex;align-items:center;gap:7px;cursor:pointer;
+  background:var(--blue);color:#fff;border:none;font:inherit;font-size:14px;font-weight:600;
+  padding:8px 16px;border-radius:99px;margin:14px 0 0;box-shadow:var(--shadow);}
+.toggle:hover{background:var(--blue-d);}
+.trans{display:none;margin-top:12px;background:var(--green-bg);border:1px solid #c7ead2;
+  border-left:4px solid var(--green);border-radius:13px;padding:16px 20px;color:#14532d;}
+.trans.show{display:block;}
+.wc{text-align:right;color:var(--mut);font-size:13px;margin-top:8px;}
+
+/* ===== Từ vựng ===== */
+.vtools{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap;}
+.vtools input{flex:1;min-width:180px;padding:10px 14px;border:1px solid var(--line);
+  border-radius:99px;font:inherit;font-size:15px;outline:none;background:var(--paper);}
+.vtools input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.12);}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:12px;}
+.vcard{background:var(--paper);border:1px solid var(--line);border-radius:13px;
+  padding:13px 15px;box-shadow:var(--shadow);transition:.15s;border-top:3px solid var(--blue);}
+.vcard:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(30,50,90,.13);}
+.vcard.phrase{border-top-color:var(--amber);}
+.vcard .top{display:flex;justify-content:space-between;align-items:start;gap:8px;}
+.vcard .word{font-weight:800;color:var(--blue-d);font-size:16px;}
+.vcard .pos{flex:0 0 auto;font-size:11px;font-weight:700;color:#fff;background:var(--blue);
+  padding:2px 9px;border-radius:99px;height:fit-content;}
+.vcard.phrase .pos{background:var(--amber);}
+.vcard .read{color:var(--mut);font-size:13px;margin:3px 0;}
+.vcard .ipa{color:#94a3b8;font-size:12.5px;}
+.vcard .mean{margin-top:5px;font-size:14.5px;}
+.no-result{grid-column:1/-1;text-align:center;color:var(--mut);padding:20px;display:none;}
+
+/* ===== Toàn bài (nguyên đoạn) ===== */
+.fullbox{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--blue);
+  border-radius:14px;box-shadow:var(--shadow);padding:16px 20px;margin-bottom:22px;}
+.fulltitle{font-weight:800;color:var(--blue-d);font-size:16px;margin-bottom:8px;}
+.fulltext p{margin:0 0 12px;color:var(--ink);line-height:1.7;}
+.fulltext b{color:var(--blue-d);}
+.fullnote{margin-top:6px;color:var(--mut);font-size:13.5px;font-style:italic;
+  border-top:1px dashed var(--line);padding-top:10px;}
+.fulltext.frame p{font-style:italic;color:#334155;}
+.bl{font-style:normal;background:var(--amber-bg);border:1px solid #f3d89a;
+  color:#92600a;border-radius:5px;padding:0 5px;font-size:13.5px;white-space:nowrap;}
+
+/* ===== Từ vựng theo từng đoạn (bảng) ===== */
+.pgroup{margin-bottom:24px;}
+.pgroup .plabel{font-weight:800;color:var(--blue-d);font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+.pgroup .plabel .badge{flex:0 0 auto;font-size:12px;font-weight:700;color:#fff;background:var(--blue);border-radius:99px;padding:3px 11px;}
+.vrepeat{flex:0 0 auto;font-size:12.5px;font-weight:700;color:#fff;background:var(--green);border:none;
+  border-radius:99px;padding:5px 12px;cursor:pointer;transition:.15s;}
+.vrepeat:hover{background:#128a3d;}
+.vrepeat.on{animation:spkpulse .6s infinite;}
+.pgroup .pvi{color:#475569;font-size:14px;margin:2px 0 0;}
+.vtable{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-top:9px;}
+.vtable th{background:var(--sky);color:var(--blue-d);text-align:left;padding:9px 12px;font-size:13px;font-weight:700;}
+.vtable td{border-top:1px solid var(--line);padding:9px 12px;font-size:14.5px;vertical-align:top;}
+.vtable tr.phrase td{background:var(--amber-bg);}
+.vtable .idx{color:var(--mut);text-align:center;width:32px;}
+.vtable .w{font-weight:800;color:var(--blue-d);}
+.vtable .rd{color:var(--mut);font-size:12.5px;}
+.vtable .ipa2{color:#94a3b8;}
+.vtable .pos2{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--blue);border-radius:99px;padding:1px 9px;}
+.vtable tr.phrase .pos2{background:var(--amber);}
+@media(max-width:560px){ .vtable th:nth-child(3),.vtable td:nth-child(3){display:none;} }
+
+/* ===== Mẹo ===== */
+.tips{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);overflow:hidden;}
+.tips li{list-style:none;padding:13px 16px 13px 48px;position:relative;border-bottom:1px solid var(--line);}
+.tips li:last-child{border-bottom:none;}
+.tips li::before{content:"💡";position:absolute;left:16px;top:12px;}
+.tips b{color:var(--blue-d);} .tips .k{color:var(--red);font-weight:700;}
+.tips ul{margin:0;padding:0;}
+
+footer{text-align:center;color:var(--mut);font-size:14px;margin-top:30px;}
+
+@media(max-width:560px){
+  .hero h1{font-size:23px;} .wrap{padding:20px 13px 50px;}
+  .letter{padding:20px 18px;} nav a{padding:6px 10px;font-size:13px;}
+}
+</style></head><body>
+
+<header class="hero">
+  <div class="tagvi">VSTEP Writing · Task 1</div>
+  <h1>Complaint Letter</h1>
+  <div style="opacity:.9;font-size:15px;">Thư phàn nàn — Văn phong trang trọng</div>
+  <div class="meta">
+    <span class="pill">🎯 Bày tỏ không hài lòng &amp; yêu cầu giải quyết</span>
+    <span class="pill">🎩 Trang trọng (formal)</span>
+    <span class="pill">✍️ ~120–150 từ</span>
+  </div>
+</header>
+
+<nav>
+  <a href="#khung">📐 Khung thư</a>
+  <a href="#mau">📄 Bài mẫu</a>
+  <a href="#tuvung">📚 Từ vựng</a>
+  <a href="#meo">💡 Mẹo</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ===== I. KHUNG ===== -->
+<section id="khung">
+  <div class="h2"><span class="num">I</span> Khung thư (Template)</div>
+
+  <!-- Nguyên khung thư tiếng Anh (đọc tổng quát, không dịch) -->
+  <div class="fullbox">
+    <div class="fulltitle">📖 Nguyên khung thư — đọc tổng quát trước</div>
+    <div class="fulltext frame">
+      <p>Dear Sir/Madam,</p>
+      <p>I am writing to express my dissatisfaction with the <span class="bl">[sản phẩm/dịch vụ]</span> that I recently purchased/used on <span class="bl">[thời gian]</span>.</p>
+      <p>Unfortunately, when I <span class="bl">[đã làm gì]</span> it, I found that <span class="bl">[lỗi cụ thể]</span>. In addition, <span class="bl">[lỗi thứ hai]</span>.</p>
+      <p>This has caused me considerable inconvenience, as <span class="bl">[ảnh hưởng]</span>. I was extremely disappointed because <span class="bl">[lý do]</span>.</p>
+      <p>Therefore, I would be grateful if you could <span class="bl">[refund / replace / repair]</span> the <span class="bl">[đối tượng]</span> as soon as possible. I would also appreciate <span class="bl">[a written apology / compensation]</span> for the trouble caused.</p>
+      <p>I look forward to receiving a prompt response and a satisfactory resolution to this matter within the next few days.</p>
+      <p>Yours faithfully,<br><span class="bl">[Full Name]</span></p>
+    </div>
+    <div class="fullnote">⬇️ Bên dưới: tách từng phần kèm bản dịch &amp; cách đổi câu theo đề</div>
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="st-h">1. Greeting <span class="vi">— Lời chào</span></div>
+      <span class="en">Dear Sir/Madam, &nbsp; <span style="opacity:.7;">(không biết tên)</span> &nbsp;/&nbsp; Dear Mr. [Name],</span>
+    </div>
+
+    <div class="step">
+      <div class="st-h">2. Opening &amp; Reason <span class="vi">— Mở đầu &amp; Lý do</span></div>
+      <span class="en">I am writing to express my dissatisfaction with the [sản phẩm/dịch vụ] that I recently purchased/used on [thời gian].</span>
+      <div class="vi-line">→ Tôi viết thư này để bày tỏ sự không hài lòng về [sản phẩm/dịch vụ] đã mua/dùng gần đây vào [thời gian].</div>
+      <div class="hint">🔁 <b>Đổi đuôi câu theo đề:</b> …that I purchased from your company… (mua sản phẩm) · …the service I received at your [restaurant/hotel]… (dịch vụ) · …the order I placed on your website… (đặt online) · …about the noise coming from… (tiếng ồn).</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">3. Details of the problem <span class="vi">— Mô tả vấn đề</span></div>
+      <span class="en">Unfortunately, when I [đã làm gì] it, I found that [lỗi cụ thể]. In addition, [lỗi thứ hai].</span>
+      <div class="vi-line">→ Thật không may, khi tôi… tôi phát hiện rằng… Ngoài ra,…</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">4. Impact / Inconvenience <span class="vi">— Hậu quả</span></div>
+      <span class="en">This has caused me considerable inconvenience, as [ảnh hưởng]. I was extremely disappointed because [lý do].</span>
+      <div class="vi-line">→ Việc này đã gây cho tôi nhiều bất tiện vì… Tôi rất thất vọng bởi vì…</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">5. Request for action <span class="vi">— Yêu cầu giải quyết</span></div>
+      <span class="en">Therefore, I would be grateful if you could [refund / replace / repair] the [đối tượng] as soon as possible. I would also appreciate [a written apology / compensation] for the trouble caused.</span>
+      <div class="vi-line">→ Vì vậy tôi rất mong quý vị có thể… Tôi cũng mong nhận được…</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">6. Closing <span class="vi">— Kết</span></div>
+      <span class="en">I look forward to receiving a prompt response and a satisfactory resolution to this matter within the next few days.</span>
+      <div class="vi-line">→ Tôi mong nhận được phản hồi sớm và một giải pháp thỏa đáng.</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">7. Signature <span class="vi">— Ký tên</span></div>
+      <span class="en">Yours faithfully, &nbsp;<span style="opacity:.7;">(khi dùng Dear Sir/Madam)</span> &nbsp;+ [Full Name]</span>
+    </div>
+
+    <div class="callout">📊 Khung cố định ≈ 80 từ → điền đầy đủ các <b>[...]</b> sẽ thành thư ~120–130 từ là chuẩn.</div>
+  </div>
+</section>
+
+<!-- ===== II. BÀI MẪU ===== -->
+<section id="mau">
+  <div class="h2"><span class="num">II</span> Bài mẫu (Example)</div>
+  <div class="sit"><b>Tình huống:</b> Bạn mua một chiếc điện thoại trực tuyến nhưng khi nhận hàng thì máy bị lỗi. Viết thư cho cửa hàng để phàn nàn và yêu cầu giải quyết.</div>
+
+  <div class="letter">
+    <p class="subj">Subject: Complaint about a faulty smartphone (Order #A1234)</p>
+    <p>Dear Sir/Madam,</p>
+    <p>I am writing to express my dissatisfaction with the smartphone that I recently purchased from your online store on 28 May 2026.</p>
+    <p>Unfortunately, when I unpacked it, I found that the screen was cracked. In addition, the device would not turn on.</p>
+    <p>This has caused me considerable inconvenience, as I have been unable to use the phone for work. I was extremely disappointed because the device was advertised as brand new.</p>
+    <p>Therefore, I would be grateful if you could replace the device as soon as possible. I would also appreciate a written apology for the trouble caused.</p>
+    <p>I look forward to receiving a prompt response and a satisfactory resolution to this matter within the next few days.</p>
+    <p class="sign">Yours faithfully,<br>Mai Khanh</p>
+  </div>
+  <div class="wc">≈ 130 từ — đạt chuẩn VSTEP ✓</div>
+
+  <button class="toggle" onclick="var t=document.getElementById('tr');t.classList.toggle('show');this.firstChild.textContent=t.classList.contains('show')?'🇻🇳 Ẩn bản dịch':'🇻🇳 Xem bản dịch';">🇻🇳 Xem bản dịch</button>
+  <div class="trans" id="tr">
+    <b>Bản dịch:</b><br>
+    Kính gửi Quý cửa hàng,<br><br>
+    Tôi viết thư này để bày tỏ sự không hài lòng về chiếc điện thoại tôi đã mua gần đây tại cửa hàng trực tuyến của quý vị vào ngày 28/5/2026.<br><br>
+    Thật không may, khi mở hộp ra, tôi phát hiện màn hình bị nứt. Ngoài ra, máy không thể bật lên.<br><br>
+    Việc này đã gây cho tôi nhiều bất tiện, vì tôi không thể sử dụng điện thoại cho công việc. Tôi rất thất vọng bởi vì máy được quảng cáo là hàng mới hoàn toàn.<br><br>
+    Vì vậy, tôi rất mong quý vị có thể đổi máy mới trong thời gian sớm nhất. Tôi cũng mong nhận được một lời xin lỗi bằng văn bản cho sự phiền toái này.<br><br>
+    Tôi mong nhận được phản hồi sớm và một giải pháp thỏa đáng cho vấn đề này trong vài ngày tới.<br><br>
+    Trân trọng,<br>Mai Khanh
+  </div>
+</section>
+
+<!-- ===== III. TỪ VỰNG ===== -->
+<section id="tuvung">
+  <div class="h2"><span class="num">III</span> Từ vựng &amp; cụm từ <span style="font-weight:600;font-size:14px;color:var(--mut)">— theo từng đoạn của bài mẫu</span></div>
+  <div class="vtools">
+    <input id="search" type="text" placeholder="🔍 Gõ để lọc từ vựng (vd: refund, hoàn tiền...)">
+  </div>
+  <div id="vwrap"></div>
+  <div class="no-result" id="nores">Không tìm thấy từ nào khớp 🙈</div>
+</section>
+
+<!-- ===== IV. MẸO ===== -->
+<section id="meo">
+  <div class="h2"><span class="num">IV</span> Mẹo ăn điểm</div>
+  <div class="tips"><ul>
+    <li>Giữ giọng văn <b>lịch sự nhưng kiên quyết</b> — đừng cáu gắt, chửi bới.</li>
+    <li>Nêu <b>bằng chứng cụ thể</b> (ngày mua, mã đơn, lỗi gì) → tăng tính thuyết phục &amp; điểm Task Fulfillment.</li>
+    <li>Phải nêu rõ <span class="k">bạn muốn họ làm gì</span> (đổi / hoàn tiền / sửa) — thiếu phần này là mất ý.</li>
+    <li>Formal: <b>không viết tắt</b> (don't → do not, won't → would not), kết bằng <i>Yours faithfully</i>.</li>
+  </ul></div>
+</section>
+
+<footer>— Complaint Letter · VSTEP B2 Writing —</footer>
+</div>
+
+<script>
+/* ===== Từ vựng gom theo từng đoạn của bài mẫu =====
+   Mỗi đoạn: nhãn, câu tiếng Anh, dịch, và mảng từ vựng [từ/cụm, phiên âm, IPA, loại, nghĩa] */
+var PARAS=[
+ { label:"Đoạn 1 — Tiêu đề &amp; Mở đầu",
+   en:"Subject: Complaint about a <b>faulty</b> smartphone (Order #A1234). I am writing to express my <b>dissatisfaction</b> with the smartphone that I <b>recently</b> <b>purchased</b> from your online store on 28 May 2026.",
+   vi:"Về việc: Khiếu nại điện thoại bị lỗi. Tôi viết thư để bày tỏ sự không hài lòng về chiếc điện thoại tôi đã mua gần đây tại cửa hàng trực tuyến của quý vị vào ngày 28/5/2026.",
+   vocab:[
+    ["faulty","pháo đi","/ˈfɔːlti/","adj","bị lỗi, hỏng"],
+    ["dissatisfaction","đít sa tịt phách sần","/dɪsˌsætɪsˈfækʃn/","n","sự không hài lòng"],
+    ["purchase","pớ chợt sờ","/ˈpɜːtʃəs/","v/n","mua / việc mua"],
+    ["recently","rí sen li","/ˈriːsntli/","adv","gần đây"],
+    ["I am writing to express my dissatisfaction with...","","","cụm","Tôi viết thư để bày tỏ sự không hài lòng về..."]
+   ]},
+ { label:"Đoạn 2 — Mô tả vấn đề",
+   en:"<b>Unfortunately</b>, when I unpacked it, I found that the screen was <b>cracked</b>. In <b>addition</b>, the device would not turn on.",
+   vi:"Thật không may, khi mở hộp ra, tôi phát hiện màn hình bị nứt. Ngoài ra, máy không thể bật lên.",
+   vocab:[
+    ["unfortunately","ân phó chân nợt ly","/ʌnˈfɔːtʃənətli/","adv","thật không may, đáng tiếc"],
+    ["unpack","ân pác","/ʌnˈpæk/","v","mở hộp, dỡ hàng ra"],
+    ["cracked","crát","/krækt/","adj","bị nứt"],
+    ["defective","đi phếch típ","/dɪˈfektɪv/","adj","khuyết tật, lỗi (từ đồng nghĩa hữu ích)"],
+    ["damaged","đa mịch","/ˈdæmɪdʒd/","adj","bị hư hại (từ đồng nghĩa hữu ích)"],
+    ["addition (in addition)","ờ đí sân","/əˈdɪʃn/","n","sự thêm vào; in addition = ngoài ra"]
+   ]},
+ { label:"Đoạn 3 — Hậu quả / Bất tiện",
+   en:"This has caused me <b>considerable</b> <b>inconvenience</b>, as I have been unable to use the phone for work. I was <b>extremely</b> <b>disappointed</b> because the device was <b>advertised</b> as brand new.",
+   vi:"Việc này đã gây cho tôi nhiều bất tiện, vì tôi không thể sử dụng điện thoại cho công việc. Tôi rất thất vọng bởi vì máy được quảng cáo là hàng mới hoàn toàn.",
+   vocab:[
+    ["considerable","khân sí đơ rơ bô","/kənˈsɪdərəbl/","adj","đáng kể, nhiều"],
+    ["inconvenience","in khần ví nhânh","/ˌɪnkənˈviːniəns/","n","sự bất tiện"],
+    ["unable","ân ê bồ","/ʌnˈeɪbl/","adj","không thể"],
+    ["extremely","ịt trím li","/ɪkˈstriːmli/","adv","vô cùng, cực kỳ"],
+    ["disappointed","đít sờ pói tịt","/ˌdɪsəˈpɔɪntɪd/","adj","thất vọng"],
+    ["advertise","át vơ tai","/ˈædvətaɪz/","v","quảng cáo"],
+    ["because","bi cọz","/bɪˈkɒz/","liên từ","bởi vì"],
+    ["This has caused me considerable inconvenience","","","cụm","Việc này đã gây cho tôi nhiều bất tiện"],
+    ["I was extremely disappointed because...","","","cụm","Tôi đã vô cùng thất vọng bởi vì..."]
+   ]},
+ { label:"Đoạn 4 — Yêu cầu giải quyết",
+   en:"Therefore, I would be grateful if you could <b>replace</b> the device as soon as possible. I would also <b>appreciate</b> a <b>written</b> <b>apology</b> for the <b>trouble</b> caused.",
+   vi:"Vì vậy, tôi rất mong quý vị có thể đổi máy mới trong thời gian sớm nhất. Tôi cũng mong nhận được một lời xin lỗi bằng văn bản cho sự phiền toái này.",
+   vocab:[
+    ["therefore","the phò","/ˈðeəfɔː/","adv","vì vậy, do đó"],
+    ["grateful","grây phồ","/ˈɡreɪtfl/","adj","biết ơn"],
+    ["replace / replacement","ri plây sờ","/rɪˈpleɪs/","v/n","thay thế / sự thay thế"],
+    ["repair","ri pe","/rɪˈpeə/","v","sửa chữa"],
+    ["refund","ri phừn","/ˈriːfʌnd/","n/v","(sự) hoàn tiền"],
+    ["appreciate","ờ pri si êit","/əˈpriːʃieɪt/","v","trân trọng, biết ơn"],
+    ["compensation","com pần sây sần","/ˌkɒmpenˈseɪʃn/","n","sự bồi thường"],
+    ["trouble","trắp bồ","/ˈtrʌbl/","n","sự phiền toái, rắc rối"],
+    ["I would be grateful if you could...","","","cụm","Tôi rất mong quý vị có thể..."],
+    ["issue a full refund","","","cụm","hoàn lại toàn bộ tiền"],
+    ["as soon as","ợt sun ợt","/əz suːn əz/","cụm","ngay khi, ngay sau khi"],
+    ["possible","pót sồ bồ","/ˈpɒsəbl/","adj","có thể, khả thi"],
+    ["as soon as possible","","","cụm","sớm nhất có thể (= ASAP)"],
+    ["a written apology","","","cụm","lời xin lỗi bằng văn bản"]
+   ]},
+ { label:"Đoạn 5 — Kết thư",
+   en:"I look forward to receiving a <b>prompt</b> response and a <b>satisfactory</b> <b>resolution</b> to this matter within the next few days.",
+   vi:"Tôi mong nhận được phản hồi sớm và một giải pháp thỏa đáng cho vấn đề này trong vài ngày tới.",
+   vocab:[
+    ["look forward to","lúc pho uợt tu","/lʊk ˈfɔːwəd tə/","cụm","mong chờ, trông đợi"],
+    ["receive","ri xi vờ","/rɪˈsiːv/","v","nhận được"],
+    ["prompt","prom tờ","/prɒmpt/","adj","nhanh chóng, kịp thời"],
+    ["response","ri spon sờ","/rɪˈspɒns/","n","phản hồi, sự đáp lại"],
+    ["satisfactory","sa típ phách tơ ri","/ˌsætɪsˈfæktəri/","adj","thỏa đáng"],
+    ["resolution","re zơ lu sần","/ˌrezəˈluːʃn/","n","giải pháp, sự giải quyết"],
+    ["matter","mát tơ","/ˈmætə/","n","vấn đề, việc"],
+    ["I look forward to a prompt response","","","cụm","Tôi mong nhận được phản hồi sớm"],
+    ["Yours faithfully","do phấy phù li","/jɔːz ˈfeɪθfəli/","cụm","Trân trọng (khi dùng Dear Sir/Madam — không biết tên)"],
+    ["Yours sincerely","do sin si li","/jɔːz sɪnˈsɪəli/","cụm","Trân trọng (khi biết tên người nhận)"]
+   ]}
+];
+
+var wrap=document.getElementById('vwrap');
+function esc(s){ return (s||'').replace(/"/g,'&quot;'); }
+function rowHtml(v,i){
+  var phrase = v[3]==='cụm';
+  var rd = v[1] ? '('+v[1]+')' : '—';
+  var ipa = v[2] ? ' <span class="ipa2">'+v[2]+'</span>' : '';
+  return '<tr class="'+(phrase?'phrase':'')+'" data-word="'+esc(v[0])+'" data-mean="'+esc(v[4])+'">'+
+    '<td class="idx">'+i+'</td>'+
+    '<td><span class="w">'+v[0]+'</span></td>'+
+    '<td class="rd">'+rd+ipa+'</td>'+
+    '<td><span class="pos2">'+v[3]+'</span></td>'+
+    '<td>'+v[4]+'</td></tr>';
+}
+function fullText(){
+  // ghép toàn bộ câu tiếng Anh của các đoạn thành 1 bài liền mạch
+  return PARAS.map(function(p){ return '<p>'+p.en+'</p>'; }).join('');
+}
+function render(q){
+  q=(q||'').toLowerCase().trim();
+  wrap.innerHTML='';
+  // ===== Toàn bài (nguyên đoạn) — chỉ hiện khi không tìm kiếm =====
+  if(!q){
+    wrap.innerHTML+='<div class="fullbox">'+
+      '<div class="fulltitle">📖 Toàn bài — đọc liền mạch trước</div>'+
+      '<div class="fulltext">'+fullText()+'</div>'+
+      '<div class="fullnote">⬇️ Bên dưới: tách từng đoạn nhỏ kèm bản dịch &amp; từ vựng</div>'+
+    '</div>';
+  }
+  var n=0, idx=0;
+  PARAS.forEach(function(p){
+    var rows = p.vocab.filter(function(v){
+      return !q || (v[0]+' '+v[4]).toLowerCase().indexOf(q)>-1;
+    });
+    if(!rows.length) return;
+    var body='';
+    rows.forEach(function(v){ idx++; body+=rowHtml(v,idx); });
+    n+=rows.length;
+    wrap.innerHTML+='<div class="pgroup">'+
+      '<div class="plabel"><span class="badge">'+rows.length+' từ</span>'+p.label+
+        '<button type="button" class="vrepeat" data-mode="mean">🔁 Lặp từ vựng</button>'+
+        '<button type="button" class="vrepeat" data-mode="nomean">🔁 Lặp từ vựng (không nghĩa)</button>'+
+      '</div>'+
+      '<span class="en">'+p.en+'</span>'+
+      '<div class="pvi">→ '+p.vi+'</div>'+
+      '<table class="vtable"><thead><tr>'+
+        '<th>#</th><th>Từ / Cụm</th><th>Phiên âm</th><th>Loại</th><th>Nghĩa</th>'+
+      '</tr></thead><tbody>'+body+'</tbody></table>'+
+    '</div>';
+  });
+  document.getElementById('nores').style.display = n? 'none':'block';
+}
+render('');
+
+document.getElementById('search').addEventListener('input',function(){ render(this.value); });
+</script>
+
+<!-- ===== 🔊 NGHE PHÁT ÂM TỪ VỰNG (dùng giọng đọc của trình duyệt, chạy offline) ===== -->
+<style>
+.spk{cursor:pointer;border:none;background:transparent;font-size:14px;line-height:1;
+  padding:0 3px;margin-left:4px;vertical-align:middle;opacity:.5;transition:transform .15s,opacity .15s;}
+.spk:hover{opacity:1;transform:scale(1.25);}
+.spk.on{opacity:1;animation:spkpulse .6s infinite;}
+@keyframes spkpulse{50%{opacity:.35;}}
+</style>
+<script>
+(function(){
+  var synth=window.speechSynthesis;
+  function pickVoice(){
+    if(!synth) return null;
+    var vs=synth.getVoices()||[];
+    return vs.filter(function(v){return /^en/i.test(v.lang);})[0]
+        || vs.filter(function(v){return /en/i.test(v.lang);})[0] || null;
+  }
+  function speak(text,btn){
+    if(!synth){ alert('Trình duyệt này không hỗ trợ đọc. Hãy mở bằng Chrome hoặc Edge.'); return; }
+    synth.cancel();
+    var u=new SpeechSynthesisUtterance(text);
+    u.lang='en-US'; u.rate=0.9;
+    var v=pickVoice(); if(v) u.voice=v;
+    if(btn){ u.onstart=function(){btn.classList.add('on');};
+             u.onend=u.onerror=function(){btn.classList.remove('on');}; }
+    synth.speak(u);
+  }
+  function clean(t){
+    return (t||'').replace(/🔊/g,'').replace(/\(.*?\)/g,'')
+      .replace(/\/[^\/]*\//g,'').replace(/\[[^\]]*\]/g,'').replace(/[…→]/g,'').replace(/\s+/g,' ').trim();
+  }
+  function addSpk(el){
+    if(el.dataset.spk) return;
+    if(el.closest && el.closest('.spk')) return;
+    var word=clean(el.textContent);
+    if(!word || word.length<2) return;
+    el.dataset.spk='1';
+    var b=document.createElement('button');
+    b.className='spk'; b.type='button'; b.textContent='🔊';
+    b.title='Nghe: '+(word.length>40?word.slice(0,40)+'…':word);
+    b.addEventListener('click',function(e){ e.stopPropagation(); e.preventDefault(); speak(word,b); });
+    el.appendChild(b);
+  }
+  function run(){ document.querySelectorAll('.w, .vcard .word, td.q, .en, .letter p, .fulltext p, .tem i, .ex').forEach(addSpk); }
+
+  var queueBtn=null;
+  function speakQueue(items,btn){
+    if(!synth){ alert('Trình duyệt này không hỗ trợ đọc. Hãy mở bằng Chrome hoặc Edge.'); return; }
+    synth.cancel();
+    if(queueBtn) queueBtn.classList.remove('on');
+    if(btn===queueBtn){ queueBtn=null; return; }
+    queueBtn=btn; btn.classList.add('on');
+    var i=0;
+    function next(){
+      if(i>=items.length || queueBtn!==btn){ btn.classList.remove('on'); queueBtn=null; return; }
+      var u=new SpeechSynthesisUtterance(items[i++]);
+      u.lang='en-US'; u.rate=0.9;
+      var v=pickVoice(); if(v) u.voice=v;
+      u.onend=u.onerror=next;
+      synth.speak(u);
+    }
+    next();
+  }
+  document.addEventListener('click',function(e){
+    var btn=e.target.closest('.vrepeat');
+    if(!btn) return;
+    var table=btn.closest('.pgroup').querySelector('.vtable');
+    if(!table) return;
+    var withMean = btn.dataset.mode==='mean';
+    var items=[];
+    table.querySelectorAll('tbody tr').forEach(function(tr){
+      var w=tr.dataset.word, m=tr.dataset.mean;
+      if(!w) return;
+      items.push(withMean && m ? (w+'. '+m) : w);
+    });
+    speakQueue(items,btn);
+  });
+  function init(){
+    run();
+    if(window.MutationObserver){
+      var t,mo=new MutationObserver(function(){ clearTimeout(t); t=setTimeout(run,90); });
+      mo.observe(document.body,{childList:true,subtree:true});
+    }
+  }
+  if(synth) synth.onvoiceschanged=pickVoice;
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+</body></html>

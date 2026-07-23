@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discussion Essay · VSTEP Writing</title>
+<style>
+:root{
+  --bg:#eef2f8; --paper:#ffffff; --ink:#1f2a3a; --mut:#64748b;
+  --blue:#2563eb; --blue-d:#1e40af; --sky:#eaf1ff; --amber:#f59e0b;
+  --amber-bg:#fff8ec; --green:#16a34a; --green-bg:#effbf2; --red:#dc2626;
+  --line:#e3e9f2; --shadow:0 6px 22px rgba(30,50,90,.08);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:74px;}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Segoe UI',system-ui,-apple-system,'Calibri',sans-serif;
+  font-size:16px;line-height:1.6;}
+
+/* ===== HERO ===== */
+.hero{background:linear-gradient(135deg,#9d174d 0%,#db2777 60%,#f472b6 100%);
+  color:#fff;padding:34px 20px 28px;text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:"⚖️";position:absolute;right:-10px;bottom:-30px;font-size:170px;
+  opacity:.10;transform:rotate(-12deg);}
+.hero .tagvi{font-size:13px;letter-spacing:3px;text-transform:uppercase;opacity:.85;}
+.hero h1{margin:6px 0 8px;font-size:30px;font-weight:800;}
+.hero .meta{display:inline-flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:6px;}
+.hero .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  padding:5px 13px;border-radius:99px;font-size:13px;backdrop-filter:blur(4px);}
+
+/* ===== NAV dính ===== */
+nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.9);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+  display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:9px 12px;
+  box-shadow:0 2px 12px rgba(30,50,90,.05);}
+nav a{text-decoration:none;color:var(--mut);font-weight:600;font-size:14px;
+  padding:7px 14px;border-radius:99px;transition:.15s;}
+nav a:hover{background:var(--sky);color:var(--blue-d);}
+
+.wrap{max-width:880px;margin:0 auto;padding:26px 18px 70px;}
+section{margin-bottom:30px;}
+.h2{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:800;
+  color:var(--blue-d);margin:0 0 14px;}
+.h2 .num{flex:0 0 34px;height:34px;background:var(--blue);color:#fff;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:16px;}
+
+/* ===== Nhận diện dạng đề ===== */
+.signal{background:var(--paper);border:1px solid var(--line);border-left:4px solid #7c3aed;
+  border-radius:14px;box-shadow:var(--shadow);padding:16px 20px;margin-bottom:18px;}
+.signal .stitle{font-weight:800;color:#5b21b6;margin-bottom:8px;}
+.signal .qchip{display:inline-block;background:#f5f3ff;border:1px solid #ddd6fe;color:#5b21b6;
+  padding:5px 12px;border-radius:99px;font-size:13.5px;margin:3px 4px 0 0;font-style:italic;}
+.signal .ex{margin-top:10px;color:var(--mut);font-size:14px;}
+
+/* ===== Khung bài luận: các bước ===== */
+.steps{display:flex;flex-direction:column;gap:12px;}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  padding:14px 16px 14px 18px;box-shadow:var(--shadow);position:relative;
+  border-left:4px solid var(--amber);}
+.step .st-h{font-weight:800;color:var(--ink);margin-bottom:4px;}
+.step .st-h .vi{color:var(--mut);font-weight:600;font-size:14px;}
+.en{color:var(--blue-d);font-style:italic;background:var(--sky);
+  padding:7px 11px;border-radius:9px;display:block;margin:6px 0;font-size:15px;}
+.vi-line{color:#475569;font-size:14.5px;}
+.hint{color:var(--mut);font-size:13px;background:#f6f8fc;border:1px dashed #cdd7e6;
+  border-radius:9px;padding:8px 11px;margin-top:7px;}
+.hint b{color:var(--ink);}
+.callout{background:var(--green-bg);border:1px solid #c7ead2;border-left:4px solid var(--green);
+  border-radius:11px;padding:10px 14px;color:#14532d;font-size:14px;margin-top:6px;}
+
+/* ===== Bài mẫu ===== */
+.sit{background:var(--amber-bg);border:1px solid #f3e0b8;border-radius:12px;
+  padding:11px 15px;font-size:14.5px;color:#7c5b12;margin-bottom:14px;}
+.essaybox{background:var(--paper);border:1px solid var(--line);border-radius:16px;
+  box-shadow:var(--shadow);padding:26px 28px;position:relative;
+  background-image:linear-gradient(transparent 31px,#f1f5fb 31px,#f1f5fb 32px,transparent 32px);
+  background-size:100% 32px;line-height:32px;}
+.essaybox .ptag{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:#7c3aed;
+  border-radius:99px;padding:2px 10px;margin-bottom:4px;}
+.essaybox p{margin:0 0 16px;}
+.toggle{display:inline-flex;align-items:center;gap:7px;cursor:pointer;
+  background:var(--blue);color:#fff;border:none;font:inherit;font-size:14px;font-weight:600;
+  padding:8px 16px;border-radius:99px;margin:14px 0 0;box-shadow:var(--shadow);}
+.toggle:hover{background:var(--blue-d);}
+.trans{display:none;margin-top:12px;background:var(--green-bg);border:1px solid #c7ead2;
+  border-left:4px solid var(--green);border-radius:13px;padding:16px 20px;color:#14532d;}
+.trans.show{display:block;}
+.wc{text-align:right;color:var(--mut);font-size:13px;margin-top:8px;}
+
+/* ===== Từ vựng ===== */
+.vtools{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap;}
+.vtools input{flex:1;min-width:180px;padding:10px 14px;border:1px solid var(--line);
+  border-radius:99px;font:inherit;font-size:15px;outline:none;background:var(--paper);}
+.vtools input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.12);}
+.no-result{grid-column:1/-1;text-align:center;color:var(--mut);padding:20px;display:none;}
+
+/* ===== Toàn bài (nguyên đoạn) ===== */
+.fullbox{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--blue);
+  border-radius:14px;box-shadow:var(--shadow);padding:16px 20px;margin-bottom:22px;}
+.fulltitle{font-weight:800;color:var(--blue-d);font-size:16px;margin-bottom:8px;}
+.fulltext p{margin:0 0 12px;color:var(--ink);line-height:1.7;}
+.fulltext b{color:var(--blue-d);}
+.fullnote{margin-top:6px;color:var(--mut);font-size:13.5px;font-style:italic;
+  border-top:1px dashed var(--line);padding-top:10px;}
+.fulltext.frame p{font-style:italic;color:#334155;}
+.bl{font-style:normal;background:var(--amber-bg);border:1px solid #f3d89a;
+  color:#92600a;border-radius:5px;padding:0 5px;font-size:13.5px;white-space:nowrap;}
+
+/* ===== Từ vựng theo từng đoạn (bảng) ===== */
+.pgroup{margin-bottom:24px;}
+.pgroup .plabel{font-weight:800;color:var(--blue-d);font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+.pgroup .plabel .badge{flex:0 0 auto;font-size:12px;font-weight:700;color:#fff;background:var(--blue);border-radius:99px;padding:3px 11px;}
+.vrepeat{flex:0 0 auto;font-size:12.5px;font-weight:700;color:#fff;background:var(--green);border:none;
+  border-radius:99px;padding:5px 12px;cursor:pointer;transition:.15s;}
+.vrepeat:hover{background:#128a3d;}
+.vrepeat.on{animation:spkpulse .6s infinite;}
+.pgroup .pvi{color:#475569;font-size:14px;margin:2px 0 0;}
+.vtable{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-top:9px;}
+.vtable th{background:var(--sky);color:var(--blue-d);text-align:left;padding:9px 12px;font-size:13px;font-weight:700;}
+.vtable td{border-top:1px solid var(--line);padding:9px 12px;font-size:14.5px;vertical-align:top;}
+.vtable tr.phrase td{background:var(--amber-bg);}
+.vtable .idx{color:var(--mut);text-align:center;width:32px;}
+.vtable .w{font-weight:800;color:var(--blue-d);}
+.vtable .rd{color:var(--mut);font-size:12.5px;}
+.vtable .ipa2{color:#94a3b8;}
+.vtable .pos2{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--blue);border-radius:99px;padding:1px 9px;}
+.vtable tr.phrase .pos2{background:var(--amber);}
+@media(max-width:560px){ .vtable th:nth-child(3),.vtable td:nth-child(3){display:none;} }
+
+/* ===== Mẹo ===== */
+.tips{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);overflow:hidden;}
+.tips li{list-style:none;padding:13px 16px 13px 48px;position:relative;border-bottom:1px solid var(--line);}
+.tips li:last-child{border-bottom:none;}
+.tips li::before{content:"💡";position:absolute;left:16px;top:12px;}
+.tips b{color:var(--blue-d);} .tips .k{color:var(--red);font-weight:700;}
+.tips ul{margin:0;padding:0;}
+
+footer{text-align:center;color:var(--mut);font-size:14px;margin-top:30px;}
+
+@media(max-width:560px){
+  .hero h1{font-size:23px;} .wrap{padding:20px 13px 50px;}
+  .essaybox{padding:20px 18px;} nav a{padding:6px 10px;font-size:13px;}
+}
+</style></head><body>
+
+<header class="hero">
+  <div class="tagvi">VSTEP Writing · Task 2</div>
+  <h1>Discussion Essay</h1>
+  <div style="opacity:.9;font-size:15px;">Bàn luận 2 quan điểm — Discuss both views</div>
+  <div class="meta">
+    <span class="pill">🎯 Trình bày công bằng cả 2 phía trước khi nêu ý kiến</span>
+    <span class="pill">📝 4 đoạn</span>
+    <span class="pill">✍️ ~250 từ / 40 phút</span>
+  </div>
+</header>
+
+<nav>
+  <a href="#nhandien">🔍 Nhận diện</a>
+  <a href="#khung">📐 Khung bài</a>
+  <a href="#mau">📄 Bài mẫu</a>
+  <a href="#tuvung">📚 Từ vựng</a>
+  <a href="#meo">💡 Mẹo</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ===== 0. NHẬN DIỆN ===== -->
+<section id="nhandien">
+  <div class="h2"><span class="num">I</span> Cách nhận diện dạng đề</div>
+  <div class="signal">
+    <div class="stitle">🔎 Đề thường chứa các cụm sau:</div>
+    <span class="qchip">Discuss both views and give your opinion.</span>
+    <span class="qchip">Some people think... others believe...</span>
+    <span class="qchip">Some people prefer... while others prefer...</span>
+    <div class="ex">📌 <b>Ví dụ đề:</b> Some people prefer to work for a large company, while others prefer to work for a small one. Discuss both views and give your opinion.</div>
+  </div>
+  <div class="callout">✅ <b>Chiến lược:</b> Đây là điểm <b>KHÁC BIỆT lớn nhất</b> so với Opinion essay: bạn phải trình bày <b>công bằng cả 2 phía</b> trước — <b>không thiên vị ngay từ đầu</b>. Đoạn 2 (Thân bài 1) trình bày trọn vẹn <b>quan điểm A</b>, đoạn 3 (Thân bài 2) trình bày trọn vẹn <b>quan điểm B</b>, và <b>chỉ đến đoạn kết bài</b> bạn mới được nêu ý kiến cá nhân (In my opinion...).</div>
+</section>
+
+<!-- ===== II. KHUNG ===== -->
+<section id="khung">
+  <div class="h2"><span class="num">II</span> Khung bài luận (Template — 4 đoạn)</div>
+
+  <div class="fullbox">
+    <div class="fulltitle">📖 Nguyên khung bài — đọc tổng quát trước</div>
+    <div class="fulltext frame">
+      <p><b>[Mở bài]</b> Nowadays, when it comes to <span class="bl">[chủ đề tranh luận]</span>, people are divided between <span class="bl">[quan điểm A]</span> and <span class="bl">[quan điểm B]</span>. This essay will discuss both viewpoints before giving my own opinion.</p>
+      <p><b>[Thân bài 1]</b> On the one hand, many people argue that <span class="bl">[quan điểm A]</span>. This is because <span class="bl">[giải thích]</span>. For example, <span class="bl">[ví dụ cụ thể]</span>.</p>
+      <p><b>[Thân bài 2]</b> On the other hand, other people prefer <span class="bl">[quan điểm B]</span> because <span class="bl">[giải thích]</span>. Moreover, <span class="bl">[ý bổ sung]</span>.</p>
+      <p><b>[Kết bài]</b> In conclusion, while <span class="bl">[tóm tắt quan điểm A]</span>, <span class="bl">[tóm tắt quan điểm B]</span>. In my opinion, <span class="bl">[ý kiến cá nhân của bạn]</span>.</p>
+    </div>
+    <div class="fullnote">⬇️ Bên dưới: tách từng đoạn kèm bản dịch &amp; cách đổi câu theo đề</div>
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="st-h">1. Introduction <span class="vi">— Mở bài (giới thiệu 2 quan điểm, KHÔNG nêu ý kiến cá nhân)</span></div>
+      <span class="en">Nowadays, when it comes to [chủ đề tranh luận], people are divided between [quan điểm A] and [quan điểm B]. This essay will discuss both viewpoints before giving my own opinion.</span>
+      <div class="vi-line">→ Ngày nay, khi nói đến…, mọi người có ý kiến trái chiều giữa… và…. Bài luận này sẽ bàn luận cả hai quan điểm trước khi đưa ra ý kiến cá nhân.</div>
+      <div class="hint">⚠️ <b>Lưu ý quan trọng:</b> KHÁC với Opinion essay, ở mở bài của Discussion essay bạn <b>KHÔNG được</b> nêu quan điểm cá nhân — chỉ giới thiệu vấn đề và nêu rằng bài viết sẽ bàn luận cả hai phía.</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">2. Body 1 <span class="vi">— Thân bài 1 (Quan điểm A + giải thích + ví dụ)</span></div>
+      <span class="en">On the one hand, many people argue that [quan điểm A]. This is because [giải thích]. For example, [ví dụ cụ thể].</span>
+      <div class="vi-line">→ Một mặt, nhiều người cho rằng… Điều này là vì… Ví dụ,…</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">3. Body 2 <span class="vi">— Thân bài 2 (Quan điểm B + giải thích + ý bổ sung)</span></div>
+      <span class="en">On the other hand, other people prefer [quan điểm B] because [giải thích]. Moreover, [ý bổ sung].</span>
+      <div class="vi-line">→ Mặt khác, những người khác lại thích… vì… Hơn nữa,…</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">4. Conclusion <span class="vi">— Kết bài (tóm tắt cả 2 phía + NÊU Ý KIẾN CÁ NHÂN)</span></div>
+      <span class="en">In conclusion, while [tóm tắt quan điểm A], [tóm tắt quan điểm B]. In my opinion, [ý kiến cá nhân của bạn].</span>
+      <div class="vi-line">→ Tóm lại, trong khi…, thì…. Theo quan điểm của tôi,…</div>
+      <div class="hint">💬 Đây là <b>đoạn DUY NHẤT</b> trong bài được phép nêu ý kiến cá nhân rõ ràng bằng cụm "In my opinion...".</div>
+    </div>
+
+    <div class="callout">📊 4 đoạn ≈ 250 từ: Mở bài ~30–40 từ · Thân bài 1 &amp; 2 mỗi đoạn ~65–75 từ (độ dài <b>tương đương nhau</b>, không thiên vị) · Kết bài ~50–55 từ (dài hơn 1 chút vì có nêu ý kiến cá nhân).</div>
+  </div>
+</section>
+
+<!-- ===== III. BÀI MẪU ===== -->
+<section id="mau">
+  <div class="h2"><span class="num">III</span> Bài mẫu (Example)</div>
+  <div class="sit"><b>Đề bài:</b> Some people prefer to work for a large company, while others prefer to work for a small one. Discuss both views and give your opinion.</div>
+
+  <div class="essaybox">
+    <p><span class="ptag">Mở bài</span><br>Nowadays, when choosing a job, people are often divided between working for a large corporation and working for a small company. This essay will discuss both viewpoints before giving my own opinion.</p>
+    <p><span class="ptag">Thân bài 1</span><br>On the one hand, many people argue that working for a large company brings greater benefits. This is because large corporations usually offer higher salaries, more generous benefits packages, and clearer opportunities for promotion, as they have well-established career structures. For example, employees at multinational corporations often receive extensive training programmes and have access to international projects, which can significantly boost their professional development.</p>
+    <p><span class="ptag">Thân bài 2</span><br>On the other hand, other people prefer working for a small company because of the closer working relationships and greater flexibility it provides. In a small business, employees usually have more direct contact with managers and can see the immediate impact of their work, which often leads to higher job satisfaction. Moreover, small companies tend to offer more flexible working hours, allowing staff to balance their personal and professional lives more effectively.</p>
+    <p><span class="ptag">Kết bài</span><br>In conclusion, while large companies provide financial security and structured career paths, small companies offer flexibility and closer relationships. In my opinion, working for a small company is more suitable for people who value work-life balance and a friendly working environment, whereas a large company might better suit those seeking stability and long-term career growth.</p>
+  </div>
+  <div class="wc">≈ 221 từ — đạt chuẩn VSTEP ✓</div>
+
+  <button class="toggle" onclick="var t=document.getElementById('tr');t.classList.toggle('show');this.firstChild.textContent=t.classList.contains('show')?'🇻🇳 Ẩn bản dịch':'🇻🇳 Xem bản dịch';">🇻🇳 Xem bản dịch</button>
+  <div class="trans" id="tr">
+    <b>Bản dịch:</b><br><br>
+    <b>Mở bài:</b> Ngày nay, khi lựa chọn công việc, mọi người thường có ý kiến trái chiều giữa việc làm cho một tập đoàn lớn và làm cho một công ty nhỏ. Bài luận này sẽ bàn luận cả hai quan điểm trước khi đưa ra ý kiến cá nhân của tôi.<br><br>
+    <b>Thân bài 1:</b> Một mặt, nhiều người cho rằng làm việc cho một công ty lớn mang lại nhiều lợi ích hơn. Điều này là vì các tập đoàn lớn thường trả lương cao hơn, có các gói phúc lợi hào phóng hơn, và cơ hội thăng tiến rõ ràng hơn, vì họ có cơ cấu sự nghiệp đã được thiết lập vững chắc. Ví dụ, nhân viên tại các tập đoàn đa quốc gia thường được tham gia các chương trình đào tạo chuyên sâu và có cơ hội tiếp cận các dự án quốc tế, điều này có thể thúc đẩy đáng kể sự phát triển nghề nghiệp của họ.<br><br>
+    <b>Thân bài 2:</b> Mặt khác, những người khác lại thích làm việc cho một công ty nhỏ vì mối quan hệ làm việc gần gũi hơn và tính linh hoạt cao hơn mà nó mang lại. Trong một doanh nghiệp nhỏ, nhân viên thường có sự tiếp xúc trực tiếp hơn với quản lý và có thể thấy được tác động tức thời từ công việc của mình, điều này thường dẫn đến sự hài lòng công việc cao hơn. Hơn nữa, các công ty nhỏ có xu hướng cung cấp giờ làm việc linh hoạt hơn, cho phép nhân viên cân bằng cuộc sống cá nhân và công việc hiệu quả hơn.<br><br>
+    <b>Kết bài:</b> Tóm lại, trong khi các công ty lớn mang lại sự an toàn tài chính và lộ trình sự nghiệp có cấu trúc rõ ràng, thì các công ty nhỏ lại mang đến sự linh hoạt và các mối quan hệ gần gũi hơn. Theo quan điểm của tôi, làm việc cho một công ty nhỏ phù hợp hơn với những người coi trọng sự cân bằng giữa công việc và cuộc sống cùng môi trường làm việc thân thiện, trong khi một công ty lớn có thể phù hợp hơn với những ai tìm kiếm sự ổn định và sự phát triển sự nghiệp lâu dài.
+  </div>
+</section>
+
+<!-- ===== IV. TỪ VỰNG ===== -->
+<section id="tuvung">
+  <div class="h2"><span class="num">IV</span> Từ vựng &amp; cụm từ <span style="font-weight:600;font-size:14px;color:var(--mut)">— theo từng đoạn của bài mẫu</span></div>
+  <div class="vtools">
+    <input id="search" type="text" placeholder="🔍 Gõ để lọc từ vựng (vd: divided, chia rẽ...)">
+  </div>
+  <div id="vwrap"></div>
+  <div class="no-result" id="nores">Không tìm thấy từ nào khớp 🙈</div>
+</section>
+
+<!-- ===== V. MẸO ===== -->
+<section id="meo">
+  <div class="h2"><span class="num">V</span> Mẹo ăn điểm</div>
+  <div class="tips"><ul>
+    <li>Phải trình bày <b>CÂN BẰNG</b> cả 2 phía — mỗi quan điểm 1 đoạn thân bài, <span class="k">độ dài tương đương nhau</span> — đừng thiên vị ngay từ thân bài.</li>
+    <li>Dùng cặp cụm nối rõ ràng <b>"On the one hand... / On the other hand..."</b> để phân tách 2 quan điểm mạch lạc, giúp giám khảo dễ theo dõi bố cục.</li>
+    <li><span class="k">Chỉ nêu ý kiến cá nhân ở KẾT BÀI</span> (In my opinion...) — tuyệt đối không nêu ý kiến ngay từ mở bài, vì mở bài chỉ có nhiệm vụ giới thiệu vấn đề.</li>
+    <li>Tránh nhầm lẫn với <b>Opinion essay</b> (dạng đề yêu cầu chọn phe ngay từ đầu — "Do you agree or disagree?"). Discussion essay yêu cầu bàn luận <b>khách quan cả 2 phía</b> trước khi kết luận.</li>
+    <li>Mỗi thân bài nên có <b>1 ví dụ hoặc lý do cụ thể</b> minh họa cho quan điểm đó (for example, for instance) — tránh liệt kê chung chung, thiếu chiều sâu.</li>
+  </ul></div>
+</section>
+
+<footer>— Discussion Essay · VSTEP B2 Writing —</footer>
+</div>
+
+<script>
+var PARAS=[
+ { label:"Mở bài",
+   en:"People are often <b>divided</b> between working for a large <b>corporation</b> and working for a small company. This essay will discuss both viewpoints before giving my own opinion.",
+   vi:"Mọi người thường có ý kiến trái chiều giữa việc làm cho một tập đoàn lớn và làm cho một công ty nhỏ. Bài luận này sẽ bàn luận cả hai quan điểm trước khi đưa ra ý kiến cá nhân.",
+   vocab:[
+    ["divided","đi vai đợt","/dɪˈvaɪdɪd/","adj","chia rẽ, có ý kiến trái chiều"],
+    ["corporation","co pơ rê sần","/ˌkɔːpəˈreɪʃn/","n","tập đoàn"],
+    ["viewpoint","viu poin","/ˈvjuːpɔɪnt/","n","quan điểm"],
+    ["discuss","đis cấx","/dɪˈskʌs/","v","bàn luận"],
+    ["be divided between A and B","","","cụm","có ý kiến trái chiều giữa A và B"],
+    ["This essay will discuss both viewpoints before giving my own opinion.","","","cụm","Bài luận này sẽ bàn luận cả hai quan điểm trước khi đưa ra ý kiến cá nhân."]
+   ]},
+ { label:"Thân bài 1",
+   en:"On the one hand, many people argue that working for a large company brings greater <b>benefits</b>. Large corporations usually offer higher salaries, more <b>generous</b> <b>benefits packages</b>, as they have <b>well-established</b> career structures. Employees at <b>multinational</b> corporations often receive <b>extensive</b> training programmes, which can significantly <b>boost</b> their professional development.",
+   vi:"Một mặt, nhiều người cho rằng làm việc cho công ty lớn mang lại nhiều lợi ích hơn. Các tập đoàn lớn thường trả lương cao hơn, có các gói phúc lợi hào phóng hơn, vì họ có cơ cấu sự nghiệp đã được thiết lập vững chắc. Nhân viên tại các tập đoàn đa quốc gia thường được tham gia các chương trình đào tạo chuyên sâu, điều này có thể thúc đẩy đáng kể sự phát triển nghề nghiệp của họ.",
+   vocab:[
+    ["benefits package","","","cụm","gói phúc lợi"],
+    ["well-established","gueo ít-xteb-lisht","/ˌwel ɪˈstæblɪʃt/","adj","đã được thiết lập vững chắc"],
+    ["multinational","măn ti na sần nồ","/ˌmʌltiˈnæʃnəl/","adj","đa quốc gia"],
+    ["extensive","ích xten xíp","/ɪkˈstensɪv/","adj","sâu rộng, toàn diện"],
+    ["boost","bút","/buːst/","v","thúc đẩy, tăng cường"],
+    ["generous","che nợ rợt","/ˈdʒenərəs/","adj","hào phóng, rộng rãi"],
+    ["promotion","prồ mâu sần","/prəˈməʊʃn/","n","sự thăng tiến"],
+    ["On the one hand, ... This is because ... For example, ...","","","cụm","Một mặt,… Điều này là vì… Ví dụ,…"]
+   ]},
+ { label:"Thân bài 2",
+   en:"On the other hand, other people prefer working for a small company because of the <b>closer</b> working relationships and greater <b>flexibility</b> it provides. Employees usually have more <b>direct contact</b> with managers and can see the <b>immediate impact</b> of their work, which often leads to higher <b>job satisfaction</b>. Small companies allow staff to <b>balance</b> their personal and professional lives more <b>effectively</b>.",
+   vi:"Mặt khác, những người khác lại thích làm việc cho công ty nhỏ vì mối quan hệ làm việc gần gũi hơn và tính linh hoạt cao hơn mà nó mang lại. Nhân viên thường có sự tiếp xúc trực tiếp hơn với quản lý và có thể thấy được tác động tức thời từ công việc của mình, điều này thường dẫn đến sự hài lòng công việc cao hơn. Các công ty nhỏ cho phép nhân viên cân bằng cuộc sống cá nhân và công việc hiệu quả hơn.",
+   vocab:[
+    ["closer","cờ lâu xờ","/ˈkləʊsə/","adj","gần gũi hơn"],
+    ["flexibility","phờ lếch xơ bi lơ ti","/ˌfleksəˈbɪləti/","n","tính linh hoạt"],
+    ["direct contact","","","cụm","sự tiếp xúc/liên hệ trực tiếp"],
+    ["immediate impact","","","cụm","tác động tức thời"],
+    ["job satisfaction","","","cụm","sự hài lòng trong công việc"],
+    ["balance (v)","ba lần xơ","/ˈbæləns/","v","cân bằng"],
+    ["effectively","i phếch típ li","/ɪˈfektɪvli/","adv","một cách hiệu quả"],
+    ["On the other hand, ... because ... Moreover, ...","","","cụm","Mặt khác,… vì… Hơn nữa,…"]
+   ]},
+ { label:"Kết bài",
+   en:"In conclusion, while large companies provide <b>financial security</b> and <b>structured</b> career paths, small companies offer flexibility and closer relationships. In my opinion, working for a small company is more <b>suitable</b> for people who <b>value</b> work-life balance, whereas a large company might better suit those seeking <b>stability</b> and long-term career growth.",
+   vi:"Tóm lại, trong khi các công ty lớn mang lại sự an toàn tài chính và lộ trình sự nghiệp có cấu trúc rõ ràng, thì các công ty nhỏ lại mang đến sự linh hoạt và các mối quan hệ gần gũi hơn. Theo quan điểm của tôi, làm việc cho một công ty nhỏ phù hợp hơn với những người coi trọng sự cân bằng giữa công việc và cuộc sống, trong khi một công ty lớn có thể phù hợp hơn với những ai tìm kiếm sự ổn định và sự phát triển sự nghiệp lâu dài.",
+   vocab:[
+    ["financial security","","","cụm","sự an toàn/ổn định tài chính"],
+    ["structured","xtrấc chờd","/ˈstrʌktʃəd/","adj","có cấu trúc, bài bản"],
+    ["suitable","xịu tơ bồ","/ˈsuːtəbl/","adj","phù hợp"],
+    ["value (v)","va liu","/ˈvæljuː/","v","coi trọng, đánh giá cao"],
+    ["stability","xtơ bi lơ ti","/stəˈbɪləti/","n","sự ổn định"],
+    ["whereas","que rờ ét","/wɛərˈæz/","cụm","trong khi đó (dùng để đối lập)"],
+    ["In conclusion, ..., In my opinion, ...","","","cụm","Tóm lại,… Theo quan điểm của tôi,…"]
+   ]}
+];
+
+var wrap=document.getElementById('vwrap');
+function esc(s){ return (s||'').replace(/"/g,'&quot;'); }
+function rowHtml(v,i){
+  var phrase = v[3]==='cụm';
+  var rd = v[1] ? '('+v[1]+')' : '—';
+  var ipa = v[2] ? ' <span class="ipa2">'+v[2]+'</span>' : '';
+  return '<tr class="'+(phrase?'phrase':'')+'" data-word="'+esc(v[0])+'" data-mean="'+esc(v[4])+'">'+
+    '<td class="idx">'+i+'</td>'+
+    '<td><span class="w">'+v[0]+'</span></td>'+
+    '<td class="rd">'+rd+ipa+'</td>'+
+    '<td><span class="pos2">'+v[3]+'</span></td>'+
+    '<td>'+v[4]+'</td></tr>';
+}
+function fullText(){
+  return PARAS.map(function(p){ return '<p>'+p.en+'</p>'; }).join('');
+}
+function render(q){
+  q=(q||'').toLowerCase().trim();
+  wrap.innerHTML='';
+  if(!q){
+    wrap.innerHTML+='<div class="fullbox">'+
+      '<div class="fulltitle">📖 Toàn bài — đọc liền mạch trước</div>'+
+      '<div class="fulltext">'+fullText()+'</div>'+
+      '<div class="fullnote">⬇️ Bên dưới: tách từng đoạn nhỏ kèm bản dịch &amp; từ vựng</div>'+
+    '</div>';
+  }
+  var n=0, idx=0;
+  PARAS.forEach(function(p){
+    var rows = p.vocab.filter(function(v){
+      return !q || (v[0]+' '+v[4]).toLowerCase().indexOf(q)>-1;
+    });
+    if(!rows.length) return;
+    var body='';
+    rows.forEach(function(v){ idx++; body+=rowHtml(v,idx); });
+    n+=rows.length;
+    wrap.innerHTML+='<div class="pgroup">'+
+      '<div class="plabel"><span class="badge">'+rows.length+' từ</span>'+p.label+
+        '<button type="button" class="vrepeat" data-mode="mean">🔁 Lặp từ vựng</button>'+
+        '<button type="button" class="vrepeat" data-mode="nomean">🔁 Lặp từ vựng (không nghĩa)</button>'+
+      '</div>'+
+      '<span class="en">'+p.en+'</span>'+
+      '<div class="pvi">→ '+p.vi+'</div>'+
+      '<table class="vtable"><thead><tr>'+
+        '<th>#</th><th>Từ / Cụm</th><th>Phiên âm</th><th>Loại</th><th>Nghĩa</th>'+
+      '</tr></thead><tbody>'+body+'</tbody></table>'+
+    '</div>';
+  });
+  document.getElementById('nores').style.display = n? 'none':'block';
+}
+render('');
+
+document.getElementById('search').addEventListener('input',function(){ render(this.value); });
+</script>
+
+<!-- ===== 🔊 NGHE PHÁT ÂM TỪ VỰNG (dùng giọng đọc của trình duyệt, chạy offline) ===== -->
+<style>
+.spk{cursor:pointer;border:none;background:transparent;font-size:14px;line-height:1;
+  padding:0 3px;margin-left:4px;vertical-align:middle;opacity:.5;transition:transform .15s,opacity .15s;}
+.spk:hover{opacity:1;transform:scale(1.25);}
+.spk.on{opacity:1;animation:spkpulse .6s infinite;}
+@keyframes spkpulse{50%{opacity:.35;}}
+</style>
+<script>
+(function(){
+  var synth=window.speechSynthesis;
+  function pickVoice(){
+    if(!synth) return null;
+    var vs=synth.getVoices()||[];
+    return vs.filter(function(v){return /^en/i.test(v.lang);})[0]
+        || vs.filter(function(v){return /en/i.test(v.lang);})[0] || null;
+  }
+  function speak(text,btn){
+    if(!synth){ alert('Trình duyệt này không hỗ trợ đọc. Hãy mở bằng Chrome hoặc Edge.'); return; }
+    synth.cancel();
+    var u=new SpeechSynthesisUtterance(text);
+    u.lang='en-US'; u.rate=0.9;
+    var v=pickVoice(); if(v) u.voice=v;
+    if(btn){ u.onstart=function(){btn.classList.add('on');};
+             u.onend=u.onerror=function(){btn.classList.remove('on');}; }
+    synth.speak(u);
+  }
+  function clean(t){
+    return (t||'').replace(/🔊/g,'').replace(/\(.*?\)/g,'')
+      .replace(/\/[^\/]*\//g,'').replace(/\[[^\]]*\]/g,'').replace(/[…→]/g,'').replace(/\s+/g,' ').trim();
+  }
+  function addSpk(el){
+    if(el.dataset.spk) return;
+    if(el.closest && el.closest('.spk')) return;
+    var word=clean(el.textContent);
+    if(!word || word.length<2) return;
+    el.dataset.spk='1';
+    var b=document.createElement('button');
+    b.className='spk'; b.type='button'; b.textContent='🔊';
+    b.title='Nghe: '+(word.length>40?word.slice(0,40)+'…':word);
+    b.addEventListener('click',function(e){ e.stopPropagation(); e.preventDefault(); speak(word,b); });
+    el.appendChild(b);
+  }
+  function run(){ document.querySelectorAll('.w, .vcard .word, td.q, .en, .essaybox p, .fulltext p, .qchip').forEach(addSpk); }
+
+  var queueBtn=null;
+  function speakQueue(items,btn){
+    if(!synth){ alert('Trình duyệt này không hỗ trợ đọc. Hãy mở bằng Chrome hoặc Edge.'); return; }
+    synth.cancel();
+    if(queueBtn) queueBtn.classList.remove('on');
+    if(btn===queueBtn){ queueBtn=null; return; }
+    queueBtn=btn; btn.classList.add('on');
+    var i=0;
+    function next(){
+      if(i>=items.length || queueBtn!==btn){ btn.classList.remove('on'); queueBtn=null; return; }
+      var u=new SpeechSynthesisUtterance(items[i++]);
+      u.lang='en-US'; u.rate=0.9;
+      var v=pickVoice(); if(v) u.voice=v;
+      u.onend=u.onerror=next;
+      synth.speak(u);
+    }
+    next();
+  }
+  document.addEventListener('click',function(e){
+    var btn=e.target.closest('.vrepeat');
+    if(!btn) return;
+    var table=btn.closest('.pgroup').querySelector('.vtable');
+    if(!table) return;
+    var withMean = btn.dataset.mode==='mean';
+    var items=[];
+    table.querySelectorAll('tbody tr').forEach(function(tr){
+      var w=tr.dataset.word, m=tr.dataset.mean;
+      if(!w) return;
+      items.push(withMean && m ? (w+'. '+m) : w);
+    });
+    speakQueue(items,btn);
+  });
+  function init(){
+    run();
+    if(window.MutationObserver){
+      var t,mo=new MutationObserver(function(){ clearTimeout(t); t=setTimeout(run,90); });
+      mo.observe(document.body,{childList:true,subtree:true});
+    }
+  }
+  if(synth) synth.onvoiceschanged=pickVoice;
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+</body></html>

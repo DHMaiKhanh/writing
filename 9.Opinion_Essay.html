@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opinion Essay · VSTEP Writing</title>
+<style>
+:root{
+  --bg:#eef2f8; --paper:#ffffff; --ink:#1f2a3a; --mut:#64748b;
+  --blue:#2563eb; --blue-d:#1e40af; --sky:#eaf1ff; --amber:#f59e0b;
+  --amber-bg:#fff8ec; --green:#16a34a; --green-bg:#effbf2; --red:#dc2626;
+  --line:#e3e9f2; --shadow:0 6px 22px rgba(30,50,90,.08);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:74px;}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Segoe UI',system-ui,-apple-system,'Calibri',sans-serif;
+  font-size:16px;line-height:1.6;}
+
+/* ===== HERO ===== */
+.hero{background:linear-gradient(135deg,#4c1d95 0%,#7c3aed 60%,#a78bfa 100%);
+  color:#fff;padding:34px 20px 28px;text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:"💭";position:absolute;right:-10px;bottom:-30px;font-size:170px;
+  opacity:.10;transform:rotate(-12deg);}
+.hero .tagvi{font-size:13px;letter-spacing:3px;text-transform:uppercase;opacity:.85;}
+.hero h1{margin:6px 0 8px;font-size:30px;font-weight:800;}
+.hero .meta{display:inline-flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:6px;}
+.hero .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  padding:5px 13px;border-radius:99px;font-size:13px;backdrop-filter:blur(4px);}
+
+/* ===== NAV dính ===== */
+nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.9);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+  display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:9px 12px;
+  box-shadow:0 2px 12px rgba(30,50,90,.05);}
+nav a{text-decoration:none;color:var(--mut);font-weight:600;font-size:14px;
+  padding:7px 14px;border-radius:99px;transition:.15s;}
+nav a:hover{background:var(--sky);color:var(--blue-d);}
+
+.wrap{max-width:880px;margin:0 auto;padding:26px 18px 70px;}
+section{margin-bottom:30px;}
+.h2{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:800;
+  color:var(--blue-d);margin:0 0 14px;}
+.h2 .num{flex:0 0 34px;height:34px;background:var(--blue);color:#fff;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:16px;}
+
+/* ===== Nhận diện dạng đề ===== */
+.signal{background:var(--paper);border:1px solid var(--line);border-left:4px solid #7c3aed;
+  border-radius:14px;box-shadow:var(--shadow);padding:16px 20px;margin-bottom:18px;}
+.signal .stitle{font-weight:800;color:#5b21b6;margin-bottom:8px;}
+.signal .qchip{display:inline-block;background:#f5f3ff;border:1px solid #ddd6fe;color:#5b21b6;
+  padding:5px 12px;border-radius:99px;font-size:13.5px;margin:3px 4px 0 0;font-style:italic;}
+.signal .ex{margin-top:10px;color:var(--mut);font-size:14px;}
+
+/* ===== Khung bài luận: các bước ===== */
+.steps{display:flex;flex-direction:column;gap:12px;}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  padding:14px 16px 14px 18px;box-shadow:var(--shadow);position:relative;
+  border-left:4px solid var(--amber);}
+.step .st-h{font-weight:800;color:var(--ink);margin-bottom:4px;}
+.step .st-h .vi{color:var(--mut);font-weight:600;font-size:14px;}
+.en{color:var(--blue-d);font-style:italic;background:var(--sky);
+  padding:7px 11px;border-radius:9px;display:block;margin:6px 0;font-size:15px;}
+.vi-line{color:#475569;font-size:14.5px;}
+.hint{color:var(--mut);font-size:13px;background:#f6f8fc;border:1px dashed #cdd7e6;
+  border-radius:9px;padding:8px 11px;margin-top:7px;}
+.hint b{color:var(--ink);}
+.callout{background:var(--green-bg);border:1px solid #c7ead2;border-left:4px solid var(--green);
+  border-radius:11px;padding:10px 14px;color:#14532d;font-size:14px;margin-top:6px;}
+
+/* ===== Bài mẫu ===== */
+.sit{background:var(--amber-bg);border:1px solid #f3e0b8;border-radius:12px;
+  padding:11px 15px;font-size:14.5px;color:#7c5b12;margin-bottom:14px;}
+.essaybox{background:var(--paper);border:1px solid var(--line);border-radius:16px;
+  box-shadow:var(--shadow);padding:26px 28px;position:relative;
+  background-image:linear-gradient(transparent 31px,#f1f5fb 31px,#f1f5fb 32px,transparent 32px);
+  background-size:100% 32px;line-height:32px;}
+.essaybox .ptag{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:#7c3aed;
+  border-radius:99px;padding:2px 10px;margin-bottom:4px;}
+.essaybox p{margin:0 0 16px;}
+.toggle{display:inline-flex;align-items:center;gap:7px;cursor:pointer;
+  background:var(--blue);color:#fff;border:none;font:inherit;font-size:14px;font-weight:600;
+  padding:8px 16px;border-radius:99px;margin:14px 0 0;box-shadow:var(--shadow);}
+.toggle:hover{background:var(--blue-d);}
+.trans{display:none;margin-top:12px;background:var(--green-bg);border:1px solid #c7ead2;
+  border-left:4px solid var(--green);border-radius:13px;padding:16px 20px;color:#14532d;}
+.trans.show{display:block;}
+.wc{text-align:right;color:var(--mut);font-size:13px;margin-top:8px;}
+
+/* ===== Từ vựng ===== */
+.vtools{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap;}
+.vtools input{flex:1;min-width:180px;padding:10px 14px;border:1px solid var(--line);
+  border-radius:99px;font:inherit;font-size:15px;outline:none;background:var(--paper);}
+.vtools input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.12);}
+.no-result{grid-column:1/-1;text-align:center;color:var(--mut);padding:20px;display:none;}
+
+/* ===== Toàn bài (nguyên đoạn) ===== */
+.fullbox{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--blue);
+  border-radius:14px;box-shadow:var(--shadow);padding:16px 20px;margin-bottom:22px;}
+.fulltitle{font-weight:800;color:var(--blue-d);font-size:16px;margin-bottom:8px;}
+.fulltext p{margin:0 0 12px;color:var(--ink);line-height:1.7;}
+.fulltext b{color:var(--blue-d);}
+.fullnote{margin-top:6px;color:var(--mut);font-size:13.5px;font-style:italic;
+  border-top:1px dashed var(--line);padding-top:10px;}
+.fulltext.frame p{font-style:italic;color:#334155;}
+.bl{font-style:normal;background:var(--amber-bg);border:1px solid #f3d89a;
+  color:#92600a;border-radius:5px;padding:0 5px;font-size:13.5px;white-space:nowrap;}
+
+/* ===== Từ vựng theo từng đoạn (bảng) ===== */
+.pgroup{margin-bottom:24px;}
+.pgroup .plabel{font-weight:800;color:var(--blue-d);font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+.pgroup .plabel .badge{flex:0 0 auto;font-size:12px;font-weight:700;color:#fff;background:var(--blue);border-radius:99px;padding:3px 11px;}
+.vrepeat{flex:0 0 auto;font-size:12.5px;font-weight:700;color:#fff;background:var(--green);border:none;
+  border-radius:99px;padding:5px 12px;cursor:pointer;transition:.15s;}
+.vrepeat:hover{background:#128a3d;}
+.vrepeat.on{animation:spkpulse .6s infinite;}
+.pgroup .pvi{color:#475569;font-size:14px;margin:2px 0 0;}
+.vtable{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-top:9px;}
+.vtable th{background:var(--sky);color:var(--blue-d);text-align:left;padding:9px 12px;font-size:13px;font-weight:700;}
+.vtable td{border-top:1px solid var(--line);padding:9px 12px;font-size:14.5px;vertical-align:top;}
+.vtable tr.phrase td{background:var(--amber-bg);}
+.vtable .idx{color:var(--mut);text-align:center;width:32px;}
+.vtable .w{font-weight:800;color:var(--blue-d);}
+.vtable .rd{color:var(--mut);font-size:12.5px;}
+.vtable .ipa2{color:#94a3b8;}
+.vtable .pos2{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--blue);border-radius:99px;padding:1px 9px;}
+.vtable tr.phrase .pos2{background:var(--amber);}
+@media(max-width:560px){ .vtable th:nth-child(3),.vtable td:nth-child(3){display:none;} }
+
+/* ===== Mẹo ===== */
+.tips{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);overflow:hidden;}
+.tips li{list-style:none;padding:13px 16px 13px 48px;position:relative;border-bottom:1px solid var(--line);}
+.tips li:last-child{border-bottom:none;}
+.tips li::before{content:"💡";position:absolute;left:16px;top:12px;}
+.tips b{color:var(--blue-d);} .tips .k{color:var(--red);font-weight:700;}
+.tips ul{margin:0;padding:0;}
+
+footer{text-align:center;color:var(--mut);font-size:14px;margin-top:30px;}
+
+@media(max-width:560px){
+  .hero h1{font-size:23px;} .wrap{padding:20px 13px 50px;}
+  .essaybox{padding:20px 18px;} nav a{padding:6px 10px;font-size:13px;}
+}
+</style></head><body>
+
+<header class="hero">
+  <div class="tagvi">VSTEP Writing · Task 2</div>
+  <h1>Opinion Essay</h1>
+  <div style="opacity:.9;font-size:15px;">Agree / Disagree — Nêu ý kiến cá nhân</div>
+  <div class="meta">
+    <span class="pill">🎯 Chọn 1 phía rõ ràng &amp; bảo vệ quan điểm</span>
+    <span class="pill">📝 4 đoạn</span>
+    <span class="pill">✍️ ~250 từ / 40 phút</span>
+  </div>
+</header>
+
+<nav>
+  <a href="#nhandien">🔍 Nhận diện</a>
+  <a href="#khung">📐 Khung bài</a>
+  <a href="#mau">📄 Bài mẫu</a>
+  <a href="#tuvung">📚 Từ vựng</a>
+  <a href="#meo">💡 Mẹo</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ===== 0. NHẬN DIỆN ===== -->
+<section id="nhandien">
+  <div class="h2"><span class="num">I</span> Cách nhận diện dạng đề</div>
+  <div class="signal">
+    <div class="stitle">🔎 Đề thường chứa các cụm sau:</div>
+    <span class="qchip">Do you agree or disagree?</span>
+    <span class="qchip">To what extent do you agree?</span>
+    <span class="qchip">What is your opinion?</span>
+    <span class="qchip">Some people think that...</span>
+    <div class="ex">📌 <b>Ví dụ đề:</b> Some people think that students should study online rather than attend traditional classroom lessons. Do you agree or disagree?</div>
+  </div>
+  <div class="callout">✅ <b>Chiến lược:</b> Chọn <b>hẳn 1 phía</b> (agree hoặc disagree) ngay từ mở bài và giữ nguyên lập trường xuyên suốt bài — <b>không lật lọng giữa bài</b>. Mỗi thân bài = 1 lý do ủng hộ quan điểm bạn đã chọn.</div>
+</section>
+
+<!-- ===== II. KHUNG ===== -->
+<section id="khung">
+  <div class="h2"><span class="num">II</span> Khung bài luận (Template — 4 đoạn)</div>
+
+  <div class="fullbox">
+    <div class="fulltitle">📖 Nguyên khung bài — đọc tổng quát trước</div>
+    <div class="fulltext frame">
+      <p><b>[Mở bài]</b> Nowadays, it is often argued that <span class="bl">[diễn giải lại đề]</span>. While some people believe <span class="bl">[quan điểm đối lập ngắn gọn]</span>, I completely agree/disagree that <span class="bl">[quan điểm của bạn]</span>.</p>
+      <p><b>[Thân bài 1]</b> Firstly, <span class="bl">[lý do 1]</span>. This is because <span class="bl">[giải thích]</span>. For example, <span class="bl">[ví dụ cụ thể]</span>.</p>
+      <p><b>[Thân bài 2]</b> Secondly, <span class="bl">[lý do 2]</span>. As a result, <span class="bl">[hệ quả]</span>. For instance, <span class="bl">[ví dụ cụ thể]</span>.</p>
+      <p><b>[Kết bài]</b> In conclusion, although <span class="bl">[nhượng bộ nhỏ cho phía đối lập]</span>, I firmly believe that <span class="bl">[nhắc lại quan điểm]</span>.</p>
+    </div>
+    <div class="fullnote">⬇️ Bên dưới: tách từng đoạn kèm bản dịch &amp; cách đổi câu theo đề</div>
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="st-h">1. Introduction <span class="vi">— Mở bài (paraphrase + nêu quan điểm)</span></div>
+      <span class="en">Nowadays, it is often argued that [diễn giải lại đề]. While some people believe [quan điểm đối lập], I completely agree/disagree that [quan điểm của bạn].</span>
+      <div class="vi-line">→ Ngày nay, người ta thường cho rằng… Trong khi một số người tin rằng…, tôi hoàn toàn đồng ý/không đồng ý rằng…</div>
+      <div class="hint">🔁 <b>Cách paraphrase đề:</b> đổi từ đồng nghĩa + đổi cấu trúc câu. VD đề gốc "students should study online" → viết lại "learners ought to pursue their education via the Internet".</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">2. Body 1 <span class="vi">— Lý do 1 + giải thích + ví dụ</span></div>
+      <span class="en">Firstly, [lý do 1]. This is because [giải thích]. For example, [ví dụ cụ thể].</span>
+      <div class="vi-line">→ Trước hết,… Điều này là vì… Ví dụ,…</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">3. Body 2 <span class="vi">— Lý do 2 + giải thích + ví dụ</span></div>
+      <span class="en">Secondly, [lý do 2]. As a result, [hệ quả]. For instance, [ví dụ cụ thể].</span>
+      <div class="vi-line">→ Thứ hai,… Kết quả là… Chẳng hạn như,…</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">4. Conclusion <span class="vi">— Kết bài (tóm lại + nhắc lại quan điểm)</span></div>
+      <span class="en">In conclusion, although [nhượng bộ nhỏ], I firmly believe that [nhắc lại quan điểm].</span>
+      <div class="vi-line">→ Tóm lại, mặc dù… tôi vẫn tin chắc rằng…</div>
+    </div>
+
+    <div class="callout">📊 4 đoạn ≈ 250 từ: Mở bài ~40 từ · Thân bài 1 &amp; 2 mỗi đoạn ~80–90 từ · Kết bài ~30–40 từ.</div>
+  </div>
+</section>
+
+<!-- ===== III. BÀI MẪU ===== -->
+<section id="mau">
+  <div class="h2"><span class="num">III</span> Bài mẫu (Example)</div>
+  <div class="sit"><b>Đề bài:</b> Some people think that students should study online rather than attend traditional classroom lessons. Do you agree or disagree?</div>
+
+  <div class="essaybox">
+    <p><span class="ptag">Mở bài</span><br>Nowadays, with the rapid development of technology, it has become increasingly common for students to attend classes through online platforms instead of sitting in a traditional classroom. While some people believe that face-to-face learning is irreplaceable, I completely agree that online study offers a more effective and flexible way of learning.</p>
+    <p><span class="ptag">Thân bài 1</span><br>Firstly, online learning allows students to manage their own time more efficiently. Because lectures are often recorded, learners can pause, rewind and revisit difficult sections as many times as they need, which is impossible in a physical classroom where the teacher moves on regardless of whether everyone has understood. For example, many university students in Vietnam who work part-time jobs find it much easier to keep up with their studies when they can watch lectures at night after work.</p>
+    <p><span class="ptag">Thân bài 2</span><br>Secondly, online education significantly reduces costs and saves valuable time that would otherwise be spent commuting. Students no longer need to travel long distances to reach their schools, which not only cuts down on transport expenses but also gives them more time for self-study or rest. As a result, many learners, especially those living in rural areas, can access high-quality courses from prestigious institutions without having to relocate to big cities.</p>
+    <p><span class="ptag">Kết bài</span><br>In conclusion, although traditional classrooms still have their own merits, such as direct interaction with teachers, I firmly believe that the flexibility and cost-effectiveness of online study make it the more advantageous option for most students today.</p>
+  </div>
+  <div class="wc">≈ 250 từ — đạt chuẩn VSTEP ✓</div>
+
+  <button class="toggle" onclick="var t=document.getElementById('tr');t.classList.toggle('show');this.firstChild.textContent=t.classList.contains('show')?'🇻🇳 Ẩn bản dịch':'🇻🇳 Xem bản dịch';">🇻🇳 Xem bản dịch</button>
+  <div class="trans" id="tr">
+    <b>Bản dịch:</b><br><br>
+    <b>Mở bài:</b> Ngày nay, với sự phát triển nhanh chóng của công nghệ, việc học sinh tham gia các lớp học qua nền tảng trực tuyến thay vì ngồi trong lớp học truyền thống đã trở nên ngày càng phổ biến. Trong khi một số người tin rằng việc học trực tiếp là không thể thay thế, tôi hoàn toàn đồng ý rằng học trực tuyến mang lại cách học hiệu quả và linh hoạt hơn.<br><br>
+    <b>Thân bài 1:</b> Trước hết, học trực tuyến cho phép học sinh quản lý thời gian của mình hiệu quả hơn. Vì các bài giảng thường được ghi hình lại, người học có thể tạm dừng, tua lại và xem lại những phần khó bao nhiêu lần tùy ý, điều không thể thực hiện được trong một lớp học thực tế nơi giáo viên vẫn tiếp tục bài giảng bất kể mọi người đã hiểu hay chưa. Ví dụ, nhiều sinh viên đại học ở Việt Nam vừa học vừa làm thêm cảm thấy dễ dàng hơn nhiều để theo kịp việc học khi họ có thể xem bài giảng vào buổi tối sau giờ làm.<br><br>
+    <b>Thân bài 2:</b> Thứ hai, giáo dục trực tuyến giảm đáng kể chi phí và tiết kiệm thời gian quý báu đáng lẽ phải dùng để di chuyển. Học sinh không còn cần phải đi quãng đường xa để đến trường, điều này không chỉ cắt giảm chi phí đi lại mà còn cho họ thêm thời gian để tự học hoặc nghỉ ngơi. Kết quả là, nhiều người học, đặc biệt là những người sống ở vùng nông thôn, có thể tiếp cận các khóa học chất lượng cao từ các cơ sở uy tín mà không cần phải chuyển đến các thành phố lớn.<br><br>
+    <b>Kết bài:</b> Tóm lại, mặc dù lớp học truyền thống vẫn có những ưu điểm riêng, chẳng hạn như sự tương tác trực tiếp với giáo viên, tôi vẫn tin chắc rằng tính linh hoạt và hiệu quả về chi phí của việc học trực tuyến khiến nó trở thành lựa chọn có lợi hơn cho hầu hết học sinh ngày nay.
+  </div>
+</section>
+
+<!-- ===== IV. TỪ VỰNG ===== -->
+<section id="tuvung">
+  <div class="h2"><span class="num">IV</span> Từ vựng &amp; cụm từ <span style="font-weight:600;font-size:14px;color:var(--mut)">— theo từng đoạn của bài mẫu</span></div>
+  <div class="vtools">
+    <input id="search" type="text" placeholder="🔍 Gõ để lọc từ vựng (vd: efficient, hiệu quả...)">
+  </div>
+  <div id="vwrap"></div>
+  <div class="no-result" id="nores">Không tìm thấy từ nào khớp 🙈</div>
+</section>
+
+<!-- ===== V. MẸO ===== -->
+<section id="meo">
+  <div class="h2"><span class="num">V</span> Mẹo ăn điểm</div>
+  <div class="tips"><ul>
+    <li>Chọn phía nào <b>không quan trọng</b> — quan trọng là <span class="k">lập luận chặt chẽ</span> và giữ nguyên quan điểm xuyên suốt.</li>
+    <li>Mỗi thân bài phải có đủ 3 phần: <b>ý chính → giải thích (why) → ví dụ (for example)</b> — thiếu ví dụ dễ bị đánh giá lan man, thiếu thuyết phục.</li>
+    <li>Tránh viết <span class="k">"Firstly, I agree because it is good"</span> — quá chung chung, cần lý do cụ thể, có chiều sâu.</li>
+    <li>Có thể thêm 1 câu <b>nhượng bộ nhỏ</b> ở kết bài (although...) để thể hiện tư duy đa chiều mà vẫn giữ vững lập trường.</li>
+    <li>Dùng <b>câu phức</b> (which, because, although, so that) và <b>từ nối</b> (Firstly, As a result, In conclusion) để ghi điểm Organization &amp; Grammar.</li>
+  </ul></div>
+</section>
+
+<footer>— Opinion Essay · VSTEP B2 Writing —</footer>
+</div>
+
+<script>
+var PARAS=[
+ { label:"Mở bài",
+   en:"It has become <b>increasingly</b> common for students to attend classes through online platforms. While some people believe that face-to-face learning is <b>irreplaceable</b>, I completely agree that online study offers a more <b>effective</b> and <b>flexible</b> way of learning.",
+   vi:"Việc học sinh tham gia lớp học qua nền tảng trực tuyến đã trở nên ngày càng phổ biến. Trong khi một số người tin rằng học trực tiếp là không thể thay thế, tôi hoàn toàn đồng ý rằng học trực tuyến mang lại cách học hiệu quả và linh hoạt hơn.",
+   vocab:[
+    ["increasingly","in cri sinh li","/ɪnˈkriːsɪŋli/","adv","ngày càng"],
+    ["platform","plát phom","/ˈplætfɔːm/","n","nền tảng"],
+    ["irreplaceable","i ri plây sồ bồ","/ˌɪrɪˈpleɪsəbl/","adj","không thể thay thế"],
+    ["effective","i phếch típ","/ɪˈfektɪv/","adj","hiệu quả"],
+    ["flexible","phờ lếch sồ bồ","/ˈfleksəbl/","adj","linh hoạt"],
+    ["While some people believe that...","","","cụm","Trong khi một số người tin rằng..."],
+    ["I completely agree/disagree that...","","","cụm","Tôi hoàn toàn đồng ý/không đồng ý rằng..."]
+   ]},
+ { label:"Thân bài 1",
+   en:"Online learning allows students to manage their own time more <b>efficiently</b>. Because lectures are often <b>recorded</b>, learners can pause, <b>rewind</b> and <b>revisit</b> difficult sections as many times as they need.",
+   vi:"Học trực tuyến cho phép học sinh quản lý thời gian hiệu quả hơn. Vì các bài giảng thường được ghi hình lại, người học có thể tạm dừng, tua lại và xem lại những phần khó bao nhiêu lần tùy ý.",
+   vocab:[
+    ["efficiently","i phi sần li","/ɪˈfɪʃntli/","adv","một cách hiệu quả"],
+    ["lecture","léc chờ","/ˈlektʃə/","n","bài giảng"],
+    ["record (v)","ri co","/rɪˈkɔːd/","v","ghi âm/ghi hình"],
+    ["rewind","ri quai","/riːˈwaɪnd/","v","tua lại"],
+    ["revisit","ri ví zịt","/riːˈvɪzɪt/","v","xem/ôn lại"],
+    ["regardless of","ri ga lít","/rɪˈɡɑːdləs/","cụm","bất kể"],
+    ["keep up with","","","cụm","theo kịp"],
+    ["Firstly, ... This is because ... For example, ...","","","cụm","Trước hết,… Điều này là vì… Ví dụ,…"]
+   ]},
+ { label:"Thân bài 2",
+   en:"Online education <b>significantly</b> reduces costs and saves valuable time that would otherwise be spent <b>commuting</b>. As a result, many learners can <b>access</b> high-quality courses from <b>prestigious</b> institutions.",
+   vi:"Giáo dục trực tuyến giảm đáng kể chi phí và tiết kiệm thời gian quý báu đáng lẽ phải dùng để di chuyển. Kết quả là, nhiều người học có thể tiếp cận các khóa học chất lượng cao từ các cơ sở uy tín.",
+   vocab:[
+    ["significantly","síc ni phi cần li","/sɪɡˈnɪfɪkəntli/","adv","đáng kể"],
+    ["commute","cơ miu","/kəˈmjuːt/","v","đi lại (đi làm/đi học)"],
+    ["access (v)","ác xét","/ˈækses/","v","tiếp cận"],
+    ["prestigious","prét sờ ti giớt","/preˈstɪdʒəs/","adj","danh tiếng, uy tín"],
+    ["relocate","ri lâu kêịt","/ˌriːləʊˈkeɪt/","v","chuyển đến nơi khác"],
+    ["Secondly, ... As a result, ... For instance, ...","","","cụm","Thứ hai,… Kết quả là… Chẳng hạn như…"]
+   ]},
+ { label:"Kết bài",
+   en:"Although traditional classrooms still have their own <b>merits</b>, I <b>firmly</b> believe that the flexibility and <b>cost-effectiveness</b> of online study make it the more <b>advantageous</b> option.",
+   vi:"Mặc dù lớp học truyền thống vẫn có những ưu điểm riêng, tôi vẫn tin chắc rằng tính linh hoạt và hiệu quả về chi phí của việc học trực tuyến khiến nó trở thành lựa chọn có lợi hơn.",
+   vocab:[
+    ["merit","me rịt","/ˈmerɪt/","n","ưu điểm"],
+    ["firmly","phơm li","/ˈfɜːmli/","adv","kiên định, chắc chắn"],
+    ["cost-effectiveness","","","cụm","hiệu quả về chi phí"],
+    ["advantageous","át van tây giợt","/ˌædvənˈteɪdʒəs/","adj","có lợi"],
+    ["In conclusion, although..., I firmly believe that...","","","cụm","Tóm lại, mặc dù…, tôi vẫn tin chắc rằng…"]
+   ]}
+];
+
+var wrap=document.getElementById('vwrap');
+function esc(s){ return (s||'').replace(/"/g,'&quot;'); }
+function rowHtml(v,i){
+  var phrase = v[3]==='cụm';
+  var rd = v[1] ? '('+v[1]+')' : '—';
+  var ipa = v[2] ? ' <span class="ipa2">'+v[2]+'</span>' : '';
+  return '<tr class="'+(phrase?'phrase':'')+'" data-word="'+esc(v[0])+'" data-mean="'+esc(v[4])+'">'+
+    '<td class="idx">'+i+'</td>'+
+    '<td><span class="w">'+v[0]+'</span></td>'+
+    '<td class="rd">'+rd+ipa+'</td>'+
+    '<td><span class="pos2">'+v[3]+'</span></td>'+
+    '<td>'+v[4]+'</td></tr>';
+}
+function fullText(){
+  return PARAS.map(function(p){ return '<p>'+p.en+'</p>'; }).join('');
+}
+function render(q){
+  q=(q||'').toLowerCase().trim();
+  wrap.innerHTML='';
+  if(!q){
+    wrap.innerHTML+='<div class="fullbox">'+
+      '<div class="fulltitle">📖 Toàn bài — đọc liền mạch trước</div>'+
+      '<div class="fulltext">'+fullText()+'</div>'+
+      '<div class="fullnote">⬇️ Bên dưới: tách từng đoạn nhỏ kèm bản dịch &amp; từ vựng</div>'+
+    '</div>';
+  }
+  var n=0, idx=0;
+  PARAS.forEach(function(p){
+    var rows = p.vocab.filter(function(v){
+      return !q || (v[0]+' '+v[4]).toLowerCase().indexOf(q)>-1;
+    });
+    if(!rows.length) return;
+    var body='';
+    rows.forEach(function(v){ idx++; body+=rowHtml(v,idx); });
+    n+=rows.length;
+    wrap.innerHTML+='<div class="pgroup">'+
+      '<div class="plabel"><span class="badge">'+rows.length+' từ</span>'+p.label+
+        '<button type="button" class="vrepeat" data-mode="mean">🔁 Lặp từ vựng</button>'+
+        '<button type="button" class="vrepeat" data-mode="nomean">🔁 Lặp từ vựng (không nghĩa)</button>'+
+      '</div>'+
+      '<span class="en">'+p.en+'</span>'+
+      '<div class="pvi">→ '+p.vi+'</div>'+
+      '<table class="vtable"><thead><tr>'+
+        '<th>#</th><th>Từ / Cụm</th><th>Phiên âm</th><th>Loại</th><th>Nghĩa</th>'+
+      '</tr></thead><tbody>'+body+'</tbody></table>'+
+    '</div>';
+  });
+  document.getElementById('nores').style.display = n? 'none':'block';
+}
+render('');
+
+document.getElementById('search').addEventListener('input',function(){ render(this.value); });
+</script>
+
+<!-- ===== 🔊 NGHE PHÁT ÂM TỪ VỰNG (dùng giọng đọc của trình duyệt, chạy offline) ===== -->
+<style>
+.spk{cursor:pointer;border:none;background:transparent;font-size:14px;line-height:1;
+  padding:0 3px;margin-left:4px;vertical-align:middle;opacity:.5;transition:transform .15s,opacity .15s;}
+.spk:hover{opacity:1;transform:scale(1.25);}
+.spk.on{opacity:1;animation:spkpulse .6s infinite;}
+@keyframes spkpulse{50%{opacity:.35;}}
+</style>
+<script>
+(function(){
+  var synth=window.speechSynthesis;
+  function pickVoice(){
+    if(!synth) return null;
+    var vs=synth.getVoices()||[];
+    return vs.filter(function(v){return /^en/i.test(v.lang);})[0]
+        || vs.filter(function(v){return /en/i.test(v.lang);})[0] || null;
+  }
+  function speak(text,btn){
+    if(!synth){ alert('Trình duyệt này không hỗ trợ đọc. Hãy mở bằng Chrome hoặc Edge.'); return; }
+    synth.cancel();
+    var u=new SpeechSynthesisUtterance(text);
+    u.lang='en-US'; u.rate=0.9;
+    var v=pickVoice(); if(v) u.voice=v;
+    if(btn){ u.onstart=function(){btn.classList.add('on');};
+             u.onend=u.onerror=function(){btn.classList.remove('on');}; }
+    synth.speak(u);
+  }
+  function clean(t){
+    return (t||'').replace(/🔊/g,'').replace(/\(.*?\)/g,'')
+      .replace(/\/[^\/]*\//g,'').replace(/\[[^\]]*\]/g,'').replace(/[…→]/g,'').replace(/\s+/g,' ').trim();
+  }
+  function addSpk(el){
+    if(el.dataset.spk) return;
+    if(el.closest && el.closest('.spk')) return;
+    var word=clean(el.textContent);
+    if(!word || word.length<2) return;
+    el.dataset.spk='1';
+    var b=document.createElement('button');
+    b.className='spk'; b.type='button'; b.textContent='🔊';
+    b.title='Nghe: '+(word.length>40?word.slice(0,40)+'…':word);
+    b.addEventListener('click',function(e){ e.stopPropagation(); e.preventDefault(); speak(word,b); });
+    el.appendChild(b);
+  }
+  function run(){ document.querySelectorAll('.w, .vcard .word, td.q, .en, .essaybox p, .fulltext p, .qchip').forEach(addSpk); }
+
+  var queueBtn=null;
+  function speakQueue(items,btn){
+    if(!synth){ alert('Trình duyệt này không hỗ trợ đọc. Hãy mở bằng Chrome hoặc Edge.'); return; }
+    synth.cancel();
+    if(queueBtn) queueBtn.classList.remove('on');
+    if(btn===queueBtn){ queueBtn=null; return; }
+    queueBtn=btn; btn.classList.add('on');
+    var i=0;
+    function next(){
+      if(i>=items.length || queueBtn!==btn){ btn.classList.remove('on'); queueBtn=null; return; }
+      var u=new SpeechSynthesisUtterance(items[i++]);
+      u.lang='en-US'; u.rate=0.9;
+      var v=pickVoice(); if(v) u.voice=v;
+      u.onend=u.onerror=next;
+      synth.speak(u);
+    }
+    next();
+  }
+  document.addEventListener('click',function(e){
+    var btn=e.target.closest('.vrepeat');
+    if(!btn) return;
+    var table=btn.closest('.pgroup').querySelector('.vtable');
+    if(!table) return;
+    var withMean = btn.dataset.mode==='mean';
+    var items=[];
+    table.querySelectorAll('tbody tr').forEach(function(tr){
+      var w=tr.dataset.word, m=tr.dataset.mean;
+      if(!w) return;
+      items.push(withMean && m ? (w+'. '+m) : w);
+    });
+    speakQueue(items,btn);
+  });
+  function init(){
+    run();
+    if(window.MutationObserver){
+      var t,mo=new MutationObserver(function(){ clearTimeout(t); t=setTimeout(run,90); });
+      mo.observe(document.body,{childList:true,subtree:true});
+    }
+  }
+  if(synth) synth.onvoiceschanged=pickVoice;
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+</body></html>

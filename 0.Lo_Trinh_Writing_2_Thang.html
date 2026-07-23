@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lộ trình Writing 2 tháng · VSTEP B2</title>
+<style>
+:root{
+  --bg:#0d1726; --bg2:#10203a; --card:#15263f; --card2:#1a2e4d;
+  --line:#243a5e; --txt:#e6eefc; --mut:#93a7c7; --blue:#4ea3ff;
+  --blue2:#7cc0ff; --green:#36c275; --red:#ff6b6b; --badge:#1e63b0;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--txt);
+  font-family:'Segoe UI','Calibri',system-ui,sans-serif;font-size:15px;line-height:1.5;}
+a{color:var(--blue);}
+
+/* ===== Thanh tiến độ dính trên cùng ===== */
+#bar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;
+  padding:10px 18px;background:rgba(10,18,30,.92);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);}
+#bar .lbl{font-weight:600;white-space:nowrap;color:var(--mut);}
+#track{flex:1;height:9px;background:#0a1320;border:1px solid var(--line);
+  border-radius:99px;overflow:hidden;}
+#fill{height:100%;width:0;background:linear-gradient(90deg,#2e9e63,#36c275);
+  transition:width .35s;}
+#pct{font-weight:700;color:var(--green);min-width:42px;text-align:right;}
+#bar button{font:inherit;font-size:13px;padding:6px 12px;border:1px solid var(--line);
+  background:var(--card);color:var(--txt);border-radius:7px;cursor:pointer;white-space:nowrap;}
+#bar button:hover{background:var(--card2);border-color:var(--blue);}
+#bar button.danger:hover{border-color:var(--red);color:var(--red);}
+
+.wrap{max-width:980px;margin:0 auto;padding:18px 16px 60px;}
+h1{color:#fff;font-size:24px;text-align:center;margin:14px 0 4px;}
+.sub{text-align:center;color:var(--mut);font-size:13.5px;margin-bottom:22px;}
+
+/* ===== Khối thông tin (mục tiêu / nguyên tắc / nhắc) ===== */
+.info{border-radius:12px;padding:14px 16px;margin:14px 0;border:1px solid var(--line);
+  background:var(--card);}
+.info.goal{border-left:4px solid var(--blue);}
+.info.tip{border-left:4px solid var(--green);}
+.info.warn{border-left:4px solid var(--red);}
+.info b{color:#fff;}
+.info ol{margin:8px 0 0;padding-left:20px;}
+.info li{margin:4px 0;}
+.tiny{color:var(--mut);font-size:13px;}
+
+/* ===== Header giai đoạn ===== */
+.phase{display:flex;align-items:baseline;gap:10px;margin:30px 0 10px;
+  padding:14px 16px;border-radius:12px;background:var(--card);
+  border-left:5px solid var(--blue);}
+.phase h2{margin:0;font-size:18px;color:#fff;}
+.phase .when{color:var(--mut);font-size:13.5px;}
+
+/* ===== Thẻ tuần (gấp/mở) ===== */
+.week{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  margin:12px 0;overflow:hidden;}
+.week>summary{list-style:none;cursor:pointer;display:flex;align-items:center;
+  gap:10px;padding:14px 16px;font-weight:700;font-size:16px;color:#fff;
+  background:var(--card2);user-select:none;}
+.week>summary::-webkit-details-marker{display:none;}
+.week>summary .arrow{transition:transform .2s;color:var(--blue);font-size:13px;}
+.week[open]>summary .arrow{transform:rotate(90deg);}
+.week>summary .right{margin-left:auto;display:flex;align-items:center;gap:10px;
+  font-weight:500;font-size:12.5px;color:var(--mut);}
+.week>summary .wbar{width:90px;height:7px;background:#0a1320;border:1px solid var(--line);
+  border-radius:99px;overflow:hidden;}
+.week>summary .wbar i{display:block;height:100%;width:0;background:var(--green);transition:width .3s;}
+.body{padding:6px 16px 16px;}
+
+/* ===== Ngày ===== */
+.day{margin-top:14px;}
+.day .head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;}
+.day .dname{color:var(--blue2);font-weight:700;font-size:15px;}
+.badge{font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px;
+  background:var(--badge);color:#dcefff;}
+.badge.rest{background:#3a4a63;color:#cdd9ec;}
+.badge.mix{background:#8a4a18;color:#ffe3c2;}
+.day .topic{color:var(--txt);font-weight:600;}
+
+/* ===== Dòng việc có ô tick ===== */
+.task{display:flex;align-items:center;gap:11px;padding:9px 12px;margin:6px 0;
+  border:1px solid var(--line);border-radius:9px;background:var(--bg2);
+  cursor:pointer;transition:background .12s,border-color .12s;}
+.task:hover{background:#16294a;border-color:#33558a;}
+.task .box{flex:0 0 20px;height:20px;border:2px solid #4d6a99;
+  border-radius:5px;display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:#fff;transition:.12s;}
+.task .txt{flex:1;}
+.task .time{flex:0 0 auto;font-size:12px;color:var(--mut);background:#0a1320;
+  border:1px solid var(--line);border-radius:6px;padding:2px 8px;}
+.task.done{background:#10331f;border-color:#1f6b3e;}
+.task.done .box{background:var(--green);border-color:var(--green);}
+.task.done .txt{color:#bfe9cf;}
+.task.done .time{opacity:.6;}
+.rest-line{color:var(--mut);font-style:italic;padding:8px 12px;}
+
+@media(max-width:620px){
+  #bar .lbl{display:none;} h1{font-size:20px;}
+  .week>summary .wbar{display:none;}
+}
+</style></head><body>
+
+<div id="bar">
+  <span class="lbl">Tiến độ</span>
+  <div id="track"><div id="fill"></div></div>
+  <span id="pct">0%</span>
+  <button onclick="openAll(true)">Mở tất cả</button>
+  <button onclick="openAll(false)">Thu gọn</button>
+  <button class="danger" onclick="resetAll()">Xóa tiến độ</button>
+</div>
+
+<div class="wrap">
+  <h1>📝 LỘ TRÌNH WRITING 2 THÁNG · VSTEP B2</h1>
+  <p class="sub">B1 → B2 (Bậc 4) · 8 tuần · ~45–60 phút/buổi · 5–6 buổi/tuần · bấm vào từng việc để tick ✔</p>
+
+  <div class="info goal">
+    <b>🎯 Mục tiêu:</b> Đạt <b>≥ 6.0/10</b> phần Writing (Bậc 4 = B2). Thành thạo <b>8 dạng thư Task 1</b> + <b>5 dạng essay Task 2</b> và làm được bài full bấm giờ (60 phút).
+  </div>
+  <div class="info tip">
+    <b>3 nguyên tắc vàng:</b>
+    <ol>
+      <li><b>Viết thật, không chỉ đọc template</b> — mỗi dạng viết ≥1–2 bài. Đọc khung = 20%; viết + sửa = 80%.</li>
+      <li><b>Phải được SỬA LỖI</b> — tự viết không sửa sẽ lặp lỗi mãi. Nhờ AI/giáo viên chấm theo 4 tiêu chí VSTEP.</li>
+      <li><b>"Luyện trộn" quan trọng hơn học lần đầu</b> — bốc đề bất kỳ, tự nhận diện dạng rồi viết.</li>
+    </ol>
+    <p class="tiny" style="margin:8px 0 0;">4 tiêu chí chấm: <b>Task Fulfillment</b> · <b>Organization</b> · <b>Vocabulary</b> · <b>Grammar</b>.</p>
+  </div>
+
+  <div id="content"><!-- render bằng JS --></div>
+
+  <div class="info warn">
+    <b>⚠️ Nhắc nhở:</b> Bạn đang học nhiều thứ song song (QA + 4 kỹ năng tiếng Anh) → <b>đừng để kiệt sức</b>. Thà mỗi ngày 45 phút đều đặn còn hơn dồn 3 tiếng rồi bỏ. <b>Đều đặn &gt; cường độ.</b>
+  </div>
+  <p class="sub" style="margin-top:18px;">— Lộ trình Writing 2 tháng · VSTEP B2 — Chúc bạn thi tốt! 💪</p>
+</div>
+
+<script>
+/* ===================== DỮ LIỆU LỘ TRÌNH ===================== */
+var REST = "Nghỉ / nghe-đọc thụ động (tránh kiệt sức)";
+var PLAN = [
+  { phase:"GIAI ĐOẠN 1 — TASK 1: 8 dạng thư", when:"Tuần 1–2",
+    weeks:[
+      { name:"Tuần 1", tag:"4 dạng thư đầu", days:[
+        { d:"Ngày 1 (T2)", b:"Apology", topic:"Khung chung Task 1 + Apology Letter (xin lỗi)", t:[
+          ["Học khung chung Task 1 + phân biệt formal / informal","15'"],
+          ["Đọc template Apology + thuộc cụm từ xin lỗi","15'"],
+          ["Viết 1 thư xin lỗi (lỡ hẹn / trễ deadline)","20'"],
+          ["Nhờ AI/GV sửa + ghi lỗi hay mắc","10'"] ]},
+        { d:"Ngày 2 (T3)", b:"Request", topic:"Request Letter (yêu cầu / hỏi thông tin)", t:[
+          ["Đọc template Request + thuộc 12–15 cụm","15'"],
+          ["Viết 1 thư hỏi thông tin khóa học","20'"],
+          ["Nhờ sửa + ghi lỗi","10'"] ]},
+        { d:"Ngày 3 (T4)", b:"Complaint", topic:"Complaint Letter (phàn nàn)", t:[
+          ["Đọc template Complaint + cụm từ phàn nàn lịch sự","15'"],
+          ["Viết 1 thư phàn nàn sản phẩm lỗi","20'"],
+          ["Nhờ sửa + ghi lỗi","10'"] ]},
+        { d:"Ngày 4 (T5)", b:"Application", topic:"Application Letter (xin việc)", t:[
+          ["Đọc template Application + cụm từ ứng tuyển","15'"],
+          ["Viết 1 thư ứng tuyển công việc","20'"],
+          ["Nhờ sửa + ghi lỗi","10'"] ]},
+        { d:"Ngày 5 (T6)", b:"Ôn", topic:"Ôn lại 4 thư đã học", t:[
+          ["Rà lại lỗi của 4 thư đã viết","15'"],
+          ["Viết lại 1 thư yếu nhất cho chuẩn","25'"],
+          ["So với bài mẫu, ghi cụm hay","10'"] ]},
+        { d:"Ngày 6/7", b:"rest", topic:REST, t:[] }
+      ]},
+      { name:"Tuần 2", tag:"4 dạng thư còn lại + luyện trộn", days:[
+        { d:"Ngày 1", b:"Invitation", topic:"Invitation Letter (thư mời)", t:[
+          ["Đọc template Invitation + cụm mời","15'"],
+          ["Viết 1 thư mời dự sự kiện","20'"],
+          ["Nhờ sửa + ghi lỗi","10'"] ]},
+        { d:"Ngày 2", b:"Thank You", topic:"Thank You Letter (cảm ơn)", t:[
+          ["Đọc template Thank You + cụm cảm ơn","15'"],
+          ["Viết 1 thư cảm ơn","20'"],
+          ["Nhờ sửa + ghi lỗi","10'"] ]},
+        { d:"Ngày 3", b:"Suggestion", topic:"Suggestion Letter (gợi ý / khuyên)", t:[
+          ["Đọc template Suggestion + cụm gợi ý","15'"],
+          ["Viết 1 thư gợi ý / khuyên","20'"],
+          ["Nhờ sửa + ghi lỗi","10'"] ]},
+        { d:"Ngày 4", b:"Informing", topic:"Informing Letter (thông báo)", t:[
+          ["Đọc template Informing + cụm thông báo","15'"],
+          ["Viết 1 thư thông báo thay đổi","20'"],
+          ["Nhờ sửa + ghi lỗi","10'"] ]},
+        { d:"Ngày 5", b:"mix", topic:"LUYỆN TRỘN — KHÔNG nhìn template", t:[
+          ["Bốc 2 đề ngẫu nhiên, tự nhận diện dạng thư","5'"],
+          ["Viết 2 thư (không nhìn khung)","30'"],
+          ["Nhờ sửa + ghi lỗi","10'"] ]},
+        { d:"Ngày 6", b:"Mini-test", topic:"Mini-test Task 1 bấm giờ", t:[
+          ["Viết 1 thư bấm giờ 20 phút","20'"],
+          ["Tự chấm theo 4 tiêu chí VSTEP","10'"] ]}
+      ]}
+    ]},
+
+  { phase:"GIAI ĐOẠN 2 — TASK 2: 5 dạng essay", when:"Tuần 3–5",
+    weeks:[
+      { name:"Tuần 3", tag:"Khung + Opinion + Discussion", days:[
+        { d:"Ngày 1", b:"Khung", topic:"Khung chung Task 2 (4 đoạn)", t:[
+          ["Học cấu trúc 4 đoạn + cách nhận diện 5 dạng","15'"],
+          ["Học bộ linking words ghi điểm","10'"],
+          ["Lập dàn ý nhanh cho 2 đề bất kỳ","20'"] ]},
+        { d:"Ngày 2", b:"Opinion", topic:"Opinion essay (Agree / Disagree)", t:[
+          ["Học khung Opinion + cụm từ nêu quan điểm","15'"],
+          ["Viết 1 bài luận Opinion (~250 từ)","40'"] ]},
+        { d:"Ngày 3", b:"Opinion", topic:"Sửa & viết lại Opinion", t:[
+          ["Nhờ sửa bài Opinion + viết lại đoạn yếu","20'"],
+          ["Viết 1 bài Opinion thứ 2 (chủ đề khác)","40'"] ]},
+        { d:"Ngày 4", b:"Discussion", topic:"Discussion essay (bàn 2 quan điểm)", t:[
+          ["Học khung Discussion + cụm trình bày 2 phía","15'"],
+          ["Viết 1 bài Discussion","40'"] ]},
+        { d:"Ngày 5", b:"Discussion", topic:"Sửa & viết lại Discussion", t:[
+          ["Nhờ sửa bài Discussion","15'"],
+          ["Viết 1 bài Discussion thứ 2","40'"] ]},
+        { d:"Ngày 6", b:"rest", topic:"Nghỉ / đọc bài mẫu band cao để học cách diễn đạt", t:[] }
+      ]},
+      { name:"Tuần 4", tag:"Adv-Disadv + Problem-Solution + Two-part", days:[
+        { d:"Ngày 1", b:"Adv-Disadv", topic:"Advantages & Disadvantages", t:[
+          ["Học khung Adv-Disadv + cụm cân nhắc lợi/hại","15'"],
+          ["Viết 1 bài Adv-Disadv","40'"] ]},
+        { d:"Ngày 2", b:"Adv-Disadv", topic:"Sửa + từ vựng technology/education", t:[
+          ["Nhờ sửa + bổ sung từ vựng chủ đề","15'"],
+          ["Viết 1 bài Adv-Disadv thứ 2","40'"] ]},
+        { d:"Ngày 3", b:"Problem-Sol", topic:"Problem–Solution / Cause", t:[
+          ["Học khung Problem-Solution + cụm nêu nguyên nhân/giải pháp","15'"],
+          ["Viết 1 bài Problem-Solution","40'"] ]},
+        { d:"Ngày 4", b:"Problem-Sol", topic:"Sửa + từ vựng environment/society", t:[
+          ["Nhờ sửa + bổ sung từ vựng chủ đề","15'"],
+          ["Viết 1 bài Problem-Solution thứ 2","40'"] ]},
+        { d:"Ngày 5", b:"Two-part", topic:"Two-part question", t:[
+          ["Học khung Two-part + cách trả lời đủ 2 ý","15'"],
+          ["Viết 1 bài Two-part","40'"] ]},
+        { d:"Ngày 6", b:"rest", topic:"Nghỉ / ôn cụm từ nối & câu phức", t:[] }
+      ]},
+      { name:"Tuần 5", tag:"Luyện trộn + đánh bóng từng phần", days:[
+        { d:"Ngày 1", b:"mix", topic:"LUYỆN TRỘN Task 2", t:[
+          ["Bốc đề → tự nhận diện dạng → lập dàn ý nhanh","10'"],
+          ["Viết 1 bài luận (dạng ngẫu nhiên)","40'"] ]},
+        { d:"Ngày 2", b:"Mở bài", topic:"Paraphrase đề bài", t:[
+          ["Nhờ sửa + học cách paraphrase đề (mở bài)","20'"],
+          ["Viết 1 bài luận khác","40'"] ]},
+        { d:"Ngày 3", b:"Thân bài", topic:"Thân bài mạnh", t:[
+          ["Học công thức: ý chính + giải thích + ví dụ","15'"],
+          ["Viết 2 đoạn thân bài cho 2 đề","35'"] ]},
+        { d:"Ngày 4", b:"Mở/Kết", topic:"Mở bài & kết bài nhanh, gọn", t:[
+          ["Học mẫu mở bài & kết bài","15'"],
+          ["Viết mở + kết cho 3 đề","30'"] ]},
+        { d:"Ngày 5", b:"Tổng ôn", topic:"Tổng ôn 5 dạng + checklist lỗi", t:[
+          ["Rà checklist lỗi cá nhân","10'"],
+          ["Viết 1 bài luận hoàn chỉnh","40'"] ]},
+        { d:"Ngày 6", b:"rest", topic:REST, t:[] }
+      ]}
+    ]},
+
+  { phase:"GIAI ĐOẠN 3 — LUYỆN ĐỀ FULL bấm giờ", when:"Tuần 6–7",
+    weeks:[
+      { name:"Tuần 6", tag:"3 đề full · bấm giờ 60 phút", days:[
+        { d:"Ngày 1", b:"Đề full", topic:"Đề full #1 — bấm giờ 60'", t:[
+          ["Task 1 (thư) — 20 phút","20'"],
+          ["Task 2 (luận) — 40 phút","40'"] ]},
+        { d:"Ngày 2", b:"Sửa", topic:"Phân tích lỗi đề #1", t:[
+          ["Tự chấm + nhờ sửa, ghi lỗi vào checklist","20'"],
+          ["Viết lại 1 task bị yếu","30'"] ]},
+        { d:"Ngày 3", b:"Đề full", topic:"Đề full #2 — bấm giờ 60'", t:[
+          ["Task 1 — 20 phút","20'"],["Task 2 — 40 phút","40'"] ]},
+        { d:"Ngày 4", b:"Sửa", topic:"Phân tích lỗi đề #2 + vá điểm yếu", t:[
+          ["Tự chấm + nhờ sửa","20'"],
+          ["Luyện riêng điểm yếu (vd: câu phức)","25'"] ]},
+        { d:"Ngày 5", b:"Đề full", topic:"Đề full #3 — bấm giờ 60'", t:[
+          ["Task 1 — 20 phút","20'"],["Task 2 — 40 phút","40'"] ]},
+        { d:"Ngày 6", b:"rest", topic:"Nghỉ / xem lại checklist lỗi", t:[] }
+      ]},
+      { name:"Tuần 7", tag:"3 đề full nữa · giảm lỗi lặp", days:[
+        { d:"Ngày 1", b:"Đề full", topic:"Đề full #4 — bấm giờ 60'", t:[
+          ["Task 1 — 20 phút","20'"],["Task 2 — 40 phút","40'"] ]},
+        { d:"Ngày 2", b:"Sửa", topic:"Phân tích lỗi đề #4 + viết lại", t:[
+          ["Tự chấm + nhờ sửa","20'"],["Viết lại 1 task yếu","30'"] ]},
+        { d:"Ngày 3", b:"Đề full", topic:"Đề full #5 — bấm giờ 60'", t:[
+          ["Task 1 — 20 phút","20'"],["Task 2 — 40 phút","40'"] ]},
+        { d:"Ngày 4", b:"Sửa", topic:"Phân tích lỗi đề #5 + vá điểm yếu", t:[
+          ["Tự chấm + nhờ sửa","20'"],["Luyện riêng điểm yếu","25'"] ]},
+        { d:"Ngày 5", b:"Đề full", topic:"Đề full #6 — bấm giờ 60'", t:[
+          ["Task 1 — 20 phút","20'"],["Task 2 — 40 phút","40'"] ]},
+        { d:"Ngày 6", b:"rest", topic:"Nghỉ / xem lại checklist lỗi", t:[] }
+      ]}
+    ]},
+
+  { phase:"TUẦN 8 — ĐÁNH BÓNG & CHIẾN THUẬT", when:"Tuần 8",
+    weeks:[
+      { name:"Tuần 8", tag:"Vá lỗi · luyện phản xạ · sẵn sàng thi", days:[
+        { d:"Ngày 1", b:"Vá lỗi", topic:"Rà checklist lỗi cá nhân", t:[
+          ["Chọn 3 lỗi hay mắc nhất","10'"],
+          ["Luyện riêng từng lỗi (viết lại câu)","40'"] ]},
+        { d:"Ngày 2", b:"Phản xạ", topic:"Học thuộc cụm từ ghi điểm", t:[
+          ["Linking words + mở/kết bài đến mức phản xạ","30'"],
+          ["Tự kiểm tra: viết lại không nhìn","20'"] ]},
+        { d:"Ngày 3", b:"Mô phỏng", topic:"Đề full mô phỏng ngày thi", t:[
+          ["Làm đúng giờ, đúng điều kiện phòng thi","60'"] ]},
+        { d:"Ngày 4", b:"Chiến thuật", topic:"Chiến thuật phòng thi", t:[
+          ["Tập phân bổ thời gian + đếm từ nhanh","20'"],
+          ["Chừa 3–5' kiểm tra cuối: thì, số ít/nhiều, chính tả","20'"] ]},
+        { d:"Ngày 5", b:"Đề cuối", topic:"Đề full cuối + ôn nhẹ", t:[
+          ["Làm 1 đề full cuối","60'"],
+          ["Ôn nhẹ checklist + cụm từ","15'"] ]},
+        { d:"Ngày 6", b:"rest", topic:"Nghỉ ngơi, giữ sức trước thi 😴", t:[] }
+      ]}
+    ]}
+];
+
+/* ===================== RENDER ===================== */
+var KEY='vstep_writing_v2';
+var saved={}; try{saved=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){saved={};}
+var html='', total=0;
+
+PLAN.forEach(function(P,pi){
+  html+='<div class="phase"><h2>'+P.phase+'</h2><span class="when">'+P.when+'</span></div>';
+  P.weeks.forEach(function(W,wi){
+    var open = (pi===0 && wi===0) ? ' open':'';   // mở sẵn tuần đầu
+    html+='<details class="week"'+open+' data-wk="'+pi+'-'+wi+'">';
+    html+='<summary><span class="arrow">▶</span>📅 '+W.name+
+          '<span class="right"><span>'+W.tag+'</span>'+
+          '<span class="wbar"><i id="wb-'+pi+'-'+wi+'"></i></span></span></summary>';
+    html+='<div class="body">';
+    W.days.forEach(function(D,di){
+      html+='<div class="day"><div class="head"><span class="dname">'+D.d+'</span>';
+      if(D.b==='rest') html+='<span class="badge rest">Nghỉ</span>';
+      else if(D.b==='mix') html+='<span class="badge mix">'+D.b+'</span>'; /*placeholder*/
+      else html+='<span class="badge">'+D.b+'</span>';
+      html+='<span class="topic">'+D.topic+'</span></div>';
+      if(!D.t.length){
+        html+='<div class="rest-line">☕ '+(D.b==='rest'?'':'')+'Thư giãn, không ép bản thân.</div>';
+      } else {
+        D.t.forEach(function(task,ti){
+          var id=pi+'-'+wi+'-'+di+'-'+ti; total++;
+          html+='<div class="task" data-id="'+id+'" data-wk="'+pi+'-'+wi+'">'+
+                '<span class="box"></span><span class="txt">'+task[0]+'</span>'+
+                '<span class="time">'+task[1]+'</span></div>';
+        });
+      }
+      html+='</div>';
+    });
+    html+='</div></details>';
+  });
+});
+document.getElementById('content').innerHTML=html;
+
+/* gắn trạng thái + sự kiện */
+var tasks=document.querySelectorAll('.task');
+tasks.forEach(function(el){
+  if(saved[el.dataset.id]){ el.classList.add('done'); el.querySelector('.box').textContent='✔'; }
+  el.addEventListener('click',function(){
+    var on=!el.classList.contains('done');
+    el.classList.toggle('done',on);
+    el.querySelector('.box').textContent=on?'✔':'';
+    saved[el.dataset.id]=on;
+    try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(e){}
+    refresh();
+  });
+});
+
+function refresh(){
+  var done=document.querySelectorAll('.task.done').length;
+  var p = total? Math.round(done/total*100):0;
+  document.getElementById('fill').style.width=p+'%';
+  document.getElementById('pct').textContent=p+'%';
+  // thanh nhỏ từng tuần
+  var seen={};
+  document.querySelectorAll('.week').forEach(function(w){
+    var wk=w.dataset.wk;
+    var all=w.querySelectorAll('.task').length;
+    var dn=w.querySelectorAll('.task.done').length;
+    var bar=document.getElementById('wb-'+wk);
+    if(bar) bar.style.width=(all?Math.round(dn/all*100):0)+'%';
+  });
+}
+function openAll(o){document.querySelectorAll('.week').forEach(function(w){w.open=o;});}
+function resetAll(){
+  if(!confirm('Xóa toàn bộ tiến độ đã tick?')) return;
+  tasks.forEach(function(el){el.classList.remove('done');el.querySelector('.box').textContent='';});
+  saved={}; try{localStorage.removeItem(KEY);}catch(e){}
+  refresh();
+}
+refresh();
+</script>
+</body></html>
