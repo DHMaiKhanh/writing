@@ -1,114 +1,395 @@
 <!DOCTYPE html>
-<html lang="vi"><head><meta charset="UTF-8"><title>Informing Letter</title>
+<html lang="vi"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informing Letter · VSTEP Writing</title>
 <style>
-body{font-family:'Calibri',sans-serif;font-size:12pt;line-height:1.45;color:#222;}
-h1{color:#1F4E79;font-size:19pt;text-align:center;}
-h2{color:#2E74B5;font-size:14pt;border-bottom:2px solid #2E74B5;padding-bottom:3px;margin-top:20px;}
-.tem{background:#FFF8E7;border-left:4px solid #E0A800;padding:8px 12px;margin:6px 0;}
-.ex{background:#F2F7FF;border-left:4px solid #2E74B5;padding:8px 12px;margin:6px 0;}
-.exvi{background:#F4FBF4;border-left:4px solid #28A745;padding:8px 12px;margin:6px 0;}
-table{border-collapse:collapse;width:100%;margin:8px 0 14px 0;}
-th{background:#2E74B5;color:#fff;padding:6px 7px;text-align:left;font-size:10.5pt;border:1px solid #2E74B5;}
-td{border:1px solid #BBB;padding:5px 7px;font-size:10.5pt;vertical-align:top;}
-tr:nth-child(even) td{background:#F4F8FC;}
-.w{font-weight:bold;color:#1F4E79;} .ipa{color:#555;}
-.vrepeat{font-size:10.5pt;font-weight:700;color:#fff;background:#28A745;border:none;
-  border-radius:99px;padding:5px 12px;cursor:pointer;}
-.vrepeat:hover{background:#1e7e34;}
+:root{
+  --bg:#eef2f8; --paper:#ffffff; --ink:#1f2a3a; --mut:#64748b;
+  --blue:#2563eb; --blue-d:#1e40af; --sky:#eaf1ff; --amber:#f59e0b;
+  --amber-bg:#fff8ec; --green:#16a34a; --green-bg:#effbf2; --red:#dc2626;
+  --line:#e3e9f2; --shadow:0 6px 22px rgba(30,50,90,.08);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:74px;}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Segoe UI',system-ui,-apple-system,'Calibri',sans-serif;
+  font-size:16px;line-height:1.6;}
+
+/* ===== HERO ===== */
+.hero{background:linear-gradient(135deg,#3730a3 0%,#4338ca 60%,#6366f1 100%);
+  color:#fff;padding:34px 20px 28px;text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:"📢";position:absolute;right:-10px;bottom:-30px;font-size:170px;
+  opacity:.10;transform:rotate(-12deg);}
+.hero .tagvi{font-size:13px;letter-spacing:3px;text-transform:uppercase;opacity:.85;}
+.hero h1{margin:6px 0 8px;font-size:30px;font-weight:800;}
+.hero .meta{display:inline-flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:6px;}
+.hero .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  padding:5px 13px;border-radius:99px;font-size:13px;backdrop-filter:blur(4px);}
+
+/* ===== NAV dính ===== */
+nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.9);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+  display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:9px 12px;
+  box-shadow:0 2px 12px rgba(30,50,90,.05);}
+nav a{text-decoration:none;color:var(--mut);font-weight:600;font-size:14px;
+  padding:7px 14px;border-radius:99px;transition:.15s;}
+nav a:hover{background:var(--sky);color:var(--blue-d);}
+
+.wrap{max-width:880px;margin:0 auto;padding:26px 18px 70px;}
+section{margin-bottom:30px;}
+.h2{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:800;
+  color:var(--blue-d);margin:0 0 14px;}
+.h2 .num{flex:0 0 34px;height:34px;background:var(--blue);color:#fff;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:16px;}
+
+/* ===== Khung thư: các bước ===== */
+.steps{display:flex;flex-direction:column;gap:12px;}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  padding:14px 16px 14px 18px;box-shadow:var(--shadow);position:relative;
+  border-left:4px solid var(--amber);}
+.step .st-h{font-weight:800;color:var(--ink);margin-bottom:4px;}
+.step .st-h .vi{color:var(--mut);font-weight:600;font-size:14px;}
+.en{color:var(--blue-d);font-style:italic;background:var(--sky);
+  padding:7px 11px;border-radius:9px;display:block;margin:6px 0;font-size:15px;}
+.vi-line{color:#475569;font-size:14.5px;}
+.hint{color:var(--mut);font-size:13px;background:#f6f8fc;border:1px dashed #cdd7e6;
+  border-radius:9px;padding:8px 11px;margin-top:7px;}
+.hint b{color:var(--ink);}
+.callout{background:var(--green-bg);border:1px solid #c7ead2;border-left:4px solid var(--green);
+  border-radius:11px;padding:10px 14px;color:#14532d;font-size:14px;margin-top:6px;}
+
+/* ===== Bài mẫu trông như lá thư ===== */
+.sit{background:var(--amber-bg);border:1px solid #f3e0b8;border-radius:12px;
+  padding:11px 15px;font-size:14.5px;color:#7c5b12;margin-bottom:14px;}
+.letter{background:var(--paper);border:1px solid var(--line);border-radius:16px;
+  box-shadow:var(--shadow);padding:26px 28px;position:relative;
+  background-image:linear-gradient(transparent 31px,#f1f5fb 31px,#f1f5fb 32px,transparent 32px);
+  background-size:100% 32px;line-height:32px;}
+.letter .subj{font-weight:800;color:var(--blue-d);}
+.letter p{margin:0 0 16px;}
+.letter .sign{font-style:italic;}
+.toggle{display:inline-flex;align-items:center;gap:7px;cursor:pointer;
+  background:var(--blue);color:#fff;border:none;font:inherit;font-size:14px;font-weight:600;
+  padding:8px 16px;border-radius:99px;margin:14px 0 0;box-shadow:var(--shadow);}
+.toggle:hover{background:var(--blue-d);}
+.trans{display:none;margin-top:12px;background:var(--green-bg);border:1px solid #c7ead2;
+  border-left:4px solid var(--green);border-radius:13px;padding:16px 20px;color:#14532d;}
+.trans.show{display:block;}
+.wc{text-align:right;color:var(--mut);font-size:13px;margin-top:8px;}
+
+/* ===== Từ vựng ===== */
+.vtools{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap;}
+.vtools input{flex:1;min-width:180px;padding:10px 14px;border:1px solid var(--line);
+  border-radius:99px;font:inherit;font-size:15px;outline:none;background:var(--paper);}
+.vtools input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.12);}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:12px;}
+.vcard{background:var(--paper);border:1px solid var(--line);border-radius:13px;
+  padding:13px 15px;box-shadow:var(--shadow);transition:.15s;border-top:3px solid var(--blue);}
+.vcard:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(30,50,90,.13);}
+.vcard.phrase{border-top-color:var(--amber);}
+.vcard .top{display:flex;justify-content:space-between;align-items:start;gap:8px;}
+.vcard .word{font-weight:800;color:var(--blue-d);font-size:16px;}
+.vcard .pos{flex:0 0 auto;font-size:11px;font-weight:700;color:#fff;background:var(--blue);
+  padding:2px 9px;border-radius:99px;height:fit-content;}
+.vcard.phrase .pos{background:var(--amber);}
+.vcard .read{color:var(--mut);font-size:13px;margin:3px 0;}
+.vcard .ipa{color:#94a3b8;font-size:12.5px;}
+.vcard .mean{margin-top:5px;font-size:14.5px;}
+.no-result{grid-column:1/-1;text-align:center;color:var(--mut);padding:20px;display:none;}
+
+/* ===== Toàn bài (nguyên đoạn) ===== */
+.fullbox{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--blue);
+  border-radius:14px;box-shadow:var(--shadow);padding:16px 20px;margin-bottom:22px;}
+.fulltitle{font-weight:800;color:var(--blue-d);font-size:16px;margin-bottom:8px;}
+.fulltext p{margin:0 0 12px;color:var(--ink);line-height:1.7;}
+.fulltext b{color:var(--blue-d);}
+.fullnote{margin-top:6px;color:var(--mut);font-size:13.5px;font-style:italic;
+  border-top:1px dashed var(--line);padding-top:10px;}
+.fulltext.frame p{font-style:italic;color:#334155;}
+.bl{font-style:normal;background:var(--amber-bg);border:1px solid #f3d89a;
+  color:#92600a;border-radius:5px;padding:0 5px;font-size:13.5px;white-space:nowrap;}
+
+/* ===== Từ vựng theo từng đoạn (bảng) ===== */
+.pgroup{margin-bottom:24px;}
+.pgroup .plabel{font-weight:800;color:var(--blue-d);font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+.pgroup .plabel .badge{flex:0 0 auto;font-size:12px;font-weight:700;color:#fff;background:var(--blue);border-radius:99px;padding:3px 11px;}
+.vrepeat{flex:0 0 auto;font-size:12.5px;font-weight:700;color:#fff;background:var(--green);border:none;
+  border-radius:99px;padding:5px 12px;cursor:pointer;transition:.15s;}
+.vrepeat:hover{background:#128a3d;}
 .vrepeat.on{animation:spkpulse .6s infinite;}
-.tip{background:#EAF7EA;border-left:4px solid #28A745;padding:8px 12px;}
-.note{color:#555;font-size:10.5pt;font-style:italic;}
-b.k{color:#C00000;}
+.pgroup .pvi{color:#475569;font-size:14px;margin:2px 0 0;}
+.vtable{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-top:9px;}
+.vtable th{background:var(--sky);color:var(--blue-d);text-align:left;padding:9px 12px;font-size:13px;font-weight:700;}
+.vtable td{border-top:1px solid var(--line);padding:9px 12px;font-size:14.5px;vertical-align:top;}
+.vtable tr.phrase td{background:var(--amber-bg);}
+.vtable .idx{color:var(--mut);text-align:center;width:32px;}
+.vtable .w{font-weight:800;color:var(--blue-d);}
+.vtable .rd{color:var(--mut);font-size:12.5px;}
+.vtable .ipa2{color:#94a3b8;}
+.vtable .pos2{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--blue);border-radius:99px;padding:1px 9px;}
+.vtable tr.phrase .pos2{background:var(--amber);}
+@media(max-width:560px){ .vtable th:nth-child(3),.vtable td:nth-child(3){display:none;} }
+
+/* ===== Mẹo ===== */
+.tips{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);overflow:hidden;}
+.tips li{list-style:none;padding:13px 16px 13px 48px;position:relative;border-bottom:1px solid var(--line);}
+.tips li:last-child{border-bottom:none;}
+.tips li::before{content:"💡";position:absolute;left:16px;top:12px;}
+.tips b{color:var(--blue-d);} .tips .k{color:var(--red);font-weight:700;}
+.tips ul{margin:0;padding:0;}
+
+footer{text-align:center;color:var(--mut);font-size:14px;margin-top:30px;}
+
+@media(max-width:560px){
+  .hero h1{font-size:23px;} .wrap{padding:20px 13px 50px;}
+  .letter{padding:20px 18px;} nav a{padding:6px 10px;font-size:13px;}
+}
 </style></head><body>
 
-<h1>INFORMING / NOTIFICATION LETTER<br>THƯ THÔNG BÁO (Formal / Semi-formal)</h1>
-<p class="note" style="text-align:center;">Mục đích: báo tin, thông báo thay đổi/cập nhật · Văn phong: TRANG TRỌNG (công việc) · ~120–150 từ</p>
+<header class="hero">
+  <div class="tagvi">VSTEP Writing · Task 1</div>
+  <h1>Informing Letter</h1>
+  <div style="opacity:.9;font-size:15px;">Thư thông báo — Văn phong trang trọng / bán trang trọng</div>
+  <div class="meta">
+    <span class="pill">🎯 Báo tin, thông báo thay đổi/cập nhật</span>
+    <span class="pill">🎩 Trang trọng (formal)</span>
+    <span class="pill">✍️ ~120–150 từ</span>
+  </div>
+</header>
 
-<h2>I. KHUNG THƯ (TEMPLATE)</h2>
-<div class="tem">
-<b>1. Greeting:</b> Dear [Tên/Team/Sir/Madam],<br><br>
-<b>2. Opening — mục đích thông báo:</b><br>
-<i>I am writing to inform you that there has been an important change regarding [thông tin chính].</i><br>
-→ Tôi viết thư này để thông báo rằng đã có một thay đổi quan trọng về…<br><br>
-<b>3. Details — chi tiết thông tin/thay đổi:</b><br>
-<i>The [meeting/event] originally scheduled for [cũ] will now take place on [mới].</i><br>
-→ [Cuộc họp] dự kiến ban đầu vào… nay sẽ diễn ra vào…<br><br>
-<b>4. Reason — lý do:</b><br>
-<i>This change is due to [lý do], which is beyond our control.</i><br>
-→ Sự thay đổi này là do…<br><br>
-<b>5. Action needed — việc cần làm:</b><br>
-<i>Please [confirm your attendance / update your calendar] before [thời hạn] so that we can plan accordingly. If you have any problem, kindly let me know in advance.</i><br>
-→ Vui lòng… để chúng ta sắp xếp cho phù hợp…<br><br>
-<b>6. Closing:</b><br>
-<i>I apologise for any inconvenience this may cause and thank you for your understanding. Please feel free to contact me if you have any questions.</i><br>
-→ Tôi xin lỗi vì sự bất tiện và cảm ơn sự thông cảm của quý vị.<br><br>
-<b>7. Sign:</b> Best regards, / Yours sincerely, + [Full Name]
-<br><br><span class="note">📊 Khung cố định ≈ 80 từ → điền đầy đủ [...] thành thư ~120–130 từ.</span>
+<nav>
+  <a href="#khung">📐 Khung thư</a>
+  <a href="#mau">📄 Bài mẫu</a>
+  <a href="#tuvung">📚 Từ vựng</a>
+  <a href="#meo">💡 Mẹo</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ===== I. KHUNG ===== -->
+<section id="khung">
+  <div class="h2"><span class="num">I</span> Khung thư (Template)</div>
+
+  <div class="fullbox">
+    <div class="fulltitle">📖 Nguyên khung thư — đọc tổng quát trước</div>
+    <div class="fulltext frame">
+      <p>Dear <span class="bl">[Tên/Team/Sir/Madam]</span>,</p>
+      <p>I am writing to inform you that there has been an important change regarding <span class="bl">[thông tin chính]</span>.</p>
+      <p>The <span class="bl">[meeting/event]</span> originally scheduled for <span class="bl">[cũ]</span> will now take place on <span class="bl">[mới]</span>.</p>
+      <p>This change is due to <span class="bl">[lý do]</span>, which is beyond our control.</p>
+      <p>Please <span class="bl">[confirm your attendance / update your calendar]</span> before <span class="bl">[thời hạn]</span> so that we can plan accordingly. If you have any problem, kindly let me know in advance.</p>
+      <p>I apologise for any inconvenience this may cause and thank you for your understanding. Please feel free to contact me if you have any questions.</p>
+      <p>Best regards,<br><span class="bl">[Full Name]</span></p>
+    </div>
+    <div class="fullnote">⬇️ Bên dưới: tách từng phần kèm bản dịch &amp; cách đổi câu theo đề</div>
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="st-h">1. Greeting <span class="vi">— Lời chào</span></div>
+      <span class="en">Dear [Tên/Team/Sir/Madam],</span>
+    </div>
+
+    <div class="step">
+      <div class="st-h">2. Opening — Purpose <span class="vi">— Mục đích thông báo</span></div>
+      <span class="en">I am writing to inform you that there has been an important change regarding [thông tin chính].</span>
+      <div class="vi-line">→ Tôi viết thư này để thông báo rằng đã có một thay đổi quan trọng về…</div>
+      <div class="hint">🔁 <b>Đổi đuôi câu theo đề:</b> …regarding the office relocation (chuyển văn phòng) · …regarding the new company policy (chính sách mới) · …regarding the exam schedule (lịch thi) · …regarding the delivery date (ngày giao hàng).</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">3. Details <span class="vi">— Chi tiết thông tin/thay đổi</span></div>
+      <span class="en">The [meeting/event] originally scheduled for [cũ] will now take place on [mới].</span>
+      <div class="vi-line">→ [Cuộc họp] dự kiến ban đầu vào… nay sẽ diễn ra vào…</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">4. Reason <span class="vi">— Lý do</span></div>
+      <span class="en">This change is due to [lý do], which is beyond our control.</span>
+      <div class="vi-line">→ Sự thay đổi này là do…, điều nằm ngoài tầm kiểm soát của chúng tôi.</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">5. Action needed <span class="vi">— Việc cần làm</span></div>
+      <span class="en">Please [confirm your attendance / update your calendar] before [thời hạn] so that we can plan accordingly. If you have any problem, kindly let me know in advance.</span>
+      <div class="vi-line">→ Vui lòng… để chúng ta sắp xếp cho phù hợp…</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">6. Closing <span class="vi">— Kết</span></div>
+      <span class="en">I apologise for any inconvenience this may cause and thank you for your understanding. Please feel free to contact me if you have any questions.</span>
+      <div class="vi-line">→ Tôi xin lỗi vì sự bất tiện và cảm ơn sự thông cảm của quý vị.</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">7. Signature <span class="vi">— Ký tên</span></div>
+      <span class="en">Best regards, &nbsp; / &nbsp; Yours sincerely, &nbsp;+ [Full Name]</span>
+    </div>
+
+    <div class="callout">📊 Khung cố định ≈ 80 từ → điền đầy đủ các <b>[...]</b> sẽ thành thư ~120–130 từ là chuẩn.</div>
+  </div>
+</section>
+
+<!-- ===== II. BÀI MẪU ===== -->
+<section id="mau">
+  <div class="h2"><span class="num">II</span> Bài mẫu (Example)</div>
+  <div class="sit"><b>Tình huống:</b> Bạn phải đổi giờ một cuộc họp. Viết email thông báo cho cả nhóm về lịch mới.</div>
+
+  <div class="letter">
+    <p class="subj">Subject: Change of time for Friday's project meeting</p>
+    <p>Dear Team,</p>
+    <p>I am writing to inform you that there has been an important change regarding the time of our weekly project meeting.</p>
+    <p>The meeting originally scheduled for Friday at 9 a.m. will now take place on the same day at 2 p.m.</p>
+    <p>This change is due to a clash with an urgent client call in the morning, which is beyond our control.</p>
+    <p>Please confirm your attendance and update your calendar before Thursday afternoon so that we can plan accordingly. If you have any problem, kindly let me know in advance.</p>
+    <p>I apologise for any inconvenience this may cause and thank you for your understanding. Please feel free to contact me if you have any questions.</p>
+    <p class="sign">Best regards,<br>Mai Khanh</p>
+  </div>
+  <div class="wc">≈ 130 từ — đạt chuẩn VSTEP ✓</div>
+
+  <button class="toggle" onclick="var t=document.getElementById('tr');t.classList.toggle('show');this.firstChild.textContent=t.classList.contains('show')?'🇻🇳 Ẩn bản dịch':'🇻🇳 Xem bản dịch';">🇻🇳 Xem bản dịch</button>
+  <div class="trans" id="tr">
+    <b>Bản dịch:</b><br>
+    Chào cả nhóm,<br><br>
+    Tôi viết thư này để thông báo rằng đã có một thay đổi quan trọng về thời gian cuộc họp dự án hằng tuần của chúng ta.<br><br>
+    Cuộc họp dự kiến ban đầu vào 9 giờ sáng thứ Sáu nay sẽ diễn ra cùng ngày lúc 2 giờ chiều.<br><br>
+    Sự thay đổi này là do trùng với một cuộc gọi khẩn với khách hàng vào buổi sáng, điều nằm ngoài tầm kiểm soát của chúng tôi.<br><br>
+    Vui lòng xác nhận tham dự và cập nhật lịch của bạn trước chiều thứ Năm để chúng ta có thể sắp xếp cho phù hợp. Nếu có vấn đề gì, vui lòng cho tôi biết trước.<br><br>
+    Tôi xin lỗi vì bất kỳ sự bất tiện nào và cảm ơn sự thông cảm của mọi người. Xin đừng ngại liên hệ với tôi nếu có thắc mắc.<br><br>
+    Trân trọng,<br>Mai Khanh
+  </div>
+</section>
+
+<!-- ===== III. TỪ VỰNG ===== -->
+<section id="tuvung">
+  <div class="h2"><span class="num">III</span> Từ vựng &amp; cụm từ <span style="font-weight:600;font-size:14px;color:var(--mut)">— theo từng đoạn của bài mẫu</span></div>
+  <div class="vtools">
+    <input id="search" type="text" placeholder="🔍 Gõ để lọc từ vựng (vd: inform, thông báo...)">
+  </div>
+  <div id="vwrap"></div>
+  <div class="no-result" id="nores">Không tìm thấy từ nào khớp 🙈</div>
+</section>
+
+<!-- ===== IV. MẸO ===== -->
+<section id="meo">
+  <div class="h2"><span class="num">IV</span> Mẹo ăn điểm</div>
+  <div class="tips"><ul>
+    <li>Cấu trúc rõ: <b class="k">thông báo gì → chi tiết mới → lý do → việc cần làm</b>.</li>
+    <li>Luôn có câu <b>xin lỗi vì bất tiện</b> + <b>cảm ơn sự thông cảm</b> khi thông báo thay đổi.</li>
+    <li>Dùng bị động &amp; cấu trúc trang trọng: <i>has been a change / originally scheduled / due to</i>.</li>
+  </ul></div>
+</section>
+
+<footer>— Informing Letter · VSTEP B2 Writing —</footer>
 </div>
 
-<h2>II. BÀI MẪU (EXAMPLE)</h2>
-<p class="note"><b>Tình huống:</b> Bạn phải đổi giờ một cuộc họp. Viết email thông báo cho cả nhóm về lịch mới.</p>
-<div class="ex">
-<b>Subject: Change of time for Friday's project meeting</b><br><br>
-Dear Team,<br><br>
-I am writing to inform you that there has been an important change regarding the time of our weekly project meeting.<br><br>
-The meeting originally scheduled for Friday at 9 a.m. will now take place on the same day at 2 p.m.<br><br>
-This change is due to a clash with an urgent client call in the morning, which is beyond our control.<br><br>
-Please confirm your attendance and update your calendar before Thursday afternoon so that we can plan accordingly. If you have any problem, kindly let me know in advance.<br><br>
-I apologise for any inconvenience this may cause and thank you for your understanding. Please feel free to contact me if you have any questions.<br><br>
-Best regards,<br>
-Mai Khanh
-</div>
-<div class="exvi">
-<b>Bản dịch:</b><br>
-Chào cả nhóm,<br><br>
-Tôi viết thư này để thông báo rằng đã có một thay đổi quan trọng về thời gian cuộc họp dự án hằng tuần của chúng ta.<br><br>
-Cuộc họp dự kiến ban đầu vào 9 giờ sáng thứ Sáu nay sẽ diễn ra cùng ngày lúc 2 giờ chiều.<br><br>
-Sự thay đổi này là do trùng với một cuộc gọi khẩn với khách hàng vào buổi sáng, điều nằm ngoài tầm kiểm soát của chúng tôi.<br><br>
-Vui lòng xác nhận tham dự và cập nhật lịch của bạn trước chiều thứ Năm để chúng ta có thể sắp xếp cho phù hợp. Nếu có vấn đề gì, vui lòng cho tôi biết trước.<br><br>
-Tôi xin lỗi vì bất kỳ sự bất tiện nào và cảm ơn sự thông cảm của mọi người. Xin đừng ngại liên hệ với tôi nếu có thắc mắc.<br><br>
-Trân trọng,<br>
-Mai Khanh
-</div>
-<p class="note">(~130 từ)</p>
+<script>
+var PARAS=[
+ { label:"Đoạn 1 — Mục đích thông báo",
+   en:"I am writing to <b>inform</b> you that there has been an important change regarding the time of our weekly project meeting.",
+   vi:"Tôi viết thư này để thông báo rằng đã có một thay đổi quan trọng về thời gian cuộc họp dự án hằng tuần của chúng ta.",
+   vocab:[
+    ["inform","in pho mờ","/ɪnˈfɔːm/","v","thông báo"],
+    ["notify","nâu ti phai","/ˈnəʊtɪfaɪ/","v","báo cho biết"],
+    ["announce","ơ nao nờ","/əˈnaʊns/","v","thông báo, công bố"],
+    ["I am writing to inform you that...","","","cụm","Tôi viết thư để thông báo rằng..."]
+   ]},
+ { label:"Đoạn 2 — Chi tiết thay đổi",
+   en:"The meeting <b>originally scheduled</b> for Friday at 9 a.m. <b>will now take place on</b> the same day at 2 p.m.",
+   vi:"Cuộc họp dự kiến ban đầu vào 9 giờ sáng thứ Sáu nay sẽ diễn ra cùng ngày lúc 2 giờ chiều.",
+   vocab:[
+    ["schedule","she giun / s-két giun","/ˈʃedjuːl/","n/v","lịch trình / lên lịch"],
+    ["reschedule","ri she giun","/ˌriːˈʃedjuːl/","v","đổi lịch, dời lịch"],
+    ["originally scheduled for...","","","cụm","dự kiến ban đầu vào..."],
+    ["will now take place on...","","","cụm","nay sẽ diễn ra vào..."]
+   ]},
+ { label:"Đoạn 3 — Lý do",
+   en:"This change is due to a <b>clash</b> with an <b>urgent</b> client call in the morning, which is beyond our control.",
+   vi:"Sự thay đổi này là do trùng với một cuộc gọi khẩn với khách hàng vào buổi sáng, điều nằm ngoài tầm kiểm soát của chúng tôi.",
+   vocab:[
+    ["clash","clát","/klæʃ/","n","sự trùng lịch, xung đột"],
+    ["urgent","ơ giần tờ","/ˈɜːdʒənt/","adj","khẩn cấp"],
+    ["This change is due to...","","","cụm","Sự thay đổi này là do..."],
+    ["which is beyond our control","","","cụm","điều nằm ngoài tầm kiểm soát của chúng tôi"]
+   ]},
+ { label:"Đoạn 4 — Việc cần làm",
+   en:"Please confirm your <b>attendance</b> and update your calendar before Thursday afternoon so that we can plan accordingly. If you have any problem, kindly let me know <b>in advance</b>.",
+   vi:"Vui lòng xác nhận tham dự và cập nhật lịch của bạn trước chiều thứ Năm để chúng ta có thể sắp xếp cho phù hợp. Nếu có vấn đề gì, vui lòng cho tôi biết trước.",
+   vocab:[
+    ["attendance","ơ ten đợn","/əˈtendəns/","n","sự tham dự"],
+    ["in advance","in ợt van","/ɪn ədˈvɑːns/","cụm","trước, từ trước"],
+    ["confirm your attendance","","","cụm","xác nhận việc tham dự"],
+    ["so that we can plan accordingly","","","cụm","để chúng ta có thể sắp xếp cho phù hợp"],
+    ["If you have any problem, kindly let me know in advance","","","cụm","Nếu có vấn đề gì, vui lòng cho tôi biết trước"]
+   ]},
+ { label:"Đoạn 5 — Kết thư",
+   en:"I <b>apologise</b> for any <b>inconvenience</b> this may cause and thank you for your understanding. Please feel free to contact me if you have any questions.",
+   vi:"Tôi xin lỗi vì bất kỳ sự bất tiện nào và cảm ơn sự thông cảm của mọi người. Xin đừng ngại liên hệ với tôi nếu có thắc mắc.",
+   vocab:[
+    ["I apologise for any inconvenience this may cause","","","cụm","Tôi xin lỗi vì bất kỳ sự bất tiện nào"],
+    ["thank you for your understanding","","","cụm","cảm ơn sự thông cảm của quý vị"],
+    ["Please feel free to contact me","","","cụm","Vui lòng đừng ngại liên hệ với tôi"]
+   ]}
+];
 
-<h2>III. TỪ VỰNG &amp; CỤM TỪ CHI TIẾT</h2>
-<div style="margin:6px 0;display:flex;gap:8px;flex-wrap:wrap;">
-<button type="button" class="vrepeat" data-mode="mean">🔁 Lặp từ vựng</button>
-<button type="button" class="vrepeat" data-mode="nomean">🔁 Lặp từ vựng (không nghĩa)</button>
-</div>
-<table id="vocabTable">
-<tr><th width="4%">#</th><th width="22%">Từ / Cụm</th><th width="15%">Phiên âm</th><th width="6%">Loại</th><th>Nghĩa</th></tr>
-<tr><td>1</td><td class="w">inform</td><td>(in pho mờ)<br><span class="ipa">/ɪnˈfɔːm/</span></td><td>v</td><td>thông báo</td></tr>
-<tr><td>2</td><td class="w">notify</td><td>(nâu ti phai)<br><span class="ipa">/ˈnəʊtɪfaɪ/</span></td><td>v</td><td>báo cho biết</td></tr>
-<tr><td>3</td><td class="w">announce</td><td>(ơ nao nờ)<br><span class="ipa">/əˈnaʊns/</span></td><td>v</td><td>thông báo, công bố</td></tr>
-<tr><td>4</td><td class="w">schedule</td><td>(she giun / s-két giun)<br><span class="ipa">/ˈʃedjuːl/</span></td><td>n/v</td><td>lịch trình / lên lịch</td></tr>
-<tr><td>5</td><td class="w">reschedule</td><td>(ri she giun)<br><span class="ipa">/ˌriːˈʃedjuːl/</span></td><td>v</td><td>đổi lịch, dời lịch</td></tr>
-<tr><td>6</td><td class="w">attendance</td><td>(ơ ten đợn)<br><span class="ipa">/əˈtendəns/</span></td><td>n</td><td>sự tham dự</td></tr>
-<tr><td>7</td><td class="w">clash</td><td>(clát)<br><span class="ipa">/klæʃ/</span></td><td>n</td><td>sự trùng lịch, xung đột</td></tr>
-<tr><td>8</td><td class="w">urgent</td><td>(ơ giần tờ)<br><span class="ipa">/ˈɜːdʒənt/</span></td><td>adj</td><td>khẩn cấp</td></tr>
-<tr><td>9</td><td class="w">in advance</td><td>(in ợt van)<br><span class="ipa">/ɪn ədˈvɑːns/</span></td><td>cụm</td><td>trước, từ trước</td></tr>
-<tr><td>10</td><td class="w">I am writing to inform you that...</td><td>—</td><td>cụm</td><td>Tôi viết thư để thông báo rằng...</td></tr>
-<tr><td>11</td><td class="w">originally scheduled for...</td><td>—</td><td>cụm</td><td>dự kiến ban đầu vào...</td></tr>
-<tr><td>12</td><td class="w">will now take place on...</td><td>—</td><td>cụm</td><td>nay sẽ diễn ra vào...</td></tr>
-<tr><td>13</td><td class="w">This change is due to...</td><td>—</td><td>cụm</td><td>Sự thay đổi này là do...</td></tr>
-<tr><td>14</td><td class="w">which is beyond our control</td><td>—</td><td>cụm</td><td>điều nằm ngoài tầm kiểm soát của chúng tôi</td></tr>
-<tr><td>15</td><td class="w">confirm your attendance</td><td>—</td><td>cụm</td><td>xác nhận việc tham dự</td></tr>
-<tr><td>16</td><td class="w">so that we can plan accordingly</td><td>—</td><td>cụm</td><td>để chúng ta có thể sắp xếp cho phù hợp</td></tr>
-<tr><td>17</td><td class="w">If you have any problem, kindly let me know in advance</td><td>—</td><td>cụm</td><td>Nếu có vấn đề gì, vui lòng cho tôi biết trước</td></tr>
-<tr><td>18</td><td class="w">I apologise for any inconvenience this may cause</td><td>—</td><td>cụm</td><td>Tôi xin lỗi vì bất kỳ sự bất tiện nào</td></tr>
-<tr><td>19</td><td class="w">thank you for your understanding</td><td>—</td><td>cụm</td><td>cảm ơn sự thông cảm của quý vị</td></tr>
-<tr><td>20</td><td class="w">Please feel free to contact me</td><td>—</td><td>cụm</td><td>Vui lòng đừng ngại liên hệ với tôi</td></tr>
-</table>
+var wrap=document.getElementById('vwrap');
+function esc(s){ return (s||'').replace(/"/g,'&quot;'); }
+function rowHtml(v,i){
+  var phrase = v[3]==='cụm';
+  var rd = v[1] ? '('+v[1]+')' : '—';
+  var ipa = v[2] ? ' <span class="ipa2">'+v[2]+'</span>' : '';
+  return '<tr class="'+(phrase?'phrase':'')+'" data-word="'+esc(v[0])+'" data-mean="'+esc(v[4])+'">'+
+    '<td class="idx">'+i+'</td>'+
+    '<td><span class="w">'+v[0]+'</span></td>'+
+    '<td class="rd">'+rd+ipa+'</td>'+
+    '<td><span class="pos2">'+v[3]+'</span></td>'+
+    '<td>'+v[4]+'</td></tr>';
+}
+function fullText(){
+  return PARAS.map(function(p){ return '<p>'+p.en+'</p>'; }).join('');
+}
+function render(q){
+  q=(q||'').toLowerCase().trim();
+  wrap.innerHTML='';
+  if(!q){
+    wrap.innerHTML+='<div class="fullbox">'+
+      '<div class="fulltitle">📖 Toàn bài — đọc liền mạch trước</div>'+
+      '<div class="fulltext">'+fullText()+'</div>'+
+      '<div class="fullnote">⬇️ Bên dưới: tách từng đoạn nhỏ kèm bản dịch &amp; từ vựng</div>'+
+    '</div>';
+  }
+  var n=0, idx=0;
+  PARAS.forEach(function(p){
+    var rows = p.vocab.filter(function(v){
+      return !q || (v[0]+' '+v[4]).toLowerCase().indexOf(q)>-1;
+    });
+    if(!rows.length) return;
+    var body='';
+    rows.forEach(function(v){ idx++; body+=rowHtml(v,idx); });
+    n+=rows.length;
+    wrap.innerHTML+='<div class="pgroup">'+
+      '<div class="plabel"><span class="badge">'+rows.length+' từ</span>'+p.label+
+        '<button type="button" class="vrepeat" data-mode="mean">🔁 Lặp từ vựng</button>'+
+        '<button type="button" class="vrepeat" data-mode="nomean">🔁 Lặp từ vựng (không nghĩa)</button>'+
+      '</div>'+
+      '<span class="en">'+p.en+'</span>'+
+      '<div class="pvi">→ '+p.vi+'</div>'+
+      '<table class="vtable"><thead><tr>'+
+        '<th>#</th><th>Từ / Cụm</th><th>Phiên âm</th><th>Loại</th><th>Nghĩa</th>'+
+      '</tr></thead><tbody>'+body+'</tbody></table>'+
+    '</div>';
+  });
+  document.getElementById('nores').style.display = n? 'none':'block';
+}
+render('');
 
-<h2>IV. MẸO</h2>
-<div class="tip"><ul>
-<li>Cấu trúc rõ: <b class="k">thông báo gì → chi tiết mới → lý do → việc cần làm</b>.</li>
-<li>Luôn có câu <b>xin lỗi vì bất tiện</b> + <b>cảm ơn sự thông cảm</b> khi thông báo thay đổi.</li>
-<li>Dùng bị động &amp; cấu trúc trang trọng: <i>has been a change / originally scheduled / due to</i>.</li>
-</ul></div>
-<p class="note" style="text-align:center;">— Informing Letter —</p>
-<!-- ===== 🔊 NGHE PHÁT ÂM TỪ VỰNG (giọng đọc của trình duyệt, chạy offline) ===== -->
+document.getElementById('search').addEventListener('input',function(){ render(this.value); });
+</script>
+
+<!-- ===== 🔊 NGHE PHÁT ÂM TỪ VỰNG (dùng giọng đọc của trình duyệt, chạy offline) ===== -->
 <style>
 .spk{cursor:pointer;border:none;background:transparent;font-size:14px;line-height:1;
   padding:0 3px;margin-left:4px;vertical-align:middle;opacity:.5;transition:transform .15s,opacity .15s;}
@@ -152,6 +433,7 @@ Mai Khanh
     el.appendChild(b);
   }
   function run(){ document.querySelectorAll('.w, .vcard .word, td.q, .en, .letter p, .fulltext p, .tem i, .ex').forEach(addSpk); }
+
   var queueBtn=null;
   function speakQueue(items,btn){
     if(!synth){ alert('Trình duyệt này không hỗ trợ đọc. Hãy mở bằng Chrome hoặc Edge.'); return; }
@@ -173,16 +455,13 @@ Mai Khanh
   document.addEventListener('click',function(e){
     var btn=e.target.closest('.vrepeat');
     if(!btn) return;
-    var table=document.getElementById('vocabTable');
+    var table=btn.closest('.pgroup').querySelector('.vtable');
     if(!table) return;
     var withMean = btn.dataset.mode==='mean';
     var items=[];
-    table.querySelectorAll('tr').forEach(function(tr){
-      var wCell=tr.querySelector('td.w');
-      if(!wCell) return;
-      var w=wCell.textContent.replace(/🔊/g,'').trim();
-      var tds=tr.querySelectorAll('td');
-      var m=tds.length?tds[tds.length-1].textContent.trim():'';
+    table.querySelectorAll('tbody tr').forEach(function(tr){
+      var w=tr.dataset.word, m=tr.dataset.mean;
+      if(!w) return;
       items.push(withMean && m ? (w+'. '+m) : w);
     });
     speakQueue(items,btn);

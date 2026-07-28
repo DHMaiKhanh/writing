@@ -1,110 +1,395 @@
 <!DOCTYPE html>
-<html lang="vi"><head><meta charset="UTF-8"><title>Invitation Letter</title>
+<html lang="vi"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invitation Letter · VSTEP Writing</title>
 <style>
-body{font-family:'Calibri',sans-serif;font-size:12pt;line-height:1.45;color:#222;}
-h1{color:#1F4E79;font-size:19pt;text-align:center;}
-h2{color:#2E74B5;font-size:14pt;border-bottom:2px solid #2E74B5;padding-bottom:3px;margin-top:20px;}
-.tem{background:#FFF8E7;border-left:4px solid #E0A800;padding:8px 12px;margin:6px 0;}
-.ex{background:#F2F7FF;border-left:4px solid #2E74B5;padding:8px 12px;margin:6px 0;}
-.exvi{background:#F4FBF4;border-left:4px solid #28A745;padding:8px 12px;margin:6px 0;}
-table{border-collapse:collapse;width:100%;margin:8px 0 14px 0;}
-th{background:#2E74B5;color:#fff;padding:6px 7px;text-align:left;font-size:10.5pt;border:1px solid #2E74B5;}
-td{border:1px solid #BBB;padding:5px 7px;font-size:10.5pt;vertical-align:top;}
-tr:nth-child(even) td{background:#F4F8FC;}
-.w{font-weight:bold;color:#1F4E79;} .ipa{color:#555;}
-.vrepeat{font-size:10.5pt;font-weight:700;color:#fff;background:#28A745;border:none;
-  border-radius:99px;padding:5px 12px;cursor:pointer;}
-.vrepeat:hover{background:#1e7e34;}
+:root{
+  --bg:#eef2f8; --paper:#ffffff; --ink:#1f2a3a; --mut:#64748b;
+  --blue:#2563eb; --blue-d:#1e40af; --sky:#eaf1ff; --amber:#f59e0b;
+  --amber-bg:#fff8ec; --green:#16a34a; --green-bg:#effbf2; --red:#dc2626;
+  --line:#e3e9f2; --shadow:0 6px 22px rgba(30,50,90,.08);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:74px;}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Segoe UI',system-ui,-apple-system,'Calibri',sans-serif;
+  font-size:16px;line-height:1.6;}
+
+/* ===== HERO ===== */
+.hero{background:linear-gradient(135deg,#6b21a8 0%,#a21caf 60%,#e879f9 100%);
+  color:#fff;padding:34px 20px 28px;text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:"🎉";position:absolute;right:-10px;bottom:-30px;font-size:170px;
+  opacity:.10;transform:rotate(-12deg);}
+.hero .tagvi{font-size:13px;letter-spacing:3px;text-transform:uppercase;opacity:.85;}
+.hero h1{margin:6px 0 8px;font-size:30px;font-weight:800;}
+.hero .meta{display:inline-flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:6px;}
+.hero .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  padding:5px 13px;border-radius:99px;font-size:13px;backdrop-filter:blur(4px);}
+
+/* ===== NAV dính ===== */
+nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.9);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+  display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:9px 12px;
+  box-shadow:0 2px 12px rgba(30,50,90,.05);}
+nav a{text-decoration:none;color:var(--mut);font-weight:600;font-size:14px;
+  padding:7px 14px;border-radius:99px;transition:.15s;}
+nav a:hover{background:var(--sky);color:var(--blue-d);}
+
+.wrap{max-width:880px;margin:0 auto;padding:26px 18px 70px;}
+section{margin-bottom:30px;}
+.h2{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:800;
+  color:var(--blue-d);margin:0 0 14px;}
+.h2 .num{flex:0 0 34px;height:34px;background:var(--blue);color:#fff;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:16px;}
+
+/* ===== Khung thư: các bước ===== */
+.steps{display:flex;flex-direction:column;gap:12px;}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  padding:14px 16px 14px 18px;box-shadow:var(--shadow);position:relative;
+  border-left:4px solid var(--amber);}
+.step .st-h{font-weight:800;color:var(--ink);margin-bottom:4px;}
+.step .st-h .vi{color:var(--mut);font-weight:600;font-size:14px;}
+.en{color:var(--blue-d);font-style:italic;background:var(--sky);
+  padding:7px 11px;border-radius:9px;display:block;margin:6px 0;font-size:15px;}
+.vi-line{color:#475569;font-size:14.5px;}
+.hint{color:var(--mut);font-size:13px;background:#f6f8fc;border:1px dashed #cdd7e6;
+  border-radius:9px;padding:8px 11px;margin-top:7px;}
+.hint b{color:var(--ink);}
+.callout{background:var(--green-bg);border:1px solid #c7ead2;border-left:4px solid var(--green);
+  border-radius:11px;padding:10px 14px;color:#14532d;font-size:14px;margin-top:6px;}
+
+/* ===== Bài mẫu trông như lá thư ===== */
+.sit{background:var(--amber-bg);border:1px solid #f3e0b8;border-radius:12px;
+  padding:11px 15px;font-size:14.5px;color:#7c5b12;margin-bottom:14px;}
+.letter{background:var(--paper);border:1px solid var(--line);border-radius:16px;
+  box-shadow:var(--shadow);padding:26px 28px;position:relative;
+  background-image:linear-gradient(transparent 31px,#f1f5fb 31px,#f1f5fb 32px,transparent 32px);
+  background-size:100% 32px;line-height:32px;}
+.letter .subj{font-weight:800;color:var(--blue-d);}
+.letter p{margin:0 0 16px;}
+.letter .sign{font-style:italic;}
+.toggle{display:inline-flex;align-items:center;gap:7px;cursor:pointer;
+  background:var(--blue);color:#fff;border:none;font:inherit;font-size:14px;font-weight:600;
+  padding:8px 16px;border-radius:99px;margin:14px 0 0;box-shadow:var(--shadow);}
+.toggle:hover{background:var(--blue-d);}
+.trans{display:none;margin-top:12px;background:var(--green-bg);border:1px solid #c7ead2;
+  border-left:4px solid var(--green);border-radius:13px;padding:16px 20px;color:#14532d;}
+.trans.show{display:block;}
+.wc{text-align:right;color:var(--mut);font-size:13px;margin-top:8px;}
+
+/* ===== Từ vựng ===== */
+.vtools{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap;}
+.vtools input{flex:1;min-width:180px;padding:10px 14px;border:1px solid var(--line);
+  border-radius:99px;font:inherit;font-size:15px;outline:none;background:var(--paper);}
+.vtools input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.12);}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:12px;}
+.vcard{background:var(--paper);border:1px solid var(--line);border-radius:13px;
+  padding:13px 15px;box-shadow:var(--shadow);transition:.15s;border-top:3px solid var(--blue);}
+.vcard:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(30,50,90,.13);}
+.vcard.phrase{border-top-color:var(--amber);}
+.vcard .top{display:flex;justify-content:space-between;align-items:start;gap:8px;}
+.vcard .word{font-weight:800;color:var(--blue-d);font-size:16px;}
+.vcard .pos{flex:0 0 auto;font-size:11px;font-weight:700;color:#fff;background:var(--blue);
+  padding:2px 9px;border-radius:99px;height:fit-content;}
+.vcard.phrase .pos{background:var(--amber);}
+.vcard .read{color:var(--mut);font-size:13px;margin:3px 0;}
+.vcard .ipa{color:#94a3b8;font-size:12.5px;}
+.vcard .mean{margin-top:5px;font-size:14.5px;}
+.no-result{grid-column:1/-1;text-align:center;color:var(--mut);padding:20px;display:none;}
+
+/* ===== Toàn bài (nguyên đoạn) ===== */
+.fullbox{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--blue);
+  border-radius:14px;box-shadow:var(--shadow);padding:16px 20px;margin-bottom:22px;}
+.fulltitle{font-weight:800;color:var(--blue-d);font-size:16px;margin-bottom:8px;}
+.fulltext p{margin:0 0 12px;color:var(--ink);line-height:1.7;}
+.fulltext b{color:var(--blue-d);}
+.fullnote{margin-top:6px;color:var(--mut);font-size:13.5px;font-style:italic;
+  border-top:1px dashed var(--line);padding-top:10px;}
+.fulltext.frame p{font-style:italic;color:#334155;}
+.bl{font-style:normal;background:var(--amber-bg);border:1px solid #f3d89a;
+  color:#92600a;border-radius:5px;padding:0 5px;font-size:13.5px;white-space:nowrap;}
+
+/* ===== Từ vựng theo từng đoạn (bảng) ===== */
+.pgroup{margin-bottom:24px;}
+.pgroup .plabel{font-weight:800;color:var(--blue-d);font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+.pgroup .plabel .badge{flex:0 0 auto;font-size:12px;font-weight:700;color:#fff;background:var(--blue);border-radius:99px;padding:3px 11px;}
+.vrepeat{flex:0 0 auto;font-size:12.5px;font-weight:700;color:#fff;background:var(--green);border:none;
+  border-radius:99px;padding:5px 12px;cursor:pointer;transition:.15s;}
+.vrepeat:hover{background:#128a3d;}
 .vrepeat.on{animation:spkpulse .6s infinite;}
-.tip{background:#EAF7EA;border-left:4px solid #28A745;padding:8px 12px;}
-.note{color:#555;font-size:10.5pt;font-style:italic;}
-b.k{color:#C00000;}
+.pgroup .pvi{color:#475569;font-size:14px;margin:2px 0 0;}
+.vtable{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-top:9px;}
+.vtable th{background:var(--sky);color:var(--blue-d);text-align:left;padding:9px 12px;font-size:13px;font-weight:700;}
+.vtable td{border-top:1px solid var(--line);padding:9px 12px;font-size:14.5px;vertical-align:top;}
+.vtable tr.phrase td{background:var(--amber-bg);}
+.vtable .idx{color:var(--mut);text-align:center;width:32px;}
+.vtable .w{font-weight:800;color:var(--blue-d);}
+.vtable .rd{color:var(--mut);font-size:12.5px;}
+.vtable .ipa2{color:#94a3b8;}
+.vtable .pos2{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--blue);border-radius:99px;padding:1px 9px;}
+.vtable tr.phrase .pos2{background:var(--amber);}
+@media(max-width:560px){ .vtable th:nth-child(3),.vtable td:nth-child(3){display:none;} }
+
+/* ===== Mẹo ===== */
+.tips{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);overflow:hidden;}
+.tips li{list-style:none;padding:13px 16px 13px 48px;position:relative;border-bottom:1px solid var(--line);}
+.tips li:last-child{border-bottom:none;}
+.tips li::before{content:"💡";position:absolute;left:16px;top:12px;}
+.tips b{color:var(--blue-d);} .tips .k{color:var(--red);font-weight:700;}
+.tips ul{margin:0;padding:0;}
+
+footer{text-align:center;color:var(--mut);font-size:14px;margin-top:30px;}
+
+@media(max-width:560px){
+  .hero h1{font-size:23px;} .wrap{padding:20px 13px 50px;}
+  .letter{padding:20px 18px;} nav a{padding:6px 10px;font-size:13px;}
+}
 </style></head><body>
 
-<h1>INVITATION LETTER<br>THƯ MỜI (Informal / Semi-formal)</h1>
-<p class="note" style="text-align:center;">Mục đích: mời ai đó dự một sự kiện · Văn phong: THÂN MẬT (mời bạn) hoặc bán trang trọng · ~120–150 từ</p>
+<header class="hero">
+  <div class="tagvi">VSTEP Writing · Task 1</div>
+  <h1>Invitation Letter</h1>
+  <div style="opacity:.9;font-size:15px;">Thư mời — Văn phong thân mật / bán trang trọng</div>
+  <div class="meta">
+    <span class="pill">🎯 Mời ai đó dự một sự kiện</span>
+    <span class="pill">😊 Thân mật (informal)</span>
+    <span class="pill">✍️ ~120–150 từ</span>
+  </div>
+</header>
 
-<h2>I. KHUNG THƯ (TEMPLATE)</h2>
-<div class="tem">
-<b>1. Greeting:</b> Dear [Tên bạn], / Hi [Tên],<br><br>
-<b>2. Opening — lời mời:</b><br>
-<i>I'm writing to invite you to [sự kiện] on the occasion of [dịp], and I would really love you to come.</i><br>
-→ Mình viết thư này để mời bạn đến… nhân dịp…<br><br>
-<b>3. Details — thời gian, địa điểm:</b><br>
-<i>It will be held on [ngày] at [giờ] at [địa điểm], which is easy to find.</i><br>
-→ Sự kiện sẽ diễn ra vào…<br><br>
-<b>4. Activities — hoạt động/điều thú vị:</b><br>
-<i>There will be [food, music, games], so I'm sure it will be great fun. In addition, [thông tin thêm].</i><br>
-→ Sẽ có… Ngoài ra,…<br><br>
-<b>5. Practical info / RSVP:</b><br>
-<i>Please let me know if you can make it by [thời hạn]. Feel free to bring [ai/gì] along.</i><br>
-→ Hãy báo mình biết liệu bạn có đến được không…<br><br>
-<b>6. Closing:</b><br>
-<i>I really hope you can come, and I am looking forward to seeing you there. Do let me know soon.</i><br>
-→ Mình rất mong bạn đến được.<br><br>
-<b>7. Sign:</b> Best wishes, / Love, + [Tên]
-<br><br><span class="note">📊 Khung cố định ≈ 81 từ → điền đầy đủ [...] thành thư ~120–130 từ.</span>
+<nav>
+  <a href="#khung">📐 Khung thư</a>
+  <a href="#mau">📄 Bài mẫu</a>
+  <a href="#tuvung">📚 Từ vựng</a>
+  <a href="#meo">💡 Mẹo</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ===== I. KHUNG ===== -->
+<section id="khung">
+  <div class="h2"><span class="num">I</span> Khung thư (Template)</div>
+
+  <div class="fullbox">
+    <div class="fulltitle">📖 Nguyên khung thư — đọc tổng quát trước</div>
+    <div class="fulltext frame">
+      <p>Dear <span class="bl">[Tên bạn]</span>,</p>
+      <p>I'm writing to invite you to <span class="bl">[sự kiện]</span> on the occasion of <span class="bl">[dịp]</span>, and it would mean a great deal to me if you could join us.</p>
+      <p>It will be held on <span class="bl">[ngày]</span> at <span class="bl">[giờ]</span> at <span class="bl">[địa điểm]</span> — should you have any trouble finding it, just give me a call.</p>
+      <p>There will be <span class="bl">[food, music, games]</span> laid on, not to mention <span class="bl">[thông tin thêm]</span>, so I've no doubt it will turn out to be a thoroughly enjoyable occasion.</p>
+      <p>Do let me know whether you'll be able to make it by <span class="bl">[thời hạn]</span>, and feel free to bring <span class="bl">[ai/gì]</span> along, as the more the merrier.</p>
+      <p>I really hope you'll be able to come, as it wouldn't be the same without you, and I'm very much looking forward to seeing you there.</p>
+      <p>Best wishes,<br><span class="bl">[Tên bạn]</span></p>
+    </div>
+    <div class="fullnote">⬇️ Bên dưới: tách từng phần kèm bản dịch &amp; cách đổi câu theo đề</div>
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="st-h">1. Greeting <span class="vi">— Lời chào</span></div>
+      <span class="en">Dear [Tên bạn], &nbsp; / &nbsp; Hi [Tên],</span>
+    </div>
+
+    <div class="step">
+      <div class="st-h">2. Opening — Invitation <span class="vi">— Mở đầu &amp; Lời mời</span></div>
+      <span class="en">I'm writing to invite you to [sự kiện] on the occasion of [dịp], and it would mean a great deal to me if you could join us.</span>
+      <div class="vi-line">→ Mình viết thư này để mời bạn đến… nhân dịp…, và sẽ có ý nghĩa rất lớn với mình nếu bạn có thể tham dự.</div>
+      <div class="hint">🔁 <b>Đổi đuôi câu theo đề:</b> …to my graduation party… (tốt nghiệp) · …to our housewarming party… (tân gia) · …to a get-together with old friends… (họp lớp) · …to my wedding… (đám cưới).</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">3. Details <span class="vi">— Thời gian, địa điểm</span></div>
+      <span class="en">It will be held on [ngày] at [giờ] at [địa điểm] — should you have any trouble finding it, just give me a call.</span>
+      <div class="vi-line">→ Sự kiện sẽ diễn ra vào… tại… — nếu bạn gặp khó khăn khi tìm đường, cứ gọi cho mình.</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">4. Activities <span class="vi">— Hoạt động, điều thú vị</span></div>
+      <span class="en">There will be [food, music, games] laid on, not to mention [thông tin thêm], so I've no doubt it will turn out to be a thoroughly enjoyable occasion.</span>
+      <div class="vi-line">→ Sẽ có… được chuẩn bị sẵn, chưa kể…, nên mình chắc chắn đó sẽ là một dịp thực sự thú vị.</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">5. Practical info / RSVP <span class="vi">— Xác nhận tham dự</span></div>
+      <span class="en">Do let me know whether you'll be able to make it by [thời hạn], and feel free to bring [ai/gì] along, as the more the merrier.</span>
+      <div class="vi-line">→ Hãy báo mình biết liệu bạn có đến được không trước…, và cứ thoải mái mang theo…, càng đông càng vui.</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">6. Closing <span class="vi">— Kết</span></div>
+      <span class="en">I really hope you'll be able to come, as it wouldn't be the same without you, and I'm very much looking forward to seeing you there.</span>
+      <div class="vi-line">→ Mình thực sự mong bạn đến được, vì sẽ không trọn vẹn nếu thiếu bạn, và mình rất mong được gặp bạn ở đó.</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">7. Signature <span class="vi">— Ký tên</span></div>
+      <span class="en">Best wishes, &nbsp; / &nbsp; Love, &nbsp;+ [Tên]</span>
+    </div>
+
+    <div class="callout">📊 Khung cố định ≈ 81 từ → điền đầy đủ các <b>[...]</b> sẽ thành thư ~120–130 từ là chuẩn.</div>
+  </div>
+</section>
+
+<!-- ===== II. BÀI MẪU ===== -->
+<section id="mau">
+  <div class="h2"><span class="num">II</span> Bài mẫu (Example)</div>
+  <div class="sit"><b>Tình huống:</b> Viết email mời người bạn đến dự tiệc sinh nhật của bạn, nêu thời gian, địa điểm và hoạt động.</div>
+
+  <div class="letter">
+    <p class="subj">Subject: Come to my birthday party!</p>
+    <p>Dear Lan,</p>
+    <p>I'm writing to invite you to my birthday party on the occasion of my 20th birthday, and it would mean a great deal to me if you could join us.</p>
+    <p>It will be held on Saturday, 20 June at 6 p.m. at my house on Le Loi Street — should you have any trouble finding it, just give me a call.</p>
+    <p>There will be a barbecue, music and games laid on, not to mention a few old classmates dropping by, so I've no doubt it will turn out to be a thoroughly enjoyable occasion.</p>
+    <p>Do let me know whether you'll be able to make it by Thursday, and feel free to bring your sister along, as the more the merrier.</p>
+    <p>I really hope you'll be able to come, as it wouldn't be the same without you, and I'm very much looking forward to seeing you there.</p>
+    <p class="sign">Best wishes,<br>Mai Khanh</p>
+  </div>
+  <div class="wc">≈ 120 từ — đạt chuẩn VSTEP ✓</div>
+
+  <button class="toggle" onclick="var t=document.getElementById('tr');t.classList.toggle('show');this.firstChild.textContent=t.classList.contains('show')?'🇻🇳 Ẩn bản dịch':'🇻🇳 Xem bản dịch';">🇻🇳 Xem bản dịch</button>
+  <div class="trans" id="tr">
+    <b>Bản dịch:</b><br>
+    Lan thân mến,<br><br>
+    Mình viết thư này để mời bạn đến dự tiệc sinh nhật của mình nhân dịp mình tròn 20 tuổi, và sẽ có ý nghĩa rất lớn với mình nếu bạn có thể tham dự.<br><br>
+    Tiệc sẽ diễn ra vào thứ Bảy, ngày 20 tháng 6 lúc 6 giờ chiều tại nhà mình trên đường Lê Lợi — nếu bạn gặp khó khăn khi tìm đường, cứ gọi cho mình nhé.<br><br>
+    Sẽ có tiệc nướng, âm nhạc và trò chơi được chuẩn bị sẵn, chưa kể vài người bạn cũ cùng lớp cũng sẽ ghé qua, nên mình chắc chắn đó sẽ là một dịp thực sự thú vị.<br><br>
+    Hãy báo mình biết liệu bạn có đến được không trước thứ Năm, và cứ thoải mái dẫn em gái bạn theo cùng, càng đông càng vui.<br><br>
+    Mình thực sự mong bạn đến được, vì sẽ không trọn vẹn nếu thiếu bạn, và mình rất mong được gặp bạn ở đó.<br><br>
+    Thân ái,<br>Mai Khanh
+  </div>
+</section>
+
+<!-- ===== III. TỪ VỰNG ===== -->
+<section id="tuvung">
+  <div class="h2"><span class="num">III</span> Từ vựng &amp; cụm từ <span style="font-weight:600;font-size:14px;color:var(--mut)">— theo từng đoạn của bài mẫu</span></div>
+  <div class="vtools">
+    <input id="search" type="text" placeholder="🔍 Gõ để lọc từ vựng (vd: invite, mời...)">
+  </div>
+  <div id="vwrap"></div>
+  <div class="no-result" id="nores">Không tìm thấy từ nào khớp 🙈</div>
+</section>
+
+<!-- ===== IV. MẸO ===== -->
+<section id="meo">
+  <div class="h2"><span class="num">IV</span> Mẹo ăn điểm</div>
+  <div class="tips"><ul>
+    <li>Phải nêu <b class="k">đủ 3 thông tin: thời gian – địa điểm – hoạt động</b> (đề thường yêu cầu rõ).</li>
+    <li>Văn phong thân mật: <b>được dùng viết tắt</b> (I'm, we'll, it's) và giọng gần gũi.</li>
+    <li>Nên có câu <b>kêu gọi xác nhận (RSVP)</b>: "let me know if you can make it".</li>
+    <li>Kết thân mật: <i>Best wishes / Love / See you soon</i> (KHÔNG dùng Yours faithfully).</li>
+  </ul></div>
+</section>
+
+<footer>— Invitation Letter · VSTEP B2 Writing —</footer>
 </div>
 
-<h2>II. BÀI MẪU (EXAMPLE)</h2>
-<p class="note"><b>Tình huống:</b> Viết email mời người bạn đến dự tiệc sinh nhật của bạn, nêu thời gian, địa điểm và hoạt động.</p>
-<div class="ex">
-<b>Subject: Come to my birthday party!</b><br><br>
-Dear Lan,<br><br>
-I'm writing to invite you to my birthday party on the occasion of my 20th birthday, and I would really love you to come.<br><br>
-It will be held on Saturday, 20 June at 6 p.m. at my house on Le Loi Street, which is easy to find.<br><br>
-There will be a barbecue, music and games, so I'm sure it will be great fun. In addition, several of our old classmates will be coming too.<br><br>
-Please let me know if you can make it by Thursday. Feel free to bring your sister along.<br><br>
-I really hope you can come, and I am looking forward to seeing you there. Do let me know soon.<br><br>
-Best wishes,<br>
-Mai Khanh
-</div>
-<div class="exvi">
-<b>Bản dịch:</b><br>
-Lan thân mến,<br><br>
-Mình viết thư này để mời bạn đến dự tiệc sinh nhật của mình nhân dịp mình tròn 20 tuổi, và mình thực sự rất mong bạn đến được.<br><br>
-Tiệc sẽ diễn ra vào thứ Bảy, ngày 20 tháng 6 lúc 6 giờ chiều tại nhà mình trên đường Lê Lợi, rất dễ tìm.<br><br>
-Sẽ có tiệc nướng, âm nhạc và trò chơi, nên mình chắc chắn đó sẽ rất vui. Ngoài ra, vài người bạn cũ cùng lớp cũng sẽ đến.<br><br>
-Hãy báo mình biết liệu bạn có đến được không trước thứ Năm nhé. Cứ thoải mái dẫn em gái bạn theo cùng.<br><br>
-Mình thực sự mong bạn đến được, và mình rất mong được gặp bạn ở đó. Hãy báo mình sớm nhé.<br><br>
-Thân ái,<br>
-Mai Khanh
-</div>
-<p class="note">(~120 từ)</p>
+<script>
+var PARAS=[
+ { label:"Đoạn 1 — Mở đầu &amp; Lời mời",
+   en:"I'm writing to <b>invite</b> you to my birthday party on the <b>occasion</b> of my 20th birthday, and <b>it would mean a great deal to me</b> if you could join us.",
+   vi:"Mình viết thư này để mời bạn đến dự tiệc sinh nhật của mình nhân dịp mình tròn 20 tuổi, và sẽ có ý nghĩa rất lớn với mình nếu bạn có thể tham dự.",
+   vocab:[
+    ["invite","in vai tờ","/ɪnˈvaɪt/","v","mời"],
+    ["occasion","ơ khây giần","/əˈkeɪʒn/","n","dịp, sự kiện"],
+    ["it would mean a great deal to me","","","cụm","điều đó sẽ có ý nghĩa rất lớn với mình"],
+    ["join us","","","cụm","tham dự cùng bọn mình"]
+   ]},
+ { label:"Đoạn 2 — Thời gian, địa điểm",
+   en:"It will <b>be held</b> on Saturday, 20 June at 6 p.m. at my house on Le Loi Street — <b>should you have any trouble finding it</b>, just give me a call.",
+   vi:"Tiệc sẽ diễn ra vào thứ Bảy, ngày 20 tháng 6 lúc 6 giờ chiều tại nhà mình trên đường Lê Lợi — nếu bạn gặp khó khăn khi tìm đường, cứ gọi cho mình.",
+   vocab:[
+    ["be held","bi heo đờ","/biː held/","cụm","được tổ chức, diễn ra"],
+    ["should you have any trouble finding it","","","cụm","nếu bạn gặp khó khăn khi tìm đường (= if you have...)"],
+    ["give me a call","ghi vờ mi ơ co","/ɡɪv mi ə kɔːl/","cụm","gọi điện cho mình"]
+   ]},
+ { label:"Đoạn 3 — Hoạt động",
+   en:"There will be a <b>barbecue</b>, music and games <b>laid on</b>, <b>not to mention</b> a few old classmates dropping by, so I've no doubt it will turn out to be a <b>thoroughly enjoyable occasion</b>.",
+   vi:"Sẽ có tiệc nướng, âm nhạc và trò chơi được chuẩn bị sẵn, chưa kể vài người bạn cũ cùng lớp cũng sẽ ghé qua, nên mình chắc chắn đó sẽ là một dịp thực sự thú vị.",
+   vocab:[
+    ["barbecue","ba bi kiu","/ˈbɑːbɪkjuː/","n","tiệc nướng ngoài trời"],
+    ["laid on","lết on","/leɪd ɒn/","cụm","được chuẩn bị/tổ chức sẵn"],
+    ["not to mention","nót tu men sần","/nɒt tuː ˈmenʃn/","cụm","chưa kể, chưa nói đến"],
+    ["classmates dropping by","","","cụm","bạn cùng lớp ghé qua"],
+    ["thoroughly enjoyable occasion","thơ rơ li en giôi ơ bồ ơ khây giần","/ˈθʌrəli ɪnˈdʒɔɪəbl əˈkeɪʒn/","cụm","một dịp thực sự thú vị"]
+   ]},
+ { label:"Đoạn 4 — Xác nhận tham dự (RSVP)",
+   en:"Do let me know whether you'll be able to <b>make it</b> by Thursday, and <b>feel free to</b> bring your sister <b>along</b>, as <b>the more the merrier</b>.",
+   vi:"Hãy báo mình biết liệu bạn có đến được không trước thứ Năm, và cứ thoải mái mang theo em gái bạn, càng đông càng vui.",
+   vocab:[
+    ["make it","mây kít","/meɪk ɪt/","cụm","đến được, thu xếp được"],
+    ["feel free to...","phin phri tu","/fiːl friː tuː/","cụm","cứ thoải mái (làm gì)"],
+    ["bring... along","bờ rinh ơ long","/brɪŋ əˈlɒŋ/","cụm","dẫn/mang ... theo cùng"],
+    ["the more the merrier","","","cụm","càng đông càng vui"]
+   ]},
+ { label:"Đoạn 5 — Kết thư",
+   en:"I really hope you'll be able to come, as <b>it wouldn't be the same without you</b>, and I'm very much <b>looking forward to</b> seeing you there.",
+   vi:"Mình thực sự mong bạn đến được, vì sẽ không trọn vẹn nếu thiếu bạn, và mình rất mong được gặp bạn ở đó.",
+   vocab:[
+    ["it wouldn't be the same without you","","","cụm","sẽ không trọn vẹn nếu thiếu bạn"],
+    ["looking forward to","lu kinh pho ợt tu","/ˈlʊkɪŋ ˈfɔːwəd tuː/","cụm","mong chờ, mong được"],
+    ["very much","","","cụm","rất, hết sức"]
+   ]}
+];
 
-<h2>III. TỪ VỰNG &amp; CỤM TỪ CHI TIẾT</h2>
-<div style="margin:6px 0;display:flex;gap:8px;flex-wrap:wrap;">
-<button type="button" class="vrepeat" data-mode="mean">🔁 Lặp từ vựng</button>
-<button type="button" class="vrepeat" data-mode="nomean">🔁 Lặp từ vựng (không nghĩa)</button>
-</div>
-<table id="vocabTable">
-<tr><th width="4%">#</th><th width="22%">Từ / Cụm</th><th width="15%">Phiên âm</th><th width="6%">Loại</th><th>Nghĩa</th></tr>
-<tr><td>1</td><td class="w">invite</td><td>(in vai tờ)<br><span class="ipa">/ɪnˈvaɪt/</span></td><td>v</td><td>mời</td></tr>
-<tr><td>2</td><td class="w">occasion</td><td>(ơ khây giần)<br><span class="ipa">/əˈkeɪʒn/</span></td><td>n</td><td>dịp, sự kiện</td></tr>
-<tr><td>3</td><td class="w">venue</td><td>(ven niu)<br><span class="ipa">/ˈvenjuː/</span></td><td>n</td><td>địa điểm tổ chức</td></tr>
-<tr><td>4</td><td class="w">be held</td><td>(bi heo đờ)<br><span class="ipa">/biː held/</span></td><td>cụm</td><td>được tổ chức</td></tr>
-<tr><td>5</td><td class="w">barbecue</td><td>(ba bi kiu)<br><span class="ipa">/ˈbɑːbɪkjuː/</span></td><td>n</td><td>tiệc nướng ngoài trời</td></tr>
-<tr><td>6</td><td class="w">make it</td><td>(mây kít)<br><span class="ipa">/meɪk ɪt/</span></td><td>cụm</td><td>đến được, thu xếp được</td></tr>
-<tr><td>7</td><td class="w">RSVP</td><td>—</td><td>abbr</td><td>vui lòng phản hồi (xác nhận tham dự)</td></tr>
-<tr><td>8</td><td class="w">I would really love you to come</td><td>—</td><td>cụm</td><td>Mình thực sự rất mong bạn đến</td></tr>
-<tr><td>9</td><td class="w">It will be held on... at...</td><td>—</td><td>cụm</td><td>Sự kiện sẽ diễn ra vào... tại...</td></tr>
-<tr><td>10</td><td class="w">which is easy to find</td><td>—</td><td>cụm</td><td>rất dễ tìm</td></tr>
-<tr><td>11</td><td class="w">feel free to...</td><td>—</td><td>cụm</td><td>cứ thoải mái (làm gì)</td></tr>
-<tr><td>12</td><td class="w">In addition</td><td>(in ơ đí sần)<br><span class="ipa">/ɪn əˈdɪʃn/</span></td><td>cụm</td><td>ngoài ra, thêm vào đó</td></tr>
-<tr><td>13</td><td class="w">Please let me know if you can make it</td><td>—</td><td>cụm</td><td>Hãy báo mình biết liệu bạn có đến được không</td></tr>
-<tr><td>14</td><td class="w">I am looking forward to seeing you there</td><td>—</td><td>cụm</td><td>Mình rất mong được gặp bạn ở đó</td></tr>
-<tr><td>15</td><td class="w">Do let me know soon</td><td>—</td><td>cụm</td><td>Hãy báo mình sớm nhé</td></tr>
-</table>
+var wrap=document.getElementById('vwrap');
+function esc(s){ return (s||'').replace(/"/g,'&quot;'); }
+function rowHtml(v,i){
+  var phrase = v[3]==='cụm';
+  var rd = v[1] ? '('+v[1]+')' : '—';
+  var ipa = v[2] ? ' <span class="ipa2">'+v[2]+'</span>' : '';
+  return '<tr class="'+(phrase?'phrase':'')+'" data-word="'+esc(v[0])+'" data-mean="'+esc(v[4])+'">'+
+    '<td class="idx">'+i+'</td>'+
+    '<td><span class="w">'+v[0]+'</span></td>'+
+    '<td class="rd">'+rd+ipa+'</td>'+
+    '<td><span class="pos2">'+v[3]+'</span></td>'+
+    '<td>'+v[4]+'</td></tr>';
+}
+function fullText(){
+  return PARAS.map(function(p){ return '<p>'+p.en+'</p>'; }).join('');
+}
+function render(q){
+  q=(q||'').toLowerCase().trim();
+  wrap.innerHTML='';
+  if(!q){
+    wrap.innerHTML+='<div class="fullbox">'+
+      '<div class="fulltitle">📖 Toàn bài — đọc liền mạch trước</div>'+
+      '<div class="fulltext">'+fullText()+'</div>'+
+      '<div class="fullnote">⬇️ Bên dưới: tách từng đoạn nhỏ kèm bản dịch &amp; từ vựng</div>'+
+    '</div>';
+  }
+  var n=0, idx=0;
+  PARAS.forEach(function(p){
+    var rows = p.vocab.filter(function(v){
+      return !q || (v[0]+' '+v[4]).toLowerCase().indexOf(q)>-1;
+    });
+    if(!rows.length) return;
+    var body='';
+    rows.forEach(function(v){ idx++; body+=rowHtml(v,idx); });
+    n+=rows.length;
+    wrap.innerHTML+='<div class="pgroup">'+
+      '<div class="plabel"><span class="badge">'+rows.length+' từ</span>'+p.label+
+        '<button type="button" class="vrepeat" data-mode="mean">🔁 Lặp từ vựng</button>'+
+        '<button type="button" class="vrepeat" data-mode="nomean">🔁 Lặp từ vựng (không nghĩa)</button>'+
+      '</div>'+
+      '<span class="en">'+p.en+'</span>'+
+      '<div class="pvi">→ '+p.vi+'</div>'+
+      '<table class="vtable"><thead><tr>'+
+        '<th>#</th><th>Từ / Cụm</th><th>Phiên âm</th><th>Loại</th><th>Nghĩa</th>'+
+      '</tr></thead><tbody>'+body+'</tbody></table>'+
+    '</div>';
+  });
+  document.getElementById('nores').style.display = n? 'none':'block';
+}
+render('');
 
-<h2>IV. MẸO</h2>
-<div class="tip"><ul>
-<li>Phải nêu <b class="k">đủ 3 thông tin: thời gian – địa điểm – hoạt động</b> (đề thường yêu cầu rõ).</li>
-<li>Văn phong thân mật: <b>được dùng viết tắt</b> (I'm, we'll, it's) và giọng gần gũi.</li>
-<li>Nên có câu <b>kêu gọi xác nhận (RSVP)</b>: "let me know if you can make it".</li>
-<li>Kết thân mật: <i>Best wishes / Love / See you soon</i> (KHÔNG dùng Yours faithfully).</li>
-</ul></div>
-<p class="note" style="text-align:center;">— Invitation Letter —</p>
-<!-- ===== 🔊 NGHE PHÁT ÂM TỪ VỰNG (giọng đọc của trình duyệt, chạy offline) ===== -->
+document.getElementById('search').addEventListener('input',function(){ render(this.value); });
+</script>
+
+<!-- ===== 🔊 NGHE PHÁT ÂM TỪ VỰNG (dùng giọng đọc của trình duyệt, chạy offline) ===== -->
 <style>
 .spk{cursor:pointer;border:none;background:transparent;font-size:14px;line-height:1;
   padding:0 3px;margin-left:4px;vertical-align:middle;opacity:.5;transition:transform .15s,opacity .15s;}
@@ -148,6 +433,7 @@ Mai Khanh
     el.appendChild(b);
   }
   function run(){ document.querySelectorAll('.w, .vcard .word, td.q, .en, .letter p, .fulltext p, .tem i, .ex').forEach(addSpk); }
+
   var queueBtn=null;
   function speakQueue(items,btn){
     if(!synth){ alert('Trình duyệt này không hỗ trợ đọc. Hãy mở bằng Chrome hoặc Edge.'); return; }
@@ -169,16 +455,13 @@ Mai Khanh
   document.addEventListener('click',function(e){
     var btn=e.target.closest('.vrepeat');
     if(!btn) return;
-    var table=document.getElementById('vocabTable');
+    var table=btn.closest('.pgroup').querySelector('.vtable');
     if(!table) return;
     var withMean = btn.dataset.mode==='mean';
     var items=[];
-    table.querySelectorAll('tr').forEach(function(tr){
-      var wCell=tr.querySelector('td.w');
-      if(!wCell) return;
-      var w=wCell.textContent.replace(/🔊/g,'').trim();
-      var tds=tr.querySelectorAll('td');
-      var m=tds.length?tds[tds.length-1].textContent.trim():'';
+    table.querySelectorAll('tbody tr').forEach(function(tr){
+      var w=tr.dataset.word, m=tr.dataset.mean;
+      if(!w) return;
       items.push(withMean && m ? (w+'. '+m) : w);
     });
     speakQueue(items,btn);

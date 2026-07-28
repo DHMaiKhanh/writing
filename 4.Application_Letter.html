@@ -1,115 +1,396 @@
 <!DOCTYPE html>
-<html lang="vi"><head><meta charset="UTF-8"><title>Application Letter</title>
+<html lang="vi"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Application Letter · VSTEP Writing</title>
 <style>
-body{font-family:'Calibri',sans-serif;font-size:12pt;line-height:1.45;color:#222;}
-h1{color:#1F4E79;font-size:19pt;text-align:center;}
-h2{color:#2E74B5;font-size:14pt;border-bottom:2px solid #2E74B5;padding-bottom:3px;margin-top:20px;}
-.tem{background:#FFF8E7;border-left:4px solid #E0A800;padding:8px 12px;margin:6px 0;}
-.ex{background:#F2F7FF;border-left:4px solid #2E74B5;padding:8px 12px;margin:6px 0;}
-.exvi{background:#F4FBF4;border-left:4px solid #28A745;padding:8px 12px;margin:6px 0;}
-table{border-collapse:collapse;width:100%;margin:8px 0 14px 0;}
-th{background:#2E74B5;color:#fff;padding:6px 7px;text-align:left;font-size:10.5pt;border:1px solid #2E74B5;}
-td{border:1px solid #BBB;padding:5px 7px;font-size:10.5pt;vertical-align:top;}
-tr:nth-child(even) td{background:#F4F8FC;}
-.w{font-weight:bold;color:#1F4E79;} .ipa{color:#555;}
-.vrepeat{font-size:10.5pt;font-weight:700;color:#fff;background:#28A745;border:none;
-  border-radius:99px;padding:5px 12px;cursor:pointer;}
-.vrepeat:hover{background:#1e7e34;}
+:root{
+  --bg:#eef2f8; --paper:#ffffff; --ink:#1f2a3a; --mut:#64748b;
+  --blue:#2563eb; --blue-d:#1e40af; --sky:#eaf1ff; --amber:#f59e0b;
+  --amber-bg:#fff8ec; --green:#16a34a; --green-bg:#effbf2; --red:#dc2626;
+  --line:#e3e9f2; --shadow:0 6px 22px rgba(30,50,90,.08);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:74px;}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Segoe UI',system-ui,-apple-system,'Calibri',sans-serif;
+  font-size:16px;line-height:1.6;}
+
+/* ===== HERO ===== */
+.hero{background:linear-gradient(135deg,#1e293b 0%,#334155 60%,#475569 100%);
+  color:#fff;padding:34px 20px 28px;text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:"💼";position:absolute;right:-10px;bottom:-30px;font-size:170px;
+  opacity:.10;transform:rotate(-12deg);}
+.hero .tagvi{font-size:13px;letter-spacing:3px;text-transform:uppercase;opacity:.85;}
+.hero h1{margin:6px 0 8px;font-size:30px;font-weight:800;}
+.hero .meta{display:inline-flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:6px;}
+.hero .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  padding:5px 13px;border-radius:99px;font-size:13px;backdrop-filter:blur(4px);}
+
+/* ===== NAV dính ===== */
+nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.9);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+  display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:9px 12px;
+  box-shadow:0 2px 12px rgba(30,50,90,.05);}
+nav a{text-decoration:none;color:var(--mut);font-weight:600;font-size:14px;
+  padding:7px 14px;border-radius:99px;transition:.15s;}
+nav a:hover{background:var(--sky);color:var(--blue-d);}
+
+.wrap{max-width:880px;margin:0 auto;padding:26px 18px 70px;}
+section{margin-bottom:30px;}
+.h2{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:800;
+  color:var(--blue-d);margin:0 0 14px;}
+.h2 .num{flex:0 0 34px;height:34px;background:var(--blue);color:#fff;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:16px;}
+
+/* ===== Khung thư: các bước ===== */
+.steps{display:flex;flex-direction:column;gap:12px;}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  padding:14px 16px 14px 18px;box-shadow:var(--shadow);position:relative;
+  border-left:4px solid var(--amber);}
+.step .st-h{font-weight:800;color:var(--ink);margin-bottom:4px;}
+.step .st-h .vi{color:var(--mut);font-weight:600;font-size:14px;}
+.en{color:var(--blue-d);font-style:italic;background:var(--sky);
+  padding:7px 11px;border-radius:9px;display:block;margin:6px 0;font-size:15px;}
+.vi-line{color:#475569;font-size:14.5px;}
+.hint{color:var(--mut);font-size:13px;background:#f6f8fc;border:1px dashed #cdd7e6;
+  border-radius:9px;padding:8px 11px;margin-top:7px;}
+.hint b{color:var(--ink);}
+.callout{background:var(--green-bg);border:1px solid #c7ead2;border-left:4px solid var(--green);
+  border-radius:11px;padding:10px 14px;color:#14532d;font-size:14px;margin-top:6px;}
+
+/* ===== Bài mẫu trông như lá thư ===== */
+.sit{background:var(--amber-bg);border:1px solid #f3e0b8;border-radius:12px;
+  padding:11px 15px;font-size:14.5px;color:#7c5b12;margin-bottom:14px;}
+.letter{background:var(--paper);border:1px solid var(--line);border-radius:16px;
+  box-shadow:var(--shadow);padding:26px 28px;position:relative;
+  background-image:linear-gradient(transparent 31px,#f1f5fb 31px,#f1f5fb 32px,transparent 32px);
+  background-size:100% 32px;line-height:32px;}
+.letter .subj{font-weight:800;color:var(--blue-d);}
+.letter p{margin:0 0 16px;}
+.letter .sign{font-style:italic;}
+.toggle{display:inline-flex;align-items:center;gap:7px;cursor:pointer;
+  background:var(--blue);color:#fff;border:none;font:inherit;font-size:14px;font-weight:600;
+  padding:8px 16px;border-radius:99px;margin:14px 0 0;box-shadow:var(--shadow);}
+.toggle:hover{background:var(--blue-d);}
+.trans{display:none;margin-top:12px;background:var(--green-bg);border:1px solid #c7ead2;
+  border-left:4px solid var(--green);border-radius:13px;padding:16px 20px;color:#14532d;}
+.trans.show{display:block;}
+.wc{text-align:right;color:var(--mut);font-size:13px;margin-top:8px;}
+
+/* ===== Từ vựng ===== */
+.vtools{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap;}
+.vtools input{flex:1;min-width:180px;padding:10px 14px;border:1px solid var(--line);
+  border-radius:99px;font:inherit;font-size:15px;outline:none;background:var(--paper);}
+.vtools input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.12);}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:12px;}
+.vcard{background:var(--paper);border:1px solid var(--line);border-radius:13px;
+  padding:13px 15px;box-shadow:var(--shadow);transition:.15s;border-top:3px solid var(--blue);}
+.vcard:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(30,50,90,.13);}
+.vcard.phrase{border-top-color:var(--amber);}
+.vcard .top{display:flex;justify-content:space-between;align-items:start;gap:8px;}
+.vcard .word{font-weight:800;color:var(--blue-d);font-size:16px;}
+.vcard .pos{flex:0 0 auto;font-size:11px;font-weight:700;color:#fff;background:var(--blue);
+  padding:2px 9px;border-radius:99px;height:fit-content;}
+.vcard.phrase .pos{background:var(--amber);}
+.vcard .read{color:var(--mut);font-size:13px;margin:3px 0;}
+.vcard .ipa{color:#94a3b8;font-size:12.5px;}
+.vcard .mean{margin-top:5px;font-size:14.5px;}
+.no-result{grid-column:1/-1;text-align:center;color:var(--mut);padding:20px;display:none;}
+
+/* ===== Toàn bài (nguyên đoạn) ===== */
+.fullbox{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--blue);
+  border-radius:14px;box-shadow:var(--shadow);padding:16px 20px;margin-bottom:22px;}
+.fulltitle{font-weight:800;color:var(--blue-d);font-size:16px;margin-bottom:8px;}
+.fulltext p{margin:0 0 12px;color:var(--ink);line-height:1.7;}
+.fulltext b{color:var(--blue-d);}
+.fullnote{margin-top:6px;color:var(--mut);font-size:13.5px;font-style:italic;
+  border-top:1px dashed var(--line);padding-top:10px;}
+.fulltext.frame p{font-style:italic;color:#334155;}
+.bl{font-style:normal;background:var(--amber-bg);border:1px solid #f3d89a;
+  color:#92600a;border-radius:5px;padding:0 5px;font-size:13.5px;white-space:nowrap;}
+
+/* ===== Từ vựng theo từng đoạn (bảng) ===== */
+.pgroup{margin-bottom:24px;}
+.pgroup .plabel{font-weight:800;color:var(--blue-d);font-size:16px;margin:0 0 8px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+.pgroup .plabel .badge{flex:0 0 auto;font-size:12px;font-weight:700;color:#fff;background:var(--blue);border-radius:99px;padding:3px 11px;}
+.vrepeat{flex:0 0 auto;font-size:12.5px;font-weight:700;color:#fff;background:var(--green);border:none;
+  border-radius:99px;padding:5px 12px;cursor:pointer;transition:.15s;}
+.vrepeat:hover{background:#128a3d;}
 .vrepeat.on{animation:spkpulse .6s infinite;}
-.tip{background:#EAF7EA;border-left:4px solid #28A745;padding:8px 12px;}
-.note{color:#555;font-size:10.5pt;font-style:italic;}
-b.k{color:#C00000;}
+.pgroup .pvi{color:#475569;font-size:14px;margin:2px 0 0;}
+.vtable{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;box-shadow:var(--shadow);margin-top:9px;}
+.vtable th{background:var(--sky);color:var(--blue-d);text-align:left;padding:9px 12px;font-size:13px;font-weight:700;}
+.vtable td{border-top:1px solid var(--line);padding:9px 12px;font-size:14.5px;vertical-align:top;}
+.vtable tr.phrase td{background:var(--amber-bg);}
+.vtable .idx{color:var(--mut);text-align:center;width:32px;}
+.vtable .w{font-weight:800;color:var(--blue-d);}
+.vtable .rd{color:var(--mut);font-size:12.5px;}
+.vtable .ipa2{color:#94a3b8;}
+.vtable .pos2{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:var(--blue);border-radius:99px;padding:1px 9px;}
+.vtable tr.phrase .pos2{background:var(--amber);}
+@media(max-width:560px){ .vtable th:nth-child(3),.vtable td:nth-child(3){display:none;} }
+
+/* ===== Mẹo ===== */
+.tips{background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);overflow:hidden;}
+.tips li{list-style:none;padding:13px 16px 13px 48px;position:relative;border-bottom:1px solid var(--line);}
+.tips li:last-child{border-bottom:none;}
+.tips li::before{content:"💡";position:absolute;left:16px;top:12px;}
+.tips b{color:var(--blue-d);} .tips .k{color:var(--red);font-weight:700;}
+.tips ul{margin:0;padding:0;}
+
+footer{text-align:center;color:var(--mut);font-size:14px;margin-top:30px;}
+
+@media(max-width:560px){
+  .hero h1{font-size:23px;} .wrap{padding:20px 13px 50px;}
+  .letter{padding:20px 18px;} nav a{padding:6px 10px;font-size:13px;}
+}
 </style></head><body>
 
-<h1>APPLICATION LETTER<br>THƯ XIN VIỆC / ỨNG TUYỂN (Formal)</h1>
-<p class="note" style="text-align:center;">Mục đích: ứng tuyển công việc / khóa học / học bổng · Văn phong: TRANG TRỌNG · ~120–150 từ</p>
+<header class="hero">
+  <div class="tagvi">VSTEP Writing · Task 1</div>
+  <h1>Application Letter</h1>
+  <div style="opacity:.9;font-size:15px;">Thư xin việc / ứng tuyển — Văn phong trang trọng</div>
+  <div class="meta">
+    <span class="pill">🎯 Ứng tuyển công việc / khóa học / học bổng</span>
+    <span class="pill">🎩 Trang trọng (formal)</span>
+    <span class="pill">✍️ ~120–150 từ</span>
+  </div>
+</header>
 
-<h2>I. KHUNG THƯ (TEMPLATE)</h2>
-<div class="tem">
-<b>1. Greeting:</b> Dear Sir/Madam, / Dear Mr./Ms. [Name],<br><br>
-<b>2. Opening — vị trí ứng tuyển:</b><br>
-<i>I am writing to apply for the position of [vị trí], which was advertised on [nguồn].</i><br>
-→ Tôi viết thư này để ứng tuyển vào vị trí…<br><br>
-<b>3. Qualifications &amp; experience (Bằng cấp &amp; kinh nghiệm):</b><br>
-<i>I hold a degree in [chuyên ngành] and I have [số năm] of experience in [lĩnh vực].</i><br>
-→ Tôi có … kinh nghiệm trong…<br><br>
-<b>4. Why you are suitable (Vì sao phù hợp):</b><br>
-<i>I believe my skills in [kỹ năng] make me a suitable candidate for this role. I am also hard-working and reliable.</i><br>
-→ Tôi tin rằng các kỹ năng của tôi… khiến tôi là ứng viên phù hợp.<br><br>
-<b>5. Availability / attached CV:</b><br>
-<i>Please find attached my CV for your consideration, and I am available to start [thời gian].</i><br>
-→ Tôi xin đính kèm CV… Tôi có thể bắt đầu vào…<br><br>
-<b>6. Closing:</b><br>
-<i>I would welcome the opportunity to discuss my application in an interview, and I look forward to hearing from you.</i><br>
-→ Tôi rất mong có cơ hội trao đổi… Tôi mong sớm nhận được phản hồi.<br><br>
-<b>7. Sign:</b> Yours faithfully (Sir/Madam) / Yours sincerely (biết tên) + [Full Name]
-<br><br><span class="note">📊 Khung cố định ≈ 81 từ → điền đầy đủ [...] thành thư ~120–130 từ.</span>
+<nav>
+  <a href="#khung">📐 Khung thư</a>
+  <a href="#mau">📄 Bài mẫu</a>
+  <a href="#tuvung">📚 Từ vựng</a>
+  <a href="#meo">💡 Mẹo</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ===== I. KHUNG ===== -->
+<section id="khung">
+  <div class="h2"><span class="num">I</span> Khung thư (Template)</div>
+
+  <div class="fullbox">
+    <div class="fulltitle">📖 Nguyên khung thư — đọc tổng quát trước</div>
+    <div class="fulltext frame">
+      <p>Dear Sir/Madam,</p>
+      <p>I am writing to apply for the position of <span class="bl">[vị trí]</span>, which was advertised on <span class="bl">[nguồn]</span>.</p>
+      <p>I hold a degree in <span class="bl">[chuyên ngành]</span> and I have <span class="bl">[số năm]</span> of experience in <span class="bl">[lĩnh vực]</span>.</p>
+      <p>I believe my skills in <span class="bl">[kỹ năng]</span> make me a suitable candidate for this role. I am also hard-working and reliable.</p>
+      <p>Please find attached my CV for your consideration, and I am available to start <span class="bl">[thời gian]</span>.</p>
+      <p>I would welcome the opportunity to discuss my application in an interview, and I look forward to hearing from you.</p>
+      <p>Yours faithfully,<br><span class="bl">[Full Name]</span></p>
+    </div>
+    <div class="fullnote">⬇️ Bên dưới: tách từng phần kèm bản dịch &amp; cách đổi câu theo đề</div>
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="st-h">1. Greeting <span class="vi">— Lời chào</span></div>
+      <span class="en">Dear Sir/Madam, &nbsp; / &nbsp; Dear Mr./Ms. [Name],</span>
+    </div>
+
+    <div class="step">
+      <div class="st-h">2. Opening — Position <span class="vi">— Vị trí ứng tuyển</span></div>
+      <span class="en">I am writing to apply for the position of [vị trí], which was advertised on [nguồn].</span>
+      <div class="vi-line">→ Tôi viết thư này để ứng tuyển vào vị trí…</div>
+      <div class="hint">🔁 <b>Đổi đuôi câu theo đề:</b> …advertised in the newspaper (đăng báo) · …advertised on your company's website (website công ty) · …advertised on a job portal (trang tuyển dụng) · …which I saw on social media (mạng xã hội).</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">3. Qualifications &amp; experience <span class="vi">— Bằng cấp &amp; kinh nghiệm</span></div>
+      <span class="en">I hold a degree in [chuyên ngành] and I have [số năm] of experience in [lĩnh vực].</span>
+      <div class="vi-line">→ Tôi có bằng… và có… kinh nghiệm trong…</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">4. Why you are suitable <span class="vi">— Vì sao phù hợp</span></div>
+      <span class="en">I believe my skills in [kỹ năng] make me a suitable candidate for this role. I am also hard-working and reliable.</span>
+      <div class="vi-line">→ Tôi tin rằng các kỹ năng của tôi… khiến tôi là ứng viên phù hợp.</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">5. Availability / attached CV <span class="vi">— Sẵn sàng bắt đầu / đính kèm CV</span></div>
+      <span class="en">Please find attached my CV for your consideration, and I am available to start [thời gian].</span>
+      <div class="vi-line">→ Tôi xin đính kèm CV… Tôi có thể bắt đầu vào…</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">6. Closing <span class="vi">— Kết</span></div>
+      <span class="en">I would welcome the opportunity to discuss my application in an interview, and I look forward to hearing from you.</span>
+      <div class="vi-line">→ Tôi rất mong có cơ hội trao đổi… Tôi mong sớm nhận được phản hồi.</div>
+    </div>
+
+    <div class="step">
+      <div class="st-h">7. Signature <span class="vi">— Ký tên</span></div>
+      <span class="en">Yours faithfully, &nbsp;<span style="opacity:.7;">(Sir/Madam)</span> &nbsp;/&nbsp; Yours sincerely, &nbsp;<span style="opacity:.7;">(biết tên)</span> &nbsp;+ [Full Name]</span>
+    </div>
+
+    <div class="callout">📊 Khung cố định ≈ 81 từ → điền đầy đủ các <b>[...]</b> sẽ thành thư ~120–130 từ là chuẩn.</div>
+  </div>
+</section>
+
+<!-- ===== II. BÀI MẪU ===== -->
+<section id="mau">
+  <div class="h2"><span class="num">II</span> Bài mẫu (Example)</div>
+  <div class="sit"><b>Tình huống:</b> Bạn thấy quảng cáo tuyển gia sư tiếng Anh bán thời gian. Viết thư ứng tuyển.</div>
+
+  <div class="letter">
+    <p class="subj">Subject: Application for the part-time English Tutor position</p>
+    <p>Dear Sir/Madam,</p>
+    <p>I am writing to apply for the position of part-time English tutor, which was advertised on your centre's website on 2 June 2026.</p>
+    <p>I hold a bachelor's degree in English and I have two years of experience in teaching English to teenagers and adults preparing for school and international exams.</p>
+    <p>I believe my skills in patient, clear teaching and effective communication make me a suitable candidate for this role. I am also hard-working and reliable.</p>
+    <p>Please find attached my CV for your consideration, and I am available to start immediately.</p>
+    <p>I would welcome the opportunity to discuss my application in an interview, and I look forward to hearing from you.</p>
+    <p class="sign">Yours faithfully,<br>Mai Khanh</p>
+  </div>
+  <div class="wc">≈ 115 từ — đạt chuẩn VSTEP ✓</div>
+
+  <button class="toggle" onclick="var t=document.getElementById('tr');t.classList.toggle('show');this.firstChild.textContent=t.classList.contains('show')?'🇻🇳 Ẩn bản dịch':'🇻🇳 Xem bản dịch';">🇻🇳 Xem bản dịch</button>
+  <div class="trans" id="tr">
+    <b>Bản dịch:</b><br>
+    Kính gửi Quý trung tâm,<br><br>
+    Tôi viết thư này để ứng tuyển vào vị trí gia sư tiếng Anh bán thời gian được đăng trên website của trung tâm vào ngày 2/6/2026.<br><br>
+    Tôi có bằng cử nhân tiếng Anh và tôi có hai năm kinh nghiệm giảng dạy tiếng Anh cho thanh thiếu niên và người lớn đang chuẩn bị cho các kỳ thi ở trường và các kỳ thi quốc tế.<br><br>
+    Tôi tin rằng kỹ năng dạy học kiên nhẫn, rõ ràng và khả năng giao tiếp hiệu quả của tôi khiến tôi là ứng viên phù hợp cho vị trí này. Tôi cũng chăm chỉ và đáng tin cậy.<br><br>
+    Tôi xin đính kèm CV để Quý trung tâm xem xét, và tôi có thể bắt đầu làm việc ngay lập tức.<br><br>
+    Tôi rất mong có cơ hội trao đổi về đơn ứng tuyển trong một buổi phỏng vấn, và tôi mong sớm nhận được phản hồi.<br><br>
+    Trân trọng,<br>Mai Khanh
+  </div>
+</section>
+
+<!-- ===== III. TỪ VỰNG ===== -->
+<section id="tuvung">
+  <div class="h2"><span class="num">III</span> Từ vựng &amp; cụm từ <span style="font-weight:600;font-size:14px;color:var(--mut)">— theo từng đoạn của bài mẫu</span></div>
+  <div class="vtools">
+    <input id="search" type="text" placeholder="🔍 Gõ để lọc từ vựng (vd: apply, ứng tuyển...)">
+  </div>
+  <div id="vwrap"></div>
+  <div class="no-result" id="nores">Không tìm thấy từ nào khớp 🙈</div>
+</section>
+
+<!-- ===== IV. MẸO ===== -->
+<section id="meo">
+  <div class="h2"><span class="num">IV</span> Mẹo ăn điểm</div>
+  <div class="tips"><ul>
+    <li>Cấu trúc vàng: <b class="k">vị trí → bằng cấp/kinh nghiệm → vì sao phù hợp → CV → mong phỏng vấn</b>.</li>
+    <li>Nêu <b>kỹ năng cụ thể</b> liên quan đến công việc, đừng nói chung chung.</li>
+    <li>Formal tuyệt đối: không viết tắt; kết <i>Yours faithfully</i> (Sir/Madam) hoặc <i>Yours sincerely</i> (biết tên).</li>
+  </ul></div>
+</section>
+
+<footer>— Application Letter · VSTEP B2 Writing —</footer>
 </div>
 
-<h2>II. BÀI MẪU (EXAMPLE)</h2>
-<p class="note"><b>Tình huống:</b> Bạn thấy quảng cáo tuyển gia sư tiếng Anh bán thời gian. Viết thư ứng tuyển.</p>
-<div class="ex">
-<b>Subject: Application for the part-time English Tutor position</b><br><br>
-Dear Sir/Madam,<br><br>
-I am writing to apply for the position of part-time English tutor, which was advertised on your centre's website on 2 June 2026.<br><br>
-I hold a bachelor's degree in English and I have two years of experience in teaching English to teenagers and adults preparing for school and international exams.<br><br>
-I believe my skills in patient, clear teaching and effective communication make me a suitable candidate for this role. I am also hard-working and reliable.<br><br>
-Please find attached my CV for your consideration, and I am available to start immediately.<br><br>
-I would welcome the opportunity to discuss my application in an interview, and I look forward to hearing from you.<br><br>
-Yours faithfully,<br>
-Mai Khanh
-</div>
-<div class="exvi">
-<b>Bản dịch:</b><br>
-Kính gửi Quý trung tâm,<br><br>
-Tôi viết thư này để ứng tuyển vào vị trí gia sư tiếng Anh bán thời gian được đăng trên website của trung tâm vào ngày 2/6/2026.<br><br>
-Tôi có bằng cử nhân tiếng Anh và tôi có hai năm kinh nghiệm giảng dạy tiếng Anh cho thanh thiếu niên và người lớn đang chuẩn bị cho các kỳ thi ở trường và các kỳ thi quốc tế.<br><br>
-Tôi tin rằng kỹ năng dạy học kiên nhẫn, rõ ràng và khả năng giao tiếp hiệu quả của tôi khiến tôi là ứng viên phù hợp cho vị trí này. Tôi cũng chăm chỉ và đáng tin cậy.<br><br>
-Tôi xin đính kèm CV để Quý trung tâm xem xét, và tôi có thể bắt đầu làm việc ngay lập tức.<br><br>
-Tôi rất mong có cơ hội trao đổi về đơn ứng tuyển trong một buổi phỏng vấn, và tôi mong sớm nhận được phản hồi.<br><br>
-Trân trọng,<br>
-Mai Khanh
-</div>
-<p class="note">(~115 từ)</p>
+<script>
+var PARAS=[
+ { label:"Đoạn 1 — Vị trí ứng tuyển",
+   en:"I am writing to <b>apply</b> for the <b>position</b> of part-time English tutor, which was <b>advertised</b> on your centre's website on 2 June 2026.",
+   vi:"Tôi viết thư này để ứng tuyển vào vị trí gia sư tiếng Anh bán thời gian được đăng trên website của trung tâm vào ngày 2/6/2026.",
+   vocab:[
+    ["apply (for)","ơ plai","/əˈplaɪ/","v","ứng tuyển, nộp đơn (vào)"],
+    ["position","pơ zi sần","/pəˈzɪʃn/","n","vị trí (công việc)"],
+    ["advertise","át vơ tai","/ˈædvətaɪz/","v","đăng tuyển, quảng cáo"],
+    ["I am writing to apply for the position of...","","","cụm","Tôi viết thư để ứng tuyển vị trí..."],
+    ["which was advertised on...","","","cụm","(vị trí) được đăng tuyển trên..."]
+   ]},
+ { label:"Đoạn 2 — Bằng cấp &amp; kinh nghiệm",
+   en:"I hold a bachelor's <b>degree</b> in English and I have two years of <b>experience</b> in teaching English to teenagers and adults preparing for school and international exams.",
+   vi:"Tôi có bằng cử nhân tiếng Anh và tôi có hai năm kinh nghiệm giảng dạy tiếng Anh cho thanh thiếu niên và người lớn đang chuẩn bị cho các kỳ thi ở trường và các kỳ thi quốc tế.",
+   vocab:[
+    ["qualification","qua li phi khây sần","/ˌkwɒlɪfɪˈkeɪʃn/","n","bằng cấp, trình độ"],
+    ["degree","đi gri","/dɪˈɡriː/","n","bằng đại học"],
+    ["experience","ích spia ri ợn","/ɪkˈspɪəriəns/","n","kinh nghiệm"],
+    ["I have ... years of experience in...","","","cụm","Tôi có ... năm kinh nghiệm trong..."]
+   ]},
+ { label:"Đoạn 3 — Vì sao phù hợp",
+   en:"I believe my skills in patient, clear teaching and effective communication make me a <b>suitable</b> <b>candidate</b> for this role. I am also hard-working and reliable.",
+   vi:"Tôi tin rằng kỹ năng dạy học kiên nhẫn, rõ ràng và khả năng giao tiếp hiệu quả của tôi khiến tôi là ứng viên phù hợp cho vị trí này. Tôi cũng chăm chỉ và đáng tin cậy.",
+   vocab:[
+    ["suitable","siu tơ bồ","/ˈsuːtəbl/","adj","phù hợp"],
+    ["candidate","ken đi đợt","/ˈkændɪdət/","n","ứng viên"],
+    ["hard-working","ha đơ guơ kinh","/ˈhɑːdwɜːkɪŋ/","adj","chăm chỉ"],
+    ["reliable","ri lai ơ bồ","/rɪˈlaɪəbl/","adj","đáng tin cậy"],
+    ["effective communication","i phéc tịp cơ miu ni khây sần","/ɪˈfektɪv kəˌmjuːnɪˈkeɪʃn/","cụm","giao tiếp hiệu quả"],
+    ["make me a suitable candidate for this role","","","cụm","khiến tôi là ứng viên phù hợp cho vị trí này"]
+   ]},
+ { label:"Đoạn 4 — Sẵn sàng bắt đầu / đính kèm CV",
+   en:"Please find attached my CV for your consideration, and I am <b>available</b> to start <b>immediately</b>.",
+   vi:"Tôi xin đính kèm CV để Quý trung tâm xem xét, và tôi có thể bắt đầu làm việc ngay lập tức.",
+   vocab:[
+    ["available","ơ vây lơ bồ","/əˈveɪləbl/","adj","sẵn sàng, rảnh để làm"],
+    ["immediately","i mi đi ợt li","/ɪˈmiːdiətli/","adv","ngay lập tức"],
+    ["Please find attached my CV","","","cụm","Tôi xin đính kèm CV"]
+   ]},
+ { label:"Đoạn 5 — Kết thư",
+   en:"I would welcome the <b>opportunity</b> to discuss my application in an interview, and I look forward to hearing from you.",
+   vi:"Tôi rất mong có cơ hội trao đổi về đơn ứng tuyển trong một buổi phỏng vấn, và tôi mong sớm nhận được phản hồi.",
+   vocab:[
+    ["opportunity","o pơ tiu ni ti","/ˌɒpəˈtjuːnəti/","n","cơ hội"],
+    ["I would welcome the opportunity to discuss...","","","cụm","Tôi rất mong có cơ hội trao đổi..."],
+    ["I look forward to hearing from you","","","cụm","Tôi mong sớm nhận được phản hồi"]
+   ]}
+];
 
-<h2>III. TỪ VỰNG &amp; CỤM TỪ CHI TIẾT</h2>
-<div style="margin:6px 0;display:flex;gap:8px;flex-wrap:wrap;">
-<button type="button" class="vrepeat" data-mode="mean">🔁 Lặp từ vựng</button>
-<button type="button" class="vrepeat" data-mode="nomean">🔁 Lặp từ vựng (không nghĩa)</button>
-</div>
-<table id="vocabTable">
-<tr><th width="4%">#</th><th width="22%">Từ / Cụm</th><th width="15%">Phiên âm</th><th width="6%">Loại</th><th>Nghĩa</th></tr>
-<tr><td>1</td><td class="w">apply (for)</td><td>(ơ plai)<br><span class="ipa">/əˈplaɪ/</span></td><td>v</td><td>ứng tuyển, nộp đơn (vào)</td></tr>
-<tr><td>2</td><td class="w">position</td><td>(pơ zi sần)<br><span class="ipa">/pəˈzɪʃn/</span></td><td>n</td><td>vị trí (công việc)</td></tr>
-<tr><td>3</td><td class="w">advertise</td><td>(át vơ tai)<br><span class="ipa">/ˈædvətaɪz/</span></td><td>v</td><td>đăng tuyển, quảng cáo</td></tr>
-<tr><td>4</td><td class="w">qualification</td><td>(qua li phi khây sần)<br><span class="ipa">/ˌkwɒlɪfɪˈkeɪʃn/</span></td><td>n</td><td>bằng cấp, trình độ</td></tr>
-<tr><td>5</td><td class="w">degree</td><td>(đi gri)<br><span class="ipa">/dɪˈɡriː/</span></td><td>n</td><td>bằng đại học</td></tr>
-<tr><td>6</td><td class="w">experience</td><td>(ích spia ri ợn)<br><span class="ipa">/ɪkˈspɪəriəns/</span></td><td>n</td><td>kinh nghiệm</td></tr>
-<tr><td>7</td><td class="w">suitable</td><td>(siu tơ bồ)<br><span class="ipa">/ˈsuːtəbl/</span></td><td>adj</td><td>phù hợp</td></tr>
-<tr><td>8</td><td class="w">candidate</td><td>(ken đi đợt)<br><span class="ipa">/ˈkændɪdət/</span></td><td>n</td><td>ứng viên</td></tr>
-<tr><td>9</td><td class="w">available</td><td>(ơ vây lơ bồ)<br><span class="ipa">/əˈveɪləbl/</span></td><td>adj</td><td>sẵn sàng, rảnh để làm</td></tr>
-<tr><td>10</td><td class="w">opportunity</td><td>(o pơ tiu ni ti)<br><span class="ipa">/ˌɒpəˈtjuːnəti/</span></td><td>n</td><td>cơ hội</td></tr>
-<tr><td>11</td><td class="w">I am writing to apply for the position of...</td><td>—</td><td>cụm</td><td>Tôi viết thư để ứng tuyển vị trí...</td></tr>
-<tr><td>12</td><td class="w">which was advertised on...</td><td>—</td><td>cụm</td><td>(vị trí) được đăng tuyển trên...</td></tr>
-<tr><td>13</td><td class="w">I have ... years of experience in...</td><td>—</td><td>cụm</td><td>Tôi có ... năm kinh nghiệm trong...</td></tr>
-<tr><td>14</td><td class="w">make me a suitable candidate for this role</td><td>—</td><td>cụm</td><td>khiến tôi là ứng viên phù hợp cho vị trí này</td></tr>
-<tr><td>15</td><td class="w">Please find attached my CV</td><td>—</td><td>cụm</td><td>Tôi xin đính kèm CV</td></tr>
-<tr><td>16</td><td class="w">I would welcome the opportunity to discuss...</td><td>—</td><td>cụm</td><td>Tôi rất mong có cơ hội trao đổi...</td></tr>
-<tr><td>17</td><td class="w">I look forward to hearing from you</td><td>—</td><td>cụm</td><td>Tôi mong sớm nhận được phản hồi</td></tr>
-<tr><td>18</td><td class="w">hard-working</td><td>(ha đơ guơ kinh)<br><span class="ipa">/ˈhɑːdwɜːkɪŋ/</span></td><td>adj</td><td>chăm chỉ</td></tr>
-<tr><td>19</td><td class="w">reliable</td><td>(ri lai ơ bồ)<br><span class="ipa">/rɪˈlaɪəbl/</span></td><td>adj</td><td>đáng tin cậy</td></tr>
-<tr><td>20</td><td class="w">immediately</td><td>(i mi đi ợt li)<br><span class="ipa">/ɪˈmiːdiətli/</span></td><td>adv</td><td>ngay lập tức</td></tr>
-<tr><td>21</td><td class="w">effective communication</td><td>(i phéc tịp cơ miu ni khây sần)<br><span class="ipa">/ɪˈfektɪv kəˌmjuːnɪˈkeɪʃn/</span></td><td>cụm</td><td>giao tiếp hiệu quả</td></tr>
-</table>
+var wrap=document.getElementById('vwrap');
+function esc(s){ return (s||'').replace(/"/g,'&quot;'); }
+function rowHtml(v,i){
+  var phrase = v[3]==='cụm';
+  var rd = v[1] ? '('+v[1]+')' : '—';
+  var ipa = v[2] ? ' <span class="ipa2">'+v[2]+'</span>' : '';
+  return '<tr class="'+(phrase?'phrase':'')+'" data-word="'+esc(v[0])+'" data-mean="'+esc(v[4])+'">'+
+    '<td class="idx">'+i+'</td>'+
+    '<td><span class="w">'+v[0]+'</span></td>'+
+    '<td class="rd">'+rd+ipa+'</td>'+
+    '<td><span class="pos2">'+v[3]+'</span></td>'+
+    '<td>'+v[4]+'</td></tr>';
+}
+function fullText(){
+  return PARAS.map(function(p){ return '<p>'+p.en+'</p>'; }).join('');
+}
+function render(q){
+  q=(q||'').toLowerCase().trim();
+  wrap.innerHTML='';
+  if(!q){
+    wrap.innerHTML+='<div class="fullbox">'+
+      '<div class="fulltitle">📖 Toàn bài — đọc liền mạch trước</div>'+
+      '<div class="fulltext">'+fullText()+'</div>'+
+      '<div class="fullnote">⬇️ Bên dưới: tách từng đoạn nhỏ kèm bản dịch &amp; từ vựng</div>'+
+    '</div>';
+  }
+  var n=0, idx=0;
+  PARAS.forEach(function(p){
+    var rows = p.vocab.filter(function(v){
+      return !q || (v[0]+' '+v[4]).toLowerCase().indexOf(q)>-1;
+    });
+    if(!rows.length) return;
+    var body='';
+    rows.forEach(function(v){ idx++; body+=rowHtml(v,idx); });
+    n+=rows.length;
+    wrap.innerHTML+='<div class="pgroup">'+
+      '<div class="plabel"><span class="badge">'+rows.length+' từ</span>'+p.label+
+        '<button type="button" class="vrepeat" data-mode="mean">🔁 Lặp từ vựng</button>'+
+        '<button type="button" class="vrepeat" data-mode="nomean">🔁 Lặp từ vựng (không nghĩa)</button>'+
+      '</div>'+
+      '<span class="en">'+p.en+'</span>'+
+      '<div class="pvi">→ '+p.vi+'</div>'+
+      '<table class="vtable"><thead><tr>'+
+        '<th>#</th><th>Từ / Cụm</th><th>Phiên âm</th><th>Loại</th><th>Nghĩa</th>'+
+      '</tr></thead><tbody>'+body+'</tbody></table>'+
+    '</div>';
+  });
+  document.getElementById('nores').style.display = n? 'none':'block';
+}
+render('');
 
-<h2>IV. MẸO</h2>
-<div class="tip"><ul>
-<li>Cấu trúc vàng: <b class="k">vị trí → bằng cấp/kinh nghiệm → vì sao phù hợp → CV → mong phỏng vấn</b>.</li>
-<li>Nêu <b>kỹ năng cụ thể</b> liên quan đến công việc, đừng nói chung chung.</li>
-<li>Formal tuyệt đối: không viết tắt; kết <i>Yours faithfully</i> (Sir/Madam) hoặc <i>Yours sincerely</i> (biết tên).</li>
-</ul></div>
-<p class="note" style="text-align:center;">— Application Letter —</p>
-<!-- ===== 🔊 NGHE PHÁT ÂM TỪ VỰNG (giọng đọc của trình duyệt, chạy offline) ===== -->
+document.getElementById('search').addEventListener('input',function(){ render(this.value); });
+</script>
+
+<!-- ===== 🔊 NGHE PHÁT ÂM TỪ VỰNG (dùng giọng đọc của trình duyệt, chạy offline) ===== -->
 <style>
 .spk{cursor:pointer;border:none;background:transparent;font-size:14px;line-height:1;
   padding:0 3px;margin-left:4px;vertical-align:middle;opacity:.5;transition:transform .15s,opacity .15s;}
@@ -153,6 +434,7 @@ Mai Khanh
     el.appendChild(b);
   }
   function run(){ document.querySelectorAll('.w, .vcard .word, td.q, .en, .letter p, .fulltext p, .tem i, .ex').forEach(addSpk); }
+
   var queueBtn=null;
   function speakQueue(items,btn){
     if(!synth){ alert('Trình duyệt này không hỗ trợ đọc. Hãy mở bằng Chrome hoặc Edge.'); return; }
@@ -174,16 +456,13 @@ Mai Khanh
   document.addEventListener('click',function(e){
     var btn=e.target.closest('.vrepeat');
     if(!btn) return;
-    var table=document.getElementById('vocabTable');
+    var table=btn.closest('.pgroup').querySelector('.vtable');
     if(!table) return;
     var withMean = btn.dataset.mode==='mean';
     var items=[];
-    table.querySelectorAll('tr').forEach(function(tr){
-      var wCell=tr.querySelector('td.w');
-      if(!wCell) return;
-      var w=wCell.textContent.replace(/🔊/g,'').trim();
-      var tds=tr.querySelectorAll('td');
-      var m=tds.length?tds[tds.length-1].textContent.trim():'';
+    table.querySelectorAll('tbody tr').forEach(function(tr){
+      var w=tr.dataset.word, m=tr.dataset.mean;
+      if(!w) return;
       items.push(withMean && m ? (w+'. '+m) : w);
     });
     speakQueue(items,btn);
